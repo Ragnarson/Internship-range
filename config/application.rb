@@ -8,5 +8,6 @@ Bundler.require(*Rails.groups)
 
 module InternshipRange
   class Application < Rails::Application
+    config.i18n.default_locale = :pl
   end
 end
