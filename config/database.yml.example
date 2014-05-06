@@ -1,0 +1,16 @@
+development: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: range
+  password: range 
+  timeout: 5000
+  database: internship_development
+
+test:
+  <<: *default
+  database: internship_test
+
+production:
+  <<: *default
+  database: internship_production
