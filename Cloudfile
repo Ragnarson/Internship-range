@@ -1,0 +1,11 @@
+besv2:
+  ruby_version: 2.1.1
+  environment: production
+  domains:
+    - besv2.shellyapp.com
+  servers:
+    app1:
+      size: small
+      thin: 2
+      databases:
+        - postgresql
