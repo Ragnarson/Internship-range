@@ -25,3 +25,8 @@ Your database should already be configured. You're now ready to run application.
 == User creating
 If you want to sign in to application first you must have working database connection based on PostgreSQL and create user through console:
   User.create(email: "your_email", password: "your_password", password_confirmation: "your_password")
+
+== Secret Token
+  (1) $ rake secret
+
+  (2) Rename file .env.example to .env and enter your Secret Token 
