@@ -216,3 +216,10 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
+  club_name: "K.S.S. Bazuka"
+  mainmenu:
+    competitions: "Zawody"
+    shooters: "Strzelcy"
+    payments: "Płatności"
+    admin_panel: "Panel Admina"
+    log_out: "Wyloguj się"
