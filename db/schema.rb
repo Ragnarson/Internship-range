@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507090012) do
+ActiveRecord::Schema.define(version: 20140507185630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "competitions", force: true do |t|
-    t.string   "name"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "contests", force: true do |t|
     t.string   "name"
@@ -38,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140507090012) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "shot_lists", force: true do |t|
+    t.text     "shots"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contest_id"
+    t.integer  "shooter_id"
+    t.integer  "competition_id"
+  end
+
+  add_index "shot_lists", ["competition_id"], name: "index_shot_lists_on_competition_id", using: :btree
+  add_index "shot_lists", ["contest_id"], name: "index_shot_lists_on_contest_id", using: :btree
+  add_index "shot_lists", ["shooter_id"], name: "index_shot_lists_on_shooter_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
