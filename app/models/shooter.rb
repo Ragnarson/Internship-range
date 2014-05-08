@@ -6,7 +6,7 @@ class Shooter < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :pesel, presence: true,
-    uniqueness: true, format: { with: /^\d{11}$/ }
+    uniqueness: true, format: { with: /\A\d{11}\z/ }
   validates :joined_date, presence: true
   validate  :date_is_date?
   validates :address_id, presence: true
