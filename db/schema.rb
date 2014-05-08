@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508071555) do
+ActiveRecord::Schema.define(version: 20140508111951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,18 +39,39 @@ ActiveRecord::Schema.define(version: 20140508071555) do
     t.datetime "updated_at"
   end
 
+  create_table "shooters", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "pesel"
+    t.string   "phone"
+    t.string   "email"
+    t.date     "joined_date"
+    t.string   "resolution_number"
+    t.string   "license_number"
+    t.boolean  "sport_permission"
+    t.boolean  "handgun"
+    t.boolean  "rifle"
+    t.boolean  "shotgun"
+    t.boolean  "collectors_permission"
+    t.integer  "address_id"
+    t.integer  "second_address_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "shot_lists", force: true do |t|
     t.text     "shots"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "contest_id"
-    t.integer  "shooter_id"
+    t.integer  "competitor_id"
     t.integer  "competition_id"
   end
 
   add_index "shot_lists", ["competition_id"], name: "index_shot_lists_on_competition_id", using: :btree
+  add_index "shot_lists", ["competitor_id"], name: "index_shot_lists_on_competitor_id", using: :btree
   add_index "shot_lists", ["contest_id"], name: "index_shot_lists_on_contest_id", using: :btree
-  add_index "shot_lists", ["shooter_id"], name: "index_shot_lists_on_shooter_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
