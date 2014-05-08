@@ -21,4 +21,23 @@
 
 en:
   hello: "Hello world"
-  not_a_date: must be a valid date
+  activerecord:
+    models:
+      contest: contest
+    attributes:
+      name: Name
+      date: Date
+  flash:
+    success_create: "%Successfully created %{model}"
+    success_edit: "%Successfully edited %{model}"
+  actions:
+    new: New
+    edit: Edit
+    show: Show
+    destroy: Delete
+    confirm: Are you sure?
+    actions: Actions
+  errors:
+    messages:
+      not_a_date: must be a valid date
+  club_name: "KSS Bazuka"
