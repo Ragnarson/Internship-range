@@ -1,4 +1,8 @@
 pl:
+  flash:
+    logged_in: "Logowanie zakończyło się sukcesem"
+    invalid_email_or_password: "Niepoprawny email lub hasło"
+    logged_out: "Zostałeś wylogowany"
   date:
     abbr_day_names:
     - nie
@@ -218,7 +222,8 @@ pl:
     pm: po południu
   club_name: "K.S.S. Bazuka"
   mainmenu:
-    competitions: "Zawody"
+    contests: "Zawody"
+    competitions: "Dyscypliny"
     shooters: "Strzelcy"
     payments: "Płatności"
     admin_panel: "Panel Admina"
