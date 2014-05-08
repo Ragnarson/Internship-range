@@ -218,7 +218,8 @@ pl:
     pm: po południu
   club_name: "K.S.S. Bazuka"
   mainmenu:
-    competitions: "Zawody"
+    contests: "Zawody"
+    competitions: "Dyscypliny"
     shooters: "Strzelcy"
     payments: "Płatności"
     admin_panel: "Panel Admina"
