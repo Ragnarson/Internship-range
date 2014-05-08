@@ -3,8 +3,12 @@ class Payment < ActiveRecord::Base
 	
   validates :description, presence: true
   validates :amount, presence: true
-  validates :user_id, presence: true
+  validates :shooter_id, presence: true
   validate :date_is_date?
+
+  def by
+    [shooter.first_name, shooter.last_name].join(' ')
+  end
 
   private
   def date_is_date?
