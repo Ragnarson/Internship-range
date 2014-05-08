@@ -1,7 +1,7 @@
 class Shooter < ActiveRecord::Base
   has_many :payments
-  has_many :contests through: :shot_lists
-  has_many :competitions through: :shot_lists
+  has_many :contests, through: :shot_lists
+  has_many :competitions, through: :shot_lists
 
   validates :first_name, presence: true
   validates :last_name, presence: true
