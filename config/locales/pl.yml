@@ -221,9 +221,6 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
-<<<<<<< HEAD
-
-=======
   club_name: "K.S.S. Bazuka"
   mainmenu:
     contests: "Zawody"
@@ -232,4 +229,3 @@ pl:
     payments: "Płatności"
     admin_panel: "Panel Admina"
     log_out: "Wyloguj się"
->>>>>>> db8491b6d0324a1f59715aeaa28b708401886b4e
