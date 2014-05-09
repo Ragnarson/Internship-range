@@ -26,6 +26,7 @@ en:
       contest: contest
       shooter: shooter
       address: address
+      payment: payment
     attributes:
       contest:
         name: Name
@@ -110,3 +111,13 @@ en:
     blank: '-'
     first_address: "Address #1"
     second_address: "Address #2"
+  payments:
+    one_payment: "Payment"
+    payment_details: "Payment details"
+    return_to_payments_list: "Return to the list of payments"
+    payer_details: "Payer details"
+    payer_first_name: "First name"
+    payer_last_name: "Last name"
+    payment_date: "Date of payment"
+    amount: "Amount"
+    description: "Description"
