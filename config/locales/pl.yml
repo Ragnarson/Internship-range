@@ -258,3 +258,8 @@ pl:
     amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
+  shooters:
+    list_of_shooters: "Lista strzelców"
+    new_shooter: "Dodaj nowego strzelca"
+    first_name_last_name: "Imię i nazwisko"
+    
