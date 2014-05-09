@@ -1,10 +1,24 @@
 pl:
-  not_a_date: podaj poprawną datę
+  activerecord:
+    models:
+      contest: zawody
+    attributes:
+      name: Nazwa
+      date: Data
   flash:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
     logged_out: "Zostałeś wylogowany"
     not_authorized: "Aby kontynuować proszę się zalogować"
+    success_create: "Pomyślnie utworzono %{model}"
+    success_edit: "Pomyślnie zaktualizowano %{model}"
+  actions:
+    new: Dodaj
+    edit: Edytuj
+    show: Pokaż
+    destroy: Usuń
+    confirm: Czy na pewno?
+    actions: Akcje
   date:
     abbr_day_names:
     - nie
@@ -139,6 +153,7 @@ pl:
       invalid: jest nieprawidłowe
       less_than: musi być mniejsze od %{count}
       less_than_or_equal_to: musi być mniejsze lub równe %{count}
+      not_a_date: musi być poprawna
       not_a_number: nie jest liczbą
       not_an_integer: musi być liczbą całkowitą
       odd: musi być nieparzyste
@@ -147,6 +162,7 @@ pl:
       too_long: jest za długie (maksymalnie %{count} znaków)
       too_short: jest za krótkie (przynajmniej %{count} znaków)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
+
     template:
       body: ! 'Błędy dotyczą następujących pól:'
       header:
@@ -222,7 +238,7 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
-  club_name: "K.S.S. Bazuka"
+  club_name: "KSS Bazuka"
   mainmenu:
     contests: "Zawody"
     competitions: "Dyscypliny"

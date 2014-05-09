@@ -1,0 +1,19 @@
+= form_for(@contest) do |f|
+  - if @contest.errors.any?
+    .alert.alert-danger
+      %h2
+        = t('errors.template.body')
+      %ul
+        - @contest.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name, t('activerecord.attributes.name')
+    %br
+    = f.text_field :name
+  .field
+    = f.label :date, t('activerecord.attributes.date')
+    %br
+    = f.text_field :date
+  .actions
+    = f.submit
