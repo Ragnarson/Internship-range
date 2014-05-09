@@ -4,6 +4,7 @@ pl:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
     logged_out: "Zostałeś wylogowany"
+    not_authorized: "Aby kontynuować proszę się zalogować"
   date:
     abbr_day_names:
     - nie
