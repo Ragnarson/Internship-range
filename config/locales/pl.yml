@@ -241,7 +241,7 @@ pl:
   club_name: "KSS Bazuka"
   mainmenu:
     contests: "Zawody"
-    competitions: "Dyscypliny"
+    competitions: "Konkurencje"
     shooters: "Strzelcy"
     payments: "Płatności"
     admin_panel: "Panel Admina"
@@ -255,6 +255,6 @@ pl:
     new_payment: "Nowa płatność"
     name_of_shooter: "Strzelec"
     payment_date: "Data płatności"
-    mount: "Kwota"
+    amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
