@@ -2,6 +2,7 @@ pl:
   activerecord:
     models:
       contest: zawody
+      shooter: Strzelec
     attributes:
       contest:
         name: Nazwa
@@ -13,6 +14,22 @@ pl:
             name:
               blank: nie może być pusta
               taken: została już zajęta
+      shooter:
+        first_name: Imię
+        last_name: Nazwisko
+        pesel: PESEL
+        phone: Telefon
+        email: Email
+        date_of_birth: Data urodzenia
+        joined_date: Dołączył
+        resolution_number: Numer uchwały
+        license_number: Numer licencji
+        judge_license_number: Numer licencji sędziowskiej
+        sport_permission: Pozwolenie sportowe
+        handgun: Pistolet
+        rifle: Karabin
+        shotgun: Strzelba
+        collectors_permission: Pozwolenie kolekcjonerskie
   flash:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
@@ -299,6 +316,12 @@ pl:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"
     first_name_last_name: "Imię i nazwisko"
+    weapons: Bronie
+    blank: "-"
+    truth: Tak
+    lie: Nie
+    first_address: "Adres #1"
+    second_address: "Adres #2"
   contest:
     actions:
       new: Dodaj

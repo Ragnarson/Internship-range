@@ -11,7 +11,12 @@ class Shooter < ActiveRecord::Base
     uniqueness: true, format: { with: /\A\d{11}\z/ }
   validates :joined_date, presence: true
   validate  :date_is_date?
-  validates :address_id, presence: true
+
+  validates_each :addresses do |shooter, attr|
+    if (shooter.addresses.count >= 2)
+      shooter.errors.add(attr, "The user should have one or two addresses")
+    end
+  end
 
   attr_accessible :image
   mount_uploader :image, ImageUploader

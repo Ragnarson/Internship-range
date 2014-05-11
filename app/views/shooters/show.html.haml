@@ -1,0 +1,51 @@
+.container
+  .row
+    %h1= @shooter.first_name + " " + @shooter.last_name
+  .row
+    .col-xs-12.col-sm-12.col-md-5.col-lg-5.margin-top
+      .row
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12
+          = image_tag "http://poutperfection.files.wordpress.com/2012/05/facebook-blank-photo.jpg", style: "width: 100%", alt: "dummy image"
+      .row
+        .col-xs-12.col-sm-12.col-md-12.col-lg-12.btn-group.margin-top
+          = link_to t('shooters.payments'), '#', class: "btn btn-info col-xs-4 col-sm-4 col-md-4 col-lg-4"
+          = link_to t('actions.edit'), '#', class: "btn btn-success col-xs-4 col-sm-4 col-md-4 col-lg-4"
+          = link_to t('actions.destroy'), '#', class: "btn btn-danger col-xs-4 col-sm-4 col-md-4 col-lg-4"
+    .col-xs-12.col-sm-12.col-md-7.col-lg-7.margin-top
+      %table.table.table-striped
+        %tr 
+          %td= t('activerecord.attributes.shooter.pesel')
+          %td= @shooter.pesel
+        %tr 
+          %td= t('activerecord.attributes.shooter.phone')
+          %td= @shooter.phone || t('shooters.blank')
+        %tr 
+          %td= t('activerecord.attributes.shooter.email')
+          %td= @shooter.email || t('shooters.blank')
+        %tr 
+          %td= t('activerecord.attributes.shooter.date_of_birth')
+          %td= @shooter.date_of_birth
+        %tr 
+          %td= t('activerecord.attributes.shooter.joined_date')
+          %td= @shooter.joined_date
+        %tr 
+          %td= t('activerecord.attributes.shooter.resolution_number')
+          %td= @shooter.resolution_number || t('shooters.blank')
+        %tr 
+          %td= t('activerecord.attributes.shooter.license_number')
+          %td= @shooter.license_number || t('shooters.blank')
+        %tr 
+          %td= t('activerecord.attributes.shooter.judge_license_number')
+          %td= @shooter.judge_license_number || t('shooters.blank')
+        %tr 
+          %td= t('shooters.weapons')
+          %td= display_weapons_for @shooter
+        %tr 
+          %td= t('activerecord.attributes.shooter.collectors_permission')
+          %td= @shooter.collectors_permission ? t('shooters.truth') : t('shooters.lie')
+        %tr 
+          %td= t('shooters.first_address')
+          %td= @shooter.addresses.all[0] ? display_address(@shooter.addresses.all[0]) : t('shooters.blank')
+        %tr 
+          %td= t('shooters.second_address')
+          %td= @shooter.addresses.all[1] ? display_address(@shooter.addresses.all[1]) : t('shooters.blank')

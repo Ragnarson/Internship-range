@@ -1,13 +1,22 @@
 class ShootersController < ApplicationController
+  before_action :set_shooter, only: [:show, :edit]
   def new
     @shooter = Shooter.new
   end
 
   def edit
-    @shooter = Shooter.find(params[:id])
   end
-  #Important we need add strong params for model
+
   def index
     @shooters = Shooter.page(params[:page])
+  end
+
+  def show
+  end
+
+  private
+
+  def set_shooter
+    @shooter = Shooter.find(params[:id])
   end
 end

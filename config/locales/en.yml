@@ -24,10 +24,25 @@ en:
   activerecord:
     models:
       contest: contest
+      shooter: shooter
+      address: address
     attributes:
       contest:
         name: Name
         date: Date
+      shooter:
+        pesel: PESEL
+        phone: Phone number
+        email: Email
+        date_of_birth: Date of birth
+        joined_date: Joined
+        resolution_number: Resolution number
+        license_number: License number
+        judge_license_number: Judge license number
+        sport_permission: Sport permission
+        handgun: Handgun
+        rifle: Rifle
+        shotgun: Shotgun
   flash:
     success_create: "%Successfully created %{model}"
     success_edit: "%Successfully edited %{model}"
@@ -87,3 +102,11 @@ en:
       destroy: Delete
       confirm: Are you sure?
       actions: Actions
+  shooters:
+    payments: Payments
+    weapons: Weapons
+    truth: Yes
+    lie: No
+    blank: '-'
+    first_address: "Address #1"
+    second_address: "Address #2"
