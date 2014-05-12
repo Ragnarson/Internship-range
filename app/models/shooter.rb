@@ -16,7 +16,7 @@ class Shooter < ActiveRecord::Base
   private
   def date_is_date?
     unless joined_date.is_a?(Date)
-      errors.add(:joined_date, t(:not_a_date))
+      errors.add(:joined_date, :not_a_date)
     end
   end
 end
