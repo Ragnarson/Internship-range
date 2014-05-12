@@ -21,7 +21,7 @@ class Shooter < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def full_name
-    [first_name, last_name].join(' ')
+    [first_name, last_name].join(' ') if first_name && last_name
   end
 
   private
