@@ -1,20 +1,19 @@
 %h1= t('activerecord.models.contest').capitalize
 
-= link_to "#{t('actions.new')} #{t('activerecord.models.contest')}", new_contest_path
+= link_to "#{t('contest.actions.new')} #{t('activerecord.models.contest')}", new_contest_path
 
 %table.table
   %thead
     %tr
-      %th= t('activerecord.attributes.name')
-      %th= t('activerecord.attributes.date')
-      %th(colspan=3)= t('actions.actions')
+      %th= t('activerecord.attributes.contest.name')
+      %th= t('activerecord.attributes.contest.date')
+      %th(colspan=3)= t('contest.actions.actions')
 
   %tbody
     - @contests.each do |contest|
       %tr
         %td= contest.name
         %td= contest.date
-        %td= link_to t('actions.show'), contest
-        %td= link_to t('actions.edit'), edit_contest_path(contest)
-        %td= link_to t('actions.destroy'), contest, method: :delete, data: { confirm: t('actions.confirm') }
+        %td= link_to t('contest.actions.show'), contest
+        %td= link_to t('contest.actions.edit'), edit_contest_path(contest)
   = paginate @contests

@@ -3,8 +3,16 @@ pl:
     models:
       contest: zawody
     attributes:
-      name: Nazwa
-      date: Data
+      contest:
+        name: Nazwa
+        date: Data
+    errors:
+      models:
+        contest:
+          attributes:
+            name:
+              blank: nie może być pusta
+              taken: została już zajęta
   flash:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
@@ -287,3 +295,15 @@ pl:
     amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
+  shooters:
+    list_of_shooters: "Lista strzelców"
+    new_shooter: "Dodaj nowego strzelca"
+    first_name_last_name: "Imię i nazwisko"
+  contest:
+    actions:
+      new: Dodaj
+      edit: Edytuj
+      show: Pokaż
+      destroy: Usuń
+      confirm: Czy na pewno?
+      actions: Akcje

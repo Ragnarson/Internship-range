@@ -2,7 +2,7 @@ class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contests = Contest.all.page(params[:page])
+    @contests = Contest.page(params[:page])
   end
 
   def show
