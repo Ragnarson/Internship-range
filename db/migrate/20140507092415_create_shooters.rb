@@ -14,8 +14,6 @@ class CreateShooters < ActiveRecord::Migration
       t.boolean :rifle
       t.boolean :shotgun
       t.boolean :collectors_permission
-      t.integer :address_id
-      t.integer :second_address_id
       t.string :image
 
       t.timestamps
