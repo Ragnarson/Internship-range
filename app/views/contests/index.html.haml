@@ -16,6 +16,4 @@
         %td= contest.date
         %td= link_to t('contest.actions.show'), contest
         %td= link_to t('contest.actions.edit'), edit_contest_path(contest)
-        %td= link_to t('contest.actions.destroy'), contest, method: :delete, data: { confirm: t('contest.actions.confirm') }
-
   = paginate @contests

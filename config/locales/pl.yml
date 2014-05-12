@@ -185,6 +185,35 @@ pl:
       create: Utwórz %{model}
       submit: Zapisz %{model}
       update: Aktualizuj %{model}
+    label:
+      shooter:
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        pesel: 'PESEL'
+        phone: 'Telefon'
+        date_of_birth: 'Data urodzenia'
+        joined_date: 'Dołączył'
+        resolution_number: 'Numer uchwały'
+        license_number: 'Numer licencji'
+        judge_license_number: 'Numer licencji sędziowskiej'
+        sport_permission: 'Pozwolenie sportowe'
+        handgun: 'Pistolet'
+        rifle: 'Karabin'
+        shotgun: 'Strzelba'
+        collectors_permission: 'Pozwolenie kolekcjonerskie'
+        yes_form: 'Tak'
+        no_form: 'Nie'
+      address:
+        street: 'Ulica'
+        city: 'Miasto'
+        building: 'Nr domu'
+        flat: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        secondary_address: 'Adres dodatkowy'
+  shooter_template_form_heading: 'Strzelec'
+  edit: 'Edycja'
+  new: 'Nowy'
+  address: 'Adres'
   number:
     currency:
       format:
