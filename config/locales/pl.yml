@@ -2,11 +2,18 @@ pl:
   activerecord:
     models:
       contest: zawody
+      competition:
+        one: konkurencja
+        other: konkurencje
       shooter: Strzelec
     attributes:
       contest:
         name: Nazwa
         date: Data
+      competition:
+        name: Nazwa
+        number_of_shots: Liczba strzałów
+        classification: Typ
     errors:
       models:
         contest:
@@ -199,6 +206,8 @@ pl:
     select:
       prompt: Proszę wybrać
     submit:
+      competition:
+        create: "Utwórz konkurencję"
       create: Utwórz %{model}
       submit: Zapisz %{model}
       update: Aktualizuj %{model}
@@ -316,6 +325,7 @@ pl:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"
     first_name_last_name: "Imię i nazwisko"
+<<<<<<< HEAD
     weapons: Bronie
     blank: "-"
     truth: Tak
@@ -330,3 +340,5 @@ pl:
       destroy: Usuń
       confirm: Czy na pewno?
       actions: Akcje
+  competitions:
+    new_competition: "Dodaj konkurencję"
