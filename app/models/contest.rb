@@ -1,5 +1,6 @@
 class Contest < ActiveRecord::Base
   has_many :competitions
+
   validates :name, presence: true, uniqueness: true
   validate :date_is_date?
 

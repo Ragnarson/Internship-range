@@ -1,0 +1,18 @@
+= form_for [@contest, @competition] do |f|
+  - if @competition.errors.any?
+    .alert.alert-danger
+      %h2= t(:errors)
+      %ul
+        - @competition.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :classification
+    = f.text_field :classification
+  .field
+    = f.label :number_of_shots
+    = f.text_field :number_of_shots
+  .actions
+    = f.submit
