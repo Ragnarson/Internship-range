@@ -72,3 +72,7 @@ If you want to sign in to application first you must have working database conne
 7. When reviewing take note if there are tests included. In particular, if you've changed (or added) a controller, view or helper, you need to change (or add) a functional test. If you've changed (or added) a model or mailer, you need to change (or add) a unit test. If the tests are missing, write them and go back to step 4.
 
 8. Finally, commit your change, describing in the commit message the reason why it was made. Try to include information that is not clearly visible in the code.
+
+### Lecturers
+
+1. [Testowanie #1](http://www.youtube.com/watch?v=LnhEasE646s)
