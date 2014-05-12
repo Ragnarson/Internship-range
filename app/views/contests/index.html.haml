@@ -16,7 +16,6 @@ new_contest_path, class: 'btn btn-primary'
       %tr
         %td= link_to contest.name, contest
         %td= contest.date
-        %td= link_to t('contest.actions.show'), contest
         %td= link_to t('contest.actions.edit'), edit_contest_path(contest), class: "btn btn-info btn-sm"
         %td= link_to t('contest.actions.destroy'), contest, method: :delete, data: { confirm: I18n.t('actions.confirm') }, class: "btn btn-danger btn-sm"
 
