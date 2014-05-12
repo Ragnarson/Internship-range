@@ -19,3 +19,4 @@ gem 'bootstrap-datepicker-rails', '1.3.0.2'
 gem 'shelly-dependencies',       group: :production
 gem 'dotenv-rails'
 gem 'kaminari'
+gem 'carrierwave'

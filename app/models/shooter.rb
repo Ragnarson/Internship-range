@@ -13,6 +13,9 @@ class Shooter < ActiveRecord::Base
   validate  :date_is_date?
   validates :address_id, presence: true
 
+  attr_accessible :image
+  mount_uploader :image, ImageUploader
+
   private
   def date_is_date?
     unless joined_date.is_a?(Date)
