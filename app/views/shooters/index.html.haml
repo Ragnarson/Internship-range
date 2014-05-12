@@ -1,7 +1,7 @@
 .container 
   %h1= t(:list_of_shooters, scope: :shooters)
 
-  = link_to t(:new_shooter, scope: :shooters), '#'
+  = link_to t(:new_shooter, scope: :shooters), new_shooter_path, class: "btn btn-primary btn-sm"
 
   %table.table
     %thead
