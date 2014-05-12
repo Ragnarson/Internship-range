@@ -14,8 +14,8 @@
       %tr
         %td= [shooter.first_name, shooter.last_name].join(' ')
         %td= link_to t('actions.show'), '#'
-        %td= link_to t('actions.edit'), '#'
-        %td= link_to t('actions.destroy'), '#'
+        %td= link_to t('actions.edit'), '#', class: "btn btn-info btn-sm"
+        %td= link_to t('actions.destroy'), '#', class: "btn btn-danger btn-sm"
 
 = paginate @shooters
 

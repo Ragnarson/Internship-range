@@ -15,5 +15,5 @@
         %td= contest.name
         %td= contest.date
         %td= link_to t('contest.actions.show'), contest
-        %td= link_to t('contest.actions.edit'), edit_contest_path(contest)
+        %td= link_to t('contest.actions.edit'), edit_contest_path(contest), class: "btn btn-info btn-sm"
   = paginate @contests
