@@ -6,7 +6,7 @@ class Contest < ActiveRecord::Base
 
   def date_is_date?
     unless date.is_a?(Date)
-      errors.add(:date, 'must be a valid date')
+      errors.add(:date, :not_a_date)
     end
   end
 end

@@ -1,9 +1,24 @@
 pl:
-  not_a_date: podaj poprawną datę
+  activerecord:
+    models:
+      contest: zawody
+    attributes:
+      name: Nazwa
+      date: Data
   flash:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
     logged_out: "Zostałeś wylogowany"
+    not_authorized: "Aby kontynuować proszę się zalogować"
+    success_create: "Pomyślnie utworzono %{model}"
+    success_edit: "Pomyślnie zaktualizowano %{model}"
+  actions:
+    new: Dodaj
+    edit: Edytuj
+    show: Pokaż
+    destroy: Usuń
+    confirm: Czy na pewno?
+    actions: Akcje
   date:
     abbr_day_names:
     - nie
@@ -138,6 +153,7 @@ pl:
       invalid: jest nieprawidłowe
       less_than: musi być mniejsze od %{count}
       less_than_or_equal_to: musi być mniejsze lub równe %{count}
+      not_a_date: musi być poprawna
       not_a_number: nie jest liczbą
       not_an_integer: musi być liczbą całkowitą
       odd: musi być nieparzyste
@@ -146,6 +162,7 @@ pl:
       too_long: jest za długie (maksymalnie %{count} znaków)
       too_short: jest za krótkie (przynajmniej %{count} znaków)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
+
     template:
       body: ! 'Błędy dotyczą następujących pól:'
       header:
@@ -160,6 +177,35 @@ pl:
       create: Utwórz %{model}
       submit: Zapisz %{model}
       update: Aktualizuj %{model}
+    label:
+      shooter:
+        first_name: 'Imię'
+        last_name: 'Nazwisko'
+        pesel: 'PESEL'
+        phone: 'Telefon'
+        date_of_birth: 'Data urodzenia'
+        joined_date: 'Dołączył'
+        resolution_number: 'Numer uchwały'
+        license_number: 'Numer licencji'
+        judge_license_number: 'Numer licencji sędziowskiej'
+        sport_permission: 'Pozwolenie sportowe'
+        handgun: 'Pistolet'
+        rifle: 'Karabin'
+        shotgun: 'Strzelba'
+        collectors_permission: 'Pozwolenie kolekcjonerskie'
+        yes_form: 'Tak'
+        no_form: 'Nie'
+      address:
+        street: 'Ulica'
+        city: 'Miasto'
+        building: 'Nr domu'
+        flat: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
+        secondary_address: 'Adres dodatkowy'
+  shooter_template_form_heading: 'Strzelec'
+  edit: 'Edycja'
+  new: 'Nowy'
+  address: 'Adres'
   number:
     currency:
       format:
@@ -221,7 +267,7 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
-  club_name: "K.S.S. Bazuka"
+  club_name: "KSS Bazuka"
   mainmenu:
     contests: "Zawody"
     competitions: "Konkurencje"

@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'bootstrap-sass'
+gem 'bootstrap-datepicker-rails', '1.3.0.2'
 gem 'shelly-dependencies',       group: :production
 gem 'dotenv-rails'
-
+gem 'kaminari'

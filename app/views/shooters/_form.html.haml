@@ -1,0 +1,161 @@
+.container
+.row-fluid
+  .span4.well
+    = form_for @shooter, html: {class: "form-horizontal"} do |m|
+      %fieldset
+        %legend
+          %h3= t :shooter_template_form_heading
+        .form-group
+          *
+          = m.label :first_name, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :first_name,
+              placeholder: t('helpers.label.shooter.first_name'),
+              class: "form-control"
+        .form-group
+          *
+          = m.label :last_name, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :last_name,
+              placeholder: t('helpers.label.shooter.last_name'),
+              class: "form-control"
+        .form-group
+          = m.label :date_of_birth, class: "col-xs-4 control-label"
+          .col-xs-4
+            %input{"data-behaviour_birth" => "datepicker",
+                    type: "shooter[date_of_birth]",
+                    placeholder: Date.current().strftime("%d/%m/%Y"),
+                    class: "form-control"}
+        .form-group
+          *
+          = m.label :pesel, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :pesel,
+              placeholder: t('helpers.label.shooter.pesel'),
+              class: "form-control"
+        .form-group
+          = m.label :phone, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :phone,
+              class: "form-control",
+              placeholder: t('helpers.label.shooter.phone')
+        .form-group
+          *
+          = m.label :joined_date, class: "col-xs-4 control-label"
+          .col-xs-4
+            %input{"data-behaviour" => "datepicker", 
+                    type: "shooter[joined_date]",
+                    placeholder: Date.current().strftime("%d/%m/%Y"),
+                    class: "form-control"}
+        .form-group
+          = m.label :resolution_number, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :resolution_number, 
+                           class: "form-control",
+                           placeholder: t('helpers.label.shooter.resolution_number')
+        .form-group
+          = m.label :license_number, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :license_number,
+                            class: "form-control",
+                            placeholder: t('helpers.label.shooter.license_number')
+        .form-group
+          = m.label :judge_license_number, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :judge_license_number,
+                            class: "form-control",
+                            placeholder: t('helpers.label.shooter.judge_license_number')
+
+        .form-group.center-block
+          = m.label :sport_permission, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.radio_button :sport_permission, true, id: 'permission_true'
+            = m.label :yes_form
+
+            = m.radio_button :sport_permission, false, id: 'permission_false'
+            = m.label :no_form
+            .well.well-sm
+              .input-group
+                = m.check_box :handgun
+                = m.label :handgun
+              .input-group
+                = m.check_box :rifle
+                = m.label :rifle
+              .input-group
+                = m.check_box :shotgun
+                = m.label :shotgun
+        .form-group
+          = m.label :collectors_permission, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.radio_button :collectors_permission, true
+            = m.label :yes_form
+
+            = m.radio_button :collectors_permission, false
+            = m.label :no_form
+        %fieldset
+          %legend
+            %h5= t :address
+          .form-group
+            *
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.street')
+            .col-xs-4
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.street') }
+          .form-group
+            *
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.building') + ', '
+              =t('helpers.label.address.flat')
+            .col-xs-2
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.building')}
+            .col-xs-2
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.flat')}
+          .form-group
+            *
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.city') + ', '
+              =t('helpers.label.address.zip_code')
+            .col-xs-2
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.city')}
+            .col-xs-2
+              %input.form-control{type: "text",
+                placeholder: t('helpers.label.address.zip_code')}
+          .form-group
+            %label.col-xs-4.control-label
+              =t('helpers.label.address.secondary_address')
+            %input.col-xs-1.checkbox#second_address_show{type: 'checkbox'}
+        %fieldset#second_address
+          %legend
+          .form-group
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.street')
+            .col-xs-4
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.street') }
+          .form-group
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.building') + ', '
+              =t('helpers.label.address.flat')
+            .col-xs-2
+              %input.form-control{type: "text", 
+                                  placeholder: t('helpers.label.address.building')}
+            .col-xs-2
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.flat')}
+          .form-group
+            %label.col-xs-4.control-label{for: "street"}
+              =t('helpers.label.address.city') + ', '
+              =t('helpers.label.address.zip_code')
+            .col-xs-2
+              %input.form-control{type: "text",
+                                  placeholder: t('helpers.label.address.city')}
+            .col-xs-2
+              %input.form-control{type: "text",
+                placeholder: t('helpers.label.address.zip_code')}
+
+        .button-centered
+          = m.submit class: "btn btn-primary"
