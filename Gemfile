@@ -18,3 +18,4 @@ gem 'bootstrap-sass'
 gem 'shelly-dependencies',       group: :production
 gem 'dotenv-rails'
 gem 'kaminari'
+gem 'carrierwave'

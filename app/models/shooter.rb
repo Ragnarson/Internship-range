@@ -18,6 +18,9 @@ class Shooter < ActiveRecord::Base
     end
   end
 
+  attr_accessible :image
+  mount_uploader :image, ImageUploader
+
   private
   def date_is_date?
     unless joined_date.is_a?(Date)
