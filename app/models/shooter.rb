@@ -18,7 +18,6 @@ class Shooter < ActiveRecord::Base
     end
   end
 
-  attr_accessible :image
   mount_uploader :image, ImageUploader
 
   private
