@@ -2,6 +2,9 @@ pl:
   activerecord:
     models:
       contest: zawody
+      payment:
+        one: płatność
+        other: płatności
       competition:
         one: konkurencja
         other: konkurencje
@@ -15,6 +18,11 @@ pl:
         name: Nazwa
         number_of_shots: Liczba strzałów
         classification: Typ
+      payment:
+        shooter_id: Osoba
+        amount: Kwota
+        description: Opis
+        date: Data
     errors:
       models:
         contest:

@@ -14,8 +14,12 @@ class ShootersController < ApplicationController
   def show
   end
 
-  private
+  def names
+    shooters = Shooter.select('first_name, last_name, id').order(:last_name)
+    render json: shooters.map { |x| {id: x.id, full_name: x.full_name} }
+  end
 
+  private
   def set_shooter
     @shooter = Shooter.find(params[:id])
   end

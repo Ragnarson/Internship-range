@@ -1,6 +1,6 @@
 class Payment < ActiveRecord::Base
   belongs_to :shooter
-	
+
   validates :description, presence: true
   validates :amount, presence: true
   validates :shooter_id, presence: true

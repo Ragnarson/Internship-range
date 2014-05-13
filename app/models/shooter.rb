@@ -20,6 +20,10 @@ class Shooter < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+  def full_name
+    [first_name, last_name].join(' ')
+  end
+
   private
   def date_is_date?
     unless joined_date.is_a?(Date)

@@ -1,0 +1,5 @@
+.page-header
+  %h1
+    = [t('actions.edit'), t('activerecord.models.payment')].join(' ')
+    %small= @payment.by
+= render 'form'
