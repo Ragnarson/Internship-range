@@ -7,7 +7,7 @@ class Shooter < ActiveRecord::Base
   has_many :payments
   has_many :contests, through: :shot_lists
   has_many :competitions, through: :shot_lists
-  has_many :addresses, ->{ order 'id'; limit 2 }, inverse_of: :shooter
+  has_many :addresses, ->{ order('id').limit(2) }, inverse_of: :shooter
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -20,12 +20,6 @@ class Shooter < ActiveRecord::Base
   validate :prevent_destroying_single_address
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-
-  validates_each :addresses do |shooter, attr|
-    if (shooter.addresses.count >= 2)
-      shooter.errors.add(attr, "The user should have one or two addresses")
-    end
-  end
 
   mount_uploader :image, ImageUploader
 
