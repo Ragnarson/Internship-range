@@ -21,4 +21,8 @@
         %td= payment.description
         %td= link_to t(:show), payment
         %td= link_to t(:edit), edit_payment_path(payment)
-        %td= link_to t(:destroy), '#'
+        %td= link_to t(:destroy), payment,
+              method: :delete,
+              data: { confirm: t('actions.confirm') }
+
+
