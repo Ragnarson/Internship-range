@@ -22,6 +22,10 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'rmagick', require: false
 
+group :development do
+  gem 'spring-commands-rspec'
+end
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'capybara'
