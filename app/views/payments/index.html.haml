@@ -2,26 +2,25 @@
 .container
   %h1= t(:list_of_payments, scope: :payments)
 
-  = link_to t(:new_payment, scope: :payments), new_payment_path
+  = link_to t(:new_payment, scope: :payments), new_payment_path, class: "btn btn-primary btn-sm"
 
   %table.table
     %thead
       %tr
-        %th= t(:name_of_shooter, scope: :payments)
+        %th= t(:description, scope: :payments)
         %th= t(:payment_date, scope: :payments)
         %th= t(:amount, scope: :payments)
-        %th= t(:description, scope: :payments)
+        %th= t(:name_of_shooter, scope: :payments)
         %th{colspan: 3}= t(:actions, scope: :payments)
     %tbody
     - @payments.each do |payment|
       %tr
-        %td= payment.by
+        %td= link_to payment.description, payment
         %td= payment.date
         %td= payment.amount
-        %td= payment.description
-        %td= link_to t(:show), payment
-        %td= link_to t(:edit), edit_payment_path(payment)
-        %td= link_to t(:destroy), payment,
+        %td= link_to payment.by, payment.shooter
+        %td= link_to t(:edit), edit_payment_path(payment), class: "btn btn-info btn-sm"
+        %td= link_to t(:destroy), payment, class: "btn btn-danger btn-sm",
               method: :delete,
               data: { confirm: t('actions.confirm') }
 
