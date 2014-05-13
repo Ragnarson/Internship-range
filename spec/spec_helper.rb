@@ -11,6 +11,9 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
-  config.syntax = :expect
   config.order = "random"
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
 end
