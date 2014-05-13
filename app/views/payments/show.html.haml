@@ -1,0 +1,24 @@
+.container
+  %h2= t(:one_payment, scope: :payments) + " #{@payment.id}"
+  .row
+    .col-xs-6
+      %h4
+        %strong= t(:payer_details, scope: :payments)
+      %p
+        %strong= t(:payer_first_name, scope: :payments)
+        =@payment.shooter.first_name
+      %p
+        %strong= t(:payer_last_name, scope: :payments)
+        =@payment.shooter.last_name
+    .col-xs-6
+      %h4
+        %strong= t(:payment_details, scope: :payments)
+      %p
+        %strong= t(:amount, scope: :payments)
+        =@payment.amount
+      %p
+        %strong= t(:description, scope: :payments)
+        =@payment.description
+      %p
+        %strong= t(:payment_date, scope: :payments)
+        =@payment.date
