@@ -53,6 +53,7 @@ pl:
     not_authorized: "Aby kontynuować proszę się zalogować"
     success_create: "Pomyślnie utworzono %{model}"
     success_edit: "Pomyślnie zaktualizowano %{model}"
+    success_destroy: "Pomyślnie usunięto %{model}"
   actions:
     new: Dodaj
     edit: Edytuj
