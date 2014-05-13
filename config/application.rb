@@ -8,5 +8,7 @@ Bundler.require(*Rails.groups)
 
 module InternshipRange
   class Application < Rails::Application
+    I18n.available_locales = [:en, :pl]
+    I18n.enforce_available_locales = false
   end
 end

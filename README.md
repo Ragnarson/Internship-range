@@ -65,7 +65,7 @@ If you want to sign in to application first you must have working database conne
 
 4. Make sure `git status` shows no unstaged changes, i.e. there should be no "Changes not staged for commit:" nor "Untracked files:" in the output. If there are, either `git add` them or remove them.
 
-5. Run the tests to make sure your change didn't break anything: `rake test`. If it did, fix it and go to step 4 again.
+5. Run the tests to make sure your change didn't break anything: `bundle exec rspec`. If it did, fix it and go to step 4 again.
 
 6. Review your own change: `git diff --cached`. Make sure everything looks as you intended. This diff is what will be reviewed later by senior developers. If you have to fix something, do it and go to step 4 again.
 
@@ -76,3 +76,4 @@ If you want to sign in to application first you must have working database conne
 ### Lecturers
 
 1. [Testowanie #1](http://www.youtube.com/watch?v=LnhEasE646s)
+2. [Testowanie #2](https://www.youtube.com/watch?v=im84JwpYVqs)

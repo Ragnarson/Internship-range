@@ -6,6 +6,7 @@ pl:
         one: konkurencja
         other: konkurencje
       shooter: Strzelec
+      payment: płatność
     attributes:
       contest:
         name: Nazwa
@@ -314,9 +315,14 @@ pl:
   edit: "Edytuj"
   destroy: "Usuń"
   payments:
+    one_payment: "Płatność"
+    payment_details: "Szczegóły płatności"
     list_of_payments: "Lista płatności"
     new_payment: "Nowa płatność"
     name_of_shooter: "Strzelec"
+    payer_details: "Dane wpłacającego"
+    payer_first_name: "Imię"
+    payer_last_name: "Nazwisko"
     payment_date: "Data płatności"
     amount: "Kwota"
     description: "Opis"

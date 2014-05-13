@@ -1,19 +1,29 @@
-= form_for(@contest) do |f|
-  - if @contest.errors.any?
-    .alert.alert-danger
-      %h2
-        = t('errors.template.body')
-      %ul
-        - @contest.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    %br
-    = f.text_field :name
-  .field
-    = f.label :date
-    %br
-    = f.text_field :date
-  .actions
-    = f.submit
+.row-fluid
+  .span4.well
+    = form_for @contest, html: {class: "form-horizontal"} do |f|
+      %fieldset
+        %legend
+          %h2= t('activerecord.models.contest').capitalize
+          - if @contest.errors.any?
+            .alert.alert-danger
+              %h4
+                = t('errors.template.body')
+                %ul
+                  - @contest.errors.full_messages.each do |msg|
+                    %li= msg
+        .form-group
+          = f.label :name, class: "col-xs-4 control-label"
+          *
+          .col-xs-4
+            = f.text_field :name,
+              placeholder: t('activerecord.attributes.contest.name'),
+              class: "form-control"
+        .form-group
+          = f.label :date, class: "col-xs-4 control-label"
+          *
+          .col-xs-4
+            = f.text_field :date,
+              placeholder: Date.current().strftime("%m/%d/%Y"),
+              class: "form-control"
+        .button-centered
+          = f.submit class: "btn btn-primary"
