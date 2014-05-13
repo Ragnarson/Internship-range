@@ -20,7 +20,7 @@ gem 'shelly-dependencies',       group: :production
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'rmagick', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
