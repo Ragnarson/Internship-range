@@ -24,7 +24,7 @@
         %td= shooter.joined_date
         %td= shooter.phone
         %td= shooter.email
-        %td= link_to t('actions.edit'), '#', class: "btn btn-info btn-sm"
+        %td= link_to t('actions.edit'), edit_shooter_path(shooter), class: "btn btn-info btn-sm"
         %td= link_to t(:destroy), shooter, class: "btn btn-danger btn-sm",
               method: :delete,
               data: { confirm: t('actions.confirm') }

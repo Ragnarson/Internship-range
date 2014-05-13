@@ -22,4 +22,8 @@ module ApplicationHelper
   def current_date
     Date.current.strftime("%Y-%m-%d")
   end
+
+  def display_for_visible(attribute, placeholder_on_blank='-')
+    attribute.blank? ? placeholder_on_blank : attribute
+  end
 end

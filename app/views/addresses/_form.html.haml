@@ -1,0 +1,32 @@
+= address_fields.hidden_field :id
+%fieldset{id: (is_first ? 'first_address' : 'second_address')}
+  %legend
+    %h5= t(is_first ? 'helpers.label.address.first_address' : 'helpers.label.address.second_address')
+  .form-group
+    %label.col-xs-4.control-label{for: "street"}
+      =t('activerecord.attributes.address.street')
+    .col-xs-4
+      = address_fields.text_field :street, placeholder: t('activerecord.attributes.address.street'), class: 'form-control', id: 'street'
+  .form-group
+    %label.col-xs-4.control-label{for: "street"}
+      =t('activerecord.attributes.address.building') + ', '
+      =t('activerecord.attributes.address.flat')
+    .col-xs-2
+      = address_fields.text_field :building, placeholder: t('activerecord.attributes.address.building'), class: 'form-control', id: 'building'
+    .col-xs-2
+      = address_fields.text_field :flat, placeholder: t('activerecord.attributes.address.flat'), class: 'form-control', id: 'flat'
+  .form-group
+    %label.col-xs-4.control-label{for: "street"}
+      =t('activerecord.attributes.address.city') + ', '
+      =t('activerecord.attributes.address.zip_code')
+    .col-xs-2
+      = address_fields.text_field :city, placeholder: t('activerecord.attributes.address.city'), class: 'form-control', id: 'city'
+    .col-xs-2
+      = address_fields.text_field :zip_code, placeholder: t('activerecord.attributes.address.zip_code'), class: 'form-control', id: 'zip_code'
+  .form-group
+    %label.col-xs-4.control-label{for: "street"}
+  - if(is_first && !address_fields.object.id)
+    .form-group
+      %label.col-xs-4.control-label
+        =t('helpers.label.address.second_address')
+      %input.col-xs-1.checkbox#second_address_show{type: 'checkbox'}
