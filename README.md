@@ -55,6 +55,16 @@ If you want to sign in to application first you must have working database conne
 
 2. Rename file .env.example to .env and enter your Secret Token
 
+### Guard-rspec
+
+To use guard for your development workflow open new terminal and use this command in app directory
+
+```bash
+  $ bundle exec guard
+```
+
+Everytime you save a file guard will automatically launch proper specs when files are modified. [More info](https://github.com/guard/guard-rspec)
+
 ### Before you make a commit
 
 1. Ask yourself: am I done? Is this commit a complete cohesive unit of work that can be tested by the end-user? Avoid making commits that add only a part of the functionality, e.g. only the model. Try to do less work, but make it span all levels of the application, i.e. make a real user-facing functionality. If you're not done, get back to code and commit later.
