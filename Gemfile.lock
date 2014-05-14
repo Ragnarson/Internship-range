@@ -55,6 +55,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     daemons (1.1.9)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
@@ -207,6 +208,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
+  database_cleaner
   dotenv-rails
   factory_girl_rails
   haml-rails (= 0.5.3)
