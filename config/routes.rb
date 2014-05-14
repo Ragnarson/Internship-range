@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :competitions, except: [:index]
   end
   resources :payments
-  resources :shooters, except: :destroy
+  resources :shooters
   root 'contests#index'
   get 'names.json', to: 'shooters#names'
 end

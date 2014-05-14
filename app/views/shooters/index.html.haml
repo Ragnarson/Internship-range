@@ -13,7 +13,8 @@
       %tr
         %td= link_to shooter.full_name, shooter
         %td= link_to t('actions.edit'), '#', class: "btn btn-info btn-sm"
-        %td= link_to t('actions.destroy'), '#', class: "btn btn-danger btn-sm"
-
+        %td= link_to t(:destroy), shooter, class: "btn btn-danger btn-sm",
+              method: :delete,
+              data: { confirm: t('actions.confirm') }
 = paginate @shooters
 
