@@ -6,7 +6,7 @@ env:
 cache: bundler
 before_script:
   - psql -c "CREATE DATABASE internship_test;" -U postgres
-  - cp config/database.yml.travis config/databse.yml
+  - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:test:load
 script:
   - bundle exec rspec
