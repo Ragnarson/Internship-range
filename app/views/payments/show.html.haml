@@ -7,19 +7,19 @@
         %strong= t(:payer_details, scope: :payments)
       %p
         %strong= t(:payer_first_name, scope: :payments)
-        =@payment.shooter.first_name
+        = @payment.shooter.first_name
       %p
         %strong= t(:payer_last_name, scope: :payments)
-        =@payment.shooter.last_name
+        = @payment.shooter.last_name
     .col-xs-6
       %h4
         %strong= t(:payment_details, scope: :payments)
       %p
         %strong= t(:amount, scope: :payments)
-        =@payment.amount
+        = change_to_currency(@payment.amount)
       %p
         %strong= t(:description, scope: :payments)
-        =@payment.description
+        = @payment.description
       %p
         %strong= t(:payment_date, scope: :payments)
-        =@payment.date
+        = @payment.date

@@ -17,11 +17,9 @@
       %tr
         %td= link_to payment.description, payment
         %td= payment.date
-        %td= payment.amount
+        %td= change_to_currency(payment.amount)
         %td= link_to payment.by, payment.shooter
         %td= link_to t(:edit), edit_payment_path(payment), class: "btn btn-info btn-sm"
         %td= link_to t(:destroy), payment, class: "btn btn-danger btn-sm",
               method: :delete,
               data: { confirm: t('actions.confirm') }
-
-
