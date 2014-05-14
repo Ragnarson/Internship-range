@@ -24,6 +24,7 @@ gem 'rmagick', require: false
 
 group :development do
   gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
 end
 
 group :development, :test do
