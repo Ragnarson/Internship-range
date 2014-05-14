@@ -77,3 +77,4 @@ If you want to sign in to application first you must have working database conne
 
 1. [Testowanie #1](http://www.youtube.com/watch?v=LnhEasE646s)
 2. [Testowanie #2](https://www.youtube.com/watch?v=im84JwpYVqs)
+3. [Testowanie #3](http://youtu.be/8N4LjsAEFJA)
