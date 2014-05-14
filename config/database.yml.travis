@@ -1,0 +1,8 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: 
+  timeout: 5000
+  database: internship_test
