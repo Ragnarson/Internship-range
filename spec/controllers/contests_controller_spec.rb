@@ -5,6 +5,10 @@ describe ContestsController do
   let(:other_contest) { attributes_for(:other_contest) }
   let(:invalid_contest) { attributes_for(:invalid_contest) }
 
+  before do
+    request.env['HTTPS'] = 'on'
+  end
+
   describe "GET #index" do
     before do
       get :index
