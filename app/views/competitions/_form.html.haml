@@ -1,18 +1,36 @@
-= form_for [@contest, @competition] do |f|
-  - if @competition.errors.any?
-    .alert.alert-danger
-      %h2= t(:errors)
-      %ul
-        - @competition.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :classification
-    = f.text_field :classification
-  .field
-    = f.label :number_of_shots
-    = f.text_field :number_of_shots
-  .actions
-    = f.submit
+.row-fluid
+  .span4.well
+    = form_for [@contest, @competition], html: {class: "form-horizontal"} do |f|
+      %fieldset
+        %legend
+          %h2= t('activerecord.models.competition.one').capitalize
+          - if @competition.errors.any?
+            .alert.alert-danger
+              %h4
+                = t('errors.template.body')
+                %ul
+                  - @competition.errors.full_messages.each do |msg|
+                    %li= msg
+        .form-group
+          = f.label :name, class: "col-xs-4 control-label"
+          *
+          .col-xs-4
+            = f.text_field :name,
+              placeholder: t('activerecord.attributes.competition.name'),
+              class: "form-control"
+        .form-group
+          = f.label :classification, class: "col-xs-4 control-label"
+          *
+          .col-xs-4
+            = f.text_field :classification,
+              placeholder: t('activerecord.attributes.competition.classification'),
+              class: "form-control"
+        .form-group
+          = f.label :number_of_shots, class: "col-xs-4 control-label"
+          *
+          .col-xs-4
+            = f.text_field :number_of_shots,
+              placeholder: t('activerecord.attributes.competition.number_of_shots'),
+              class: "form-control"
+        .button-centered
+          = f.submit class: "btn btn-primary"
