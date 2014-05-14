@@ -3,8 +3,12 @@ require 'spec_helper'
 describe PaymentsController do
   let(:payment) { create :payment }
 
-  describe 'GET index' do
-    it 'renders the :index view' do
+  before do
+    request.env['HTTPS'] = 'on'
+  end
+
+  describe "GET 'index'" do
+    it "renders the :index view" do
       get :index
       expect(response).to render_template :index
     end
