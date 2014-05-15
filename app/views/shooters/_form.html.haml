@@ -4,25 +4,25 @@
     = form_for @shooter, html: {class: "form-horizontal"} do |m|
       %fieldset
         %legend
-          %h3= t :shooter_template_form_heading
+          %h3= t('helpers.label.shooter.shooter_heading')
         .form-group
           *
           = m.label :first_name, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :first_name,
-              placeholder: t('helpers.label.shooter.first_name'),
+              placeholder: t('activerecord.attributes.shooter.first_name'),
               class: "form-control"
         .form-group
           *
           = m.label :last_name, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :last_name,
-              placeholder: t('helpers.label.shooter.last_name'),
+              placeholder: t('activerecord.attributes.shooter.last_name'),
               class: "form-control"
         .form-group
           = m.label :date_of_birth, class: "col-xs-4 control-label"
           .col-xs-4
-            %input{"data-behaviour_birth" => "datepicker",
+            %input#shooter_date_of_birth{"data-behaviour_birth" => "datepicker",
                     type: "shooter[date_of_birth]",
                     placeholder: Date.current().strftime("%d/%m/%Y"),
                     class: "form-control"}
@@ -31,40 +31,40 @@
           = m.label :pesel, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :pesel,
-              placeholder: t('helpers.label.shooter.pesel'),
+              placeholder: t('activerecord.attributes.shooter.pesel'),
               class: "form-control"
         .form-group
           = m.label :phone, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :phone,
               class: "form-control",
-              placeholder: t('helpers.label.shooter.phone')
+              placeholder: t('activerecord.attributes.shooter.phone')
         .form-group
           *
           = m.label :joined_date, class: "col-xs-4 control-label"
           .col-xs-4
-            %input{"data-behaviour" => "datepicker", 
+            %input#shooter_joined_date{"data-behaviour" => "datepicker",
                     type: "shooter[joined_date]",
                     placeholder: Date.current().strftime("%d/%m/%Y"),
                     class: "form-control"}
         .form-group
           = m.label :resolution_number, class: "col-xs-4 control-label"
           .col-xs-4
-            = m.text_field :resolution_number, 
+            = m.text_field :resolution_number,
                            class: "form-control",
-                           placeholder: t('helpers.label.shooter.resolution_number')
+                           placeholder: t('activerecord.attributes.shooter.resolution_number')
         .form-group
           = m.label :license_number, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :license_number,
                             class: "form-control",
-                            placeholder: t('helpers.label.shooter.license_number')
+                            placeholder: t('activerecord.attributes.shooter.license_number')
         .form-group
           = m.label :judge_license_number, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :judge_license_number,
                             class: "form-control",
-                            placeholder: t('helpers.label.shooter.judge_license_number')
+                            placeholder: t('activerecord.attributes.shooter.judge_license_number')
 
         .form-group.center-block
           = m.label :sport_permission, class: "col-xs-4 control-label"
@@ -94,68 +94,68 @@
             = m.label :no_form
         %fieldset
           %legend
-            %h5= t :address
+            %h5= t('helpers.label.address.first_address')
           .form-group
             *
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.street')
+              =t('activerecord.attributes.address.street')
             .col-xs-4
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.street') }
+              %input#street.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.street')}
           .form-group
             *
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.building') + ', '
-              =t('helpers.label.address.flat')
+              =t('activerecord.attributes.address.building') + ', '
+              =t('activerecord.attributes.address.flat')
             .col-xs-2
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.building')}
+              %input#building.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.building')}
             .col-xs-2
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.flat')}
+              %input#flat.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.flat')}
           .form-group
             *
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.city') + ', '
-              =t('helpers.label.address.zip_code')
+              =t('activerecord.attributes.address.city') + ', '
+              =t('activerecord.attributes.address.zip_code')
             .col-xs-2
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.city')}
+              %input#city.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.city')}
             .col-xs-2
-              %input.form-control{type: "text",
-                placeholder: t('helpers.label.address.zip_code')}
+              %input#zip_code.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.zip_code')}
           .form-group
             %label.col-xs-4.control-label
-              =t('helpers.label.address.secondary_address')
+              =t('helpers.label.address.second_address')
             %input.col-xs-1.checkbox#second_address_show{type: 'checkbox'}
         %fieldset#second_address
           %legend
           .form-group
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.street')
+              =t('activerecord.attributes.address.street')
             .col-xs-4
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.street') }
+              %input#street.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.street')}
           .form-group
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.building') + ', '
-              =t('helpers.label.address.flat')
+              =t('activerecord.attributes.address.building') + ', '
+              =t('activerecord.attributes.address.flat')
             .col-xs-2
-              %input.form-control{type: "text", 
-                                  placeholder: t('helpers.label.address.building')}
+              %input#building.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.building')}
             .col-xs-2
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.flat')}
+              %input#flat.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.flat')}
           .form-group
             %label.col-xs-4.control-label{for: "street"}
-              =t('helpers.label.address.city') + ', '
-              =t('helpers.label.address.zip_code')
+              =t('activerecord.attributes.address.city') + ', '
+              =t('activerecord.attributes.address.zip_code')
             .col-xs-2
-              %input.form-control{type: "text",
-                                  placeholder: t('helpers.label.address.city')}
+              %input#city.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.city')}
             .col-xs-2
-              %input.form-control{type: "text",
-                placeholder: t('helpers.label.address.zip_code')}
+              %input#zip_code.form-control{type: "text",
+                placeholder: t('activerecord.attributes.address.zip_code')}
 
         .button-centered
           = m.submit class: "btn btn-primary"

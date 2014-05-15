@@ -9,8 +9,31 @@ pl:
         one: konkurencja
         other: konkurencje
       shooter: Strzelec
+      address: Adres
       payment: płatność
     attributes:
+      shooter:
+        first_name: Imię
+        last_name: Nazwisko
+        pesel: PESEL
+        phone: Telefon
+        email: Email
+        date_of_birth: Data urodzenia
+        joined_date: Dołączył
+        resolution_number: Numer uchwały
+        license_number: Numer licencji
+        judge_license_number: Numer licencji sędziowskiej
+        sport_permission: Pozwolenie sportowe
+        handgun: Pistolet
+        rifle: Karabin
+        shotgun: Strzelba
+        collectors_permission: Pozwolenie kolekcjonerskie
+      address:
+        street: 'Ulica'
+        city: 'Miasto'
+        building: 'Nr domu'
+        flat: 'Nr mieszkania'
+        zip_code: 'Kod pocztowy'
       contest:
         name: Nazwa
         date: Data
@@ -30,22 +53,6 @@ pl:
             name:
               blank: nie może być pusta
               taken: została już zajęta
-      shooter:
-        first_name: Imię
-        last_name: Nazwisko
-        pesel: PESEL
-        phone: Telefon
-        email: Email
-        date_of_birth: Data urodzenia
-        joined_date: Dołączył
-        resolution_number: Numer uchwały
-        license_number: Numer licencji
-        judge_license_number: Numer licencji sędziowskiej
-        sport_permission: Pozwolenie sportowe
-        handgun: Pistolet
-        rifle: Karabin
-        shotgun: Strzelba
-        collectors_permission: Pozwolenie kolekcjonerskie
   flash:
     logged_in: "Logowanie zakończyło się sukcesem"
     invalid_email_or_password: "Niepoprawny email lub hasło"
@@ -221,35 +228,21 @@ pl:
       create: Utwórz %{model}
       submit: Zapisz %{model}
       update: Aktualizuj %{model}
+      shooter:
+        create: Utwórz Strzelca
+        update: Aktualizuj Strzelca
     label:
       shooter:
-        first_name: 'Imię'
-        last_name: 'Nazwisko'
-        pesel: 'PESEL'
-        phone: 'Telefon'
-        date_of_birth: 'Data urodzenia'
-        joined_date: 'Dołączył'
-        resolution_number: 'Numer uchwały'
-        license_number: 'Numer licencji'
-        judge_license_number: 'Numer licencji sędziowskiej'
-        sport_permission: 'Pozwolenie sportowe'
-        handgun: 'Pistolet'
-        rifle: 'Karabin'
-        shotgun: 'Strzelba'
-        collectors_permission: 'Pozwolenie kolekcjonerskie'
+        shooter_heading: 'Strzelec'
+        edit: 'Edycja Strzelca'
+        address: 'Adres'
         yes_form: 'Tak'
         no_form: 'Nie'
+        create: 'Stwórz Strzelca'
       address:
-        street: 'Ulica'
-        city: 'Miasto'
-        building: 'Nr domu'
-        flat: 'Nr mieszkania'
-        zip_code: 'Kod pocztowy'
-        secondary_address: 'Adres dodatkowy'
-  shooter_template_form_heading: 'Strzelec'
-  edit: 'Edycja'
-  new: 'Nowy'
-  address: 'Adres'
+        first_address: 'Adres'
+        second_address: 'Dodatkowy adres'
+
   number:
     currency:
       format:
