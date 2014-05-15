@@ -4,9 +4,7 @@ describe CompetitionsController do
   let!(:contest) { create(:contest) }
   let!(:competition) { create(:competition, contest: contest) }
 
-  before do
-    request.env['HTTPS'] = 'on'
-  end
+  before { request.env['HTTPS'] = 'on' }
 
   describe 'GET #new' do
     it "assigns new Competition to @competition" do

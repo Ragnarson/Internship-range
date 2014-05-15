@@ -3,14 +3,14 @@ FactoryGirl.define do
     amount 1
     description 'description'
     association :shooter
-    date '2010-01-01'
+    date '2010-01-01'.to_date
   end
 
   factory :other_payment, :class => Payment do
     amount 2
     description 'other description'
     association :shooter
-    date '2011-11-11'
+    date '2011-11-11'.to_date
   end
 
   factory :invalid_payment, :class => Payment do
