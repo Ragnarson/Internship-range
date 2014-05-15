@@ -29,6 +29,7 @@ en:
       payment: payment
     attributes:
       contest:
+        list_of_competitions: List of competitions
         name: Name
         date: Date
       shooter:
