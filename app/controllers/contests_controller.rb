@@ -18,7 +18,7 @@ class ContestsController < ApplicationController
   def create
     @contest = Contest.new(contest_params)
     if @contest.save
-      redirect_to @contest, notice: t('flash.success_create', model: t('activerecord.models.contest'))
+      redirect_to contests_path, notice: t('flash.success_create', model: t('activerecord.models.contest'))
     else
       render action: 'new'
     end

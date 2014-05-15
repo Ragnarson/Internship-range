@@ -30,7 +30,7 @@ class PaymentsController < ApplicationController
 
   def update
     if @payment.update(payment_params)
-      redirect_to payments_path,
+      redirect_to @payment,
         notice: I18n.t(
           'flash.success_edit',
           model: I18n.t('activerecord.models.payment'))
