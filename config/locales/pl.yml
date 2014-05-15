@@ -8,6 +8,9 @@ pl:
       competition:
         one: konkurencja
         other: konkurencje
+      competitor:
+        one: zawodnik
+        other: zawodnicy
       shooter: Strzelec
       address: Adres
       payment: płatność
@@ -37,6 +40,11 @@ pl:
       contest:
         name: Nazwa
         date: Data
+        first_name: Imię
+        last_name: Nazwisko
+        date_of_birth: Data urodzenia
+        club: Klub
+        pk: PK
       competition:
         name: Nazwa
         number_of_shots: Liczba strzałów
@@ -46,6 +54,11 @@ pl:
         amount: Kwota
         description: Opis
         date: Data
+      competitor:
+        first_name: Imię
+        last_name: Nazwisko
+        date_of_birth: Data urodzenia
+        club: Klub
     errors:
       models:
         contest:
@@ -340,6 +353,7 @@ pl:
     first_address: "Adres #1"
     second_address: "Adres #2"
   contest:
+    add_competitor: Dodaj zawodnika
     actions:
       new: Dodaj
       edit: Edytuj
@@ -348,4 +362,5 @@ pl:
       confirm: Czy na pewno?
       actions: Akcje
   competitions:
-    new_competition: "Dodaj konkurencję"
+    new_competition: Dodaj konkurencję
+    edit_competition: Dane konkurencji

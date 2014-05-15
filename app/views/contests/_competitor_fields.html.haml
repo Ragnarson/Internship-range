@@ -1,0 +1,15 @@
+.form-group
+  .col-xs-offset-2.col-xs-2
+    = f.text_field :first_name, class: "form-control", id: "first_name",
+      placeholder: t('activerecord.attributes.contest.first_name')
+  .col-xs-2
+    = f.text_field :last_name, class: "form-control",
+    placeholder: t('activerecord.attributes.contest.last_name')
+  .col-xs-2
+    = f.text_field :date_of_birth, class: "form-control",
+    placeholder: t('activerecord.attributes.contest.date_of_birth')
+  .col-xs-2
+    = f.text_field :club, class: "form-control",
+    placeholder: t('activerecord.attributes.contest.club')
+  .col-xs-1
+    = f.check_box :pk, class: "checkbox"
