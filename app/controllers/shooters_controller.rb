@@ -1,17 +1,22 @@
 class ShootersController < ApplicationController
   before_action :set_shooter, only: [:show, :edit, :destroy]
+  helper_method :sort_direction, :sort_column
+
+  def index
+    @shooters = Shooter.page(params[:page]).order(sort_column + " " + sort_direction)
+  end
+
+  def show
+  end
+
   def new
     @shooter = Shooter.new
   end
 
+  def create
+  end
+
   def edit
-  end
-
-  def index
-    @shooters = Shooter.page(params[:page])
-  end
-
-  def show
   end
 
   def names
@@ -30,5 +35,13 @@ class ShootersController < ApplicationController
   private
   def set_shooter
     @shooter = Shooter.find(params[:id])
+  end
+
+  def sort_column
+    Shooter.column_names.include?(params[:sort]) ? params[:sort] : "id"
+  end
+
+  def sort_direction
+    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
   end
 end

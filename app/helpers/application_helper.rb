@@ -12,4 +12,10 @@ module ApplicationHelper
     onclick = "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\");return false;"
     link_to name, "#", onclick: onclick
   end
+
+  def sortable(column_name, link_title)
+    css_class = column_name == sort_column ? "current #{sort_direction}" : nil
+    direction = column_name == sort_column && sort_direction == "asc" ? "desc" : "asc"
+    link_to link_title, {sort: column_name, direction: direction}, {class: css_class}
+  end
 end

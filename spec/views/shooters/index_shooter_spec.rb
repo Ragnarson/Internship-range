@@ -17,9 +17,14 @@ describe "Shooter index" do
   end
 
   describe "tables" do
-    it "contain names head" do
+    it "contain first name head" do
       expect(page).to have_selector(
-        'th', text: I18n.t('shooters.first_name_last_name'))
+        'th', text: I18n.t('activerecord.attributes.shooter.first_name'))
+    end
+
+    it "contain last name head" do
+      expect(page).to have_selector(
+        'th', text: I18n.t('activerecord.attributes.shooter.last_name'))
     end
 
     it "contain actions head" do
@@ -27,8 +32,12 @@ describe "Shooter index" do
         'th', text: I18n.t('actions.actions'))
     end
 
-    it "have links to shooter profile" do
-      expect(page).to have_link(shooter.full_name)
+    it "have links to shooter profile through first name" do
+      expect(page).to have_link(shooter.first_name)
+    end
+
+    it "have links to shooter profile through last name" do
+      expect(page).to have_link(shooter.last_name)
     end
 
     it "have links to edit user" do
