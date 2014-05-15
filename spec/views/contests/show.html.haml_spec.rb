@@ -11,7 +11,7 @@ describe "contests/show" do
       expect(rendered).to have_selector(
         "p:nth-of-type(1) strong", 
         text: 'Nazwa:'
-        ) 
+        )
     end
 
     it "displays contest name" do
