@@ -32,6 +32,8 @@ en:
         name: Name
         date: Date
       shooter:
+        first_name: First name
+        last_name: Last name
         pesel: PESEL
         phone: Phone number
         email: Email
@@ -44,6 +46,14 @@ en:
         handgun: Handgun
         rifle: Rifle
         shotgun: Shotgun
+        collectors_permission: Collectors permission
+      address:
+        street: Street
+        city: City
+        building: Building No.
+        flat: Flat No.
+        zip_code: Zip code
+
   flash:
     success_create: "%Successfully created %{model}"
     success_edit: "%Successfully edited %{model}"
@@ -67,34 +77,14 @@ en:
       update: Upate %{model}
     label:
       shooter:
-        first_name: 'First name'
-        last_name: 'Last name'
-        pesel: 'PESEL'
-        phone: 'Phone number'
-        date_of_birth: 'Date of birth'
-        joined_date: 'Joined'
-        resolution_number: 'Resolution number'
-        license_number: 'License number'
-        judge_license_number: 'Judge license number'
-        sport_permission: 'Sport permission'
-        handgun: 'Handgun'
-        rifle: 'Rifle'
-        shotgun: 'Shotgun'
-        collectors_permission: 'Collectors permission'
-        yes_form: 'Yes'
-        no_form: 'No'
+        shooter_heading: Shooter
+        edit: Edit Shooter
+        address: Address
+        yes_form: Yes
+        no_form: No
       address:
-        street: 'Street'
-        city: 'City'
-        building: 'Building No.'
-        flat: 'Flat No.'
-        zip_code: 'Zip code'
-
-  shooter_template_form_heading: 'Shooter'
-  edit: 'Edit'
-  new: 'New'
-  address: 'Address'
-  address_secondary: 'Secondary address'
+        first_address: Address
+        second_address: Optional address
   contest:
     actions:
       new: New
