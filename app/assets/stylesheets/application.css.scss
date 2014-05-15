@@ -13,3 +13,17 @@ body {
 .margin-top{
   margin-top:10px;
 }
+
+.current {
+  padding-right: 16px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+th .desc {
+  background-image: image-url("arrow_down.png");
+}
+
+th .asc {
+  background-image: image-url("arrow_up.png");
+}
