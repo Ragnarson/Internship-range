@@ -25,5 +25,21 @@
             = f.text_field :date,
               placeholder: Date.current().strftime("%m/%d/%Y"),
               class: "form-control"
+        - if defined?(edit) && edit
+          .form-group
+            .col-xs-offset-2.col-xs-2
+              = f.label :first_name, class: "control-label"
+            .col-xs-2
+              = f.label :last_name, class: "control-label"
+            .col-xs-2
+              = f.label :date_of_birth, class: "control-label"
+            .col-xs-2
+              = f.label :club, class: "control-label"
+            .col-xs-1
+              = f.label :pk, class: "checkbox"
+          = f.fields_for :competitors do |builder|
+            = render 'competitor_fields', f: builder
+          .row-fluid
+            = link_to_add_fields t(:add_competitor, scope: :contest), f, :competitors
         .button-centered
           = f.submit class: "btn btn-primary"

@@ -2,4 +2,4 @@
   "#{t('club_name')} - #{t('actions.edit')} #{t('activerecord.models.contest')}"
 %h2= t('contest.actions.edit')
 
-= render 'form'
+= render partial: 'form', locals: {edit: true}
