@@ -201,6 +201,10 @@ GEM
     shelly-dependencies (0.2.4)
       rake
       thin
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.5.0)
     spring (1.1.2)
     spring-commands-rspec (1.0.2)
@@ -262,6 +266,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   shelly-dependencies
+  simplecov (~> 0.7.1)
   spring
   spring-commands-rspec
   turbolinks

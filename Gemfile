@@ -21,6 +21,7 @@ gem 'dotenv-rails'
 gem 'kaminari'
 gem 'carrierwave'
 gem 'rmagick', require: false
+gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
 
 group :development do
   gem 'spring-commands-rspec'
