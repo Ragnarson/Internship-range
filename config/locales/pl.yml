@@ -38,6 +38,7 @@ pl:
         flat: 'Nr mieszkania'
         zip_code: 'Kod pocztowy'
       contest:
+        list_of_competitions: Lista konkurencji
         name: Nazwa
         date: Data
         first_name: Imię
