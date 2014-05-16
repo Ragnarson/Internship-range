@@ -3,10 +3,10 @@
 
 = link_to t('shooters.new_shooter'), new_shooter_path, class: "btn btn-primary btn-sm"
 
-%table.table-striped.table
+%table.table-striped.table.fixedlayout
   %thead
     %tr
-      %th= sortable "id", "#"
+      %th.hashtable= sortable "id", "#"
       %th= sortable "first_name", t('activerecord.attributes.shooter.first_name')
       %th= sortable "last_name", t('activerecord.attributes.shooter.last_name')
       %th= sortable "pesel", t('activerecord.attributes.shooter.pesel')
