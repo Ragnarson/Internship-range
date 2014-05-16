@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
       redirect_to payments_path,
         notice: I18n.t(
           'flash.success_create',
-           model: I18n.t('activerecord.models.payment'))
+           model: I18n.t('flash.payment'))
     else
       render :new
     end
@@ -33,7 +33,7 @@ class PaymentsController < ApplicationController
       redirect_to @payment,
         notice: I18n.t(
           'flash.success_edit',
-          model: I18n.t('activerecord.models.payment'))
+          model: I18n.t('flash.payment'))
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class PaymentsController < ApplicationController
     redirect_to payments_url,
       notice: I18n.t(
         'flash.success_destroy',
-        model: I18n.t('activerecord.models.payment'))
+        model: I18n.t('flash.payment'))
   end
 
   private
