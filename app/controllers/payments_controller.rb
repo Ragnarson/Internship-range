@@ -53,6 +53,7 @@ class PaymentsController < ApplicationController
   end
 
   def payment_params
-    params.require(:payment).permit(:description, :amount, :date, :shooter_id)
+    params.require(:payment).permit(:description, :amount, :date,
+      :shooter_id, :expiry_date)
   end
 end

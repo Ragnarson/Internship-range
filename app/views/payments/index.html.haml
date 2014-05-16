@@ -1,25 +1,27 @@
 = content_for :title, "#{t('club_name')} - #{t('payments.list_of_payments').capitalize}"
 .container
-  %h1= t(:list_of_payments, scope: :payments)
+  %h1= t('payments.list_of_payments')
 
-  = link_to t(:new_payment, scope: :payments), new_payment_path, class: "btn btn-primary btn-sm"
+  = link_to t('payments.new_payment'), new_payment_path, class: "btn btn-primary btn-sm"
 
   %table.table
     %thead
       %tr
-        %th= t(:description, scope: :payments)
-        %th= t(:payment_date, scope: :payments)
-        %th= t(:amount, scope: :payments)
-        %th= t(:name_of_shooter, scope: :payments)
-        %th{colspan: 3}= t(:actions, scope: :payments)
+        %th= t('payments.description')
+        %th= t('payments.payment_date')
+        %th= t('payments.payment_expiry_date')
+        %th= t('payments.amount')
+        %th= t('payments.name_of_shooter')
+        %th{colspan: 3}= t('payments.actions')
     %tbody
-    - @payments.each do |payment|
-      %tr
-        %td= link_to payment.description, payment
-        %td= payment.date
-        %td= change_to_currency(payment.amount)
-        %td= link_to payment.by, payment.shooter
-        %td= link_to t(:edit), edit_payment_path(payment), class: "btn btn-info btn-sm"
-        %td= link_to t(:destroy), payment, class: "btn btn-danger btn-sm",
-              method: :delete,
-              data: { confirm: t('actions.confirm') }
+      - @payments.each do |payment|
+        %tr
+          %td= link_to payment.description, payment
+          %td= payment.date
+          %td= payment.expiry_date
+          %td= change_to_currency(payment.amount)
+          %td= link_to payment.by, payment.shooter
+          %td= link_to t(:edit), edit_payment_path(payment), class: "btn btn-info btn-sm"
+          %td= link_to t(:destroy), payment, class: "btn btn-danger btn-sm",
+            method: :delete,
+            data: { confirm: t('actions.confirm') }

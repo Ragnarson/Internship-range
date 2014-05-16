@@ -22,16 +22,23 @@
         .form-group
           = m.label :date_of_birth, class: "col-xs-4 control-label"
           .col-xs-4
-            %input#shooter_date_of_birth{"data-behaviour_birth" => "datepicker",
-                    type: "shooter[date_of_birth]",
-                    placeholder: Date.current().strftime("%d/%m/%Y"),
-                    class: "form-control"}
+            = m.text_field :date_of_birth, "data-behaviour_birth" => "datepicker",
+              type: "shooter[date_of_birth]",
+              placeholder: current_date,
+              class: "form-control"
         .form-group
           *
           = m.label :pesel, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :pesel,
               placeholder: t('activerecord.attributes.shooter.pesel'),
+              class: "form-control"
+        .form-group
+          *
+          = m.label :email, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.text_field :email,
+              placeholder: t('activerecord.attributes.shooter.email'),
               class: "form-control"
         .form-group
           = m.label :phone, class: "col-xs-4 control-label"
@@ -43,28 +50,28 @@
           *
           = m.label :joined_date, class: "col-xs-4 control-label"
           .col-xs-4
-            %input#shooter_joined_date{"data-behaviour" => "datepicker",
-                    type: "shooter[joined_date]",
-                    placeholder: Date.current().strftime("%d/%m/%Y"),
-                    class: "form-control"}
+            = m.text_field :joined_date, "data-behaviour" => "datepicker",
+              type: "shooter[joined_date]",
+              placeholder: current_date,
+              class: "form-control"
         .form-group
           = m.label :resolution_number, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :resolution_number,
-                           class: "form-control",
-                           placeholder: t('activerecord.attributes.shooter.resolution_number')
+              class: "form-control",
+              placeholder: t('activerecord.attributes.shooter.resolution_number')
         .form-group
           = m.label :license_number, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :license_number,
-                            class: "form-control",
-                            placeholder: t('activerecord.attributes.shooter.license_number')
+              class: "form-control",
+              placeholder: t('activerecord.attributes.shooter.license_number')
         .form-group
           = m.label :judge_license_number, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :judge_license_number,
-                            class: "form-control",
-                            placeholder: t('activerecord.attributes.shooter.judge_license_number')
+              class: "form-control",
+              placeholder: t('activerecord.attributes.shooter.judge_license_number')
 
         .form-group.center-block
           = m.label :sport_permission, class: "col-xs-4 control-label"

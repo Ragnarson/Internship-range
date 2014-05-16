@@ -1,25 +1,29 @@
-= content_for :title, "#{t('club_name')} - #{t(:one_payment, scope: :payments)}"
+= content_for :title, "#{t('club_name')} - #{t('payments.one_payment')}"
 .container
-  %h2= t(:one_payment, scope: :payments) + " #{@payment.id}"
+  %h2= t('payments.one_payment') + " #{@payment.id}"
   .row
     .col-xs-6
       %h4
-        %strong= t(:payer_details, scope: :payments)
+        %strong= t('payments.payer_details')
       %p
-        %strong= t(:payer_first_name, scope: :payments)
+        %strong= t('payments.payer_first_name')
         = @payment.shooter.first_name
       %p
-        %strong= t(:payer_last_name, scope: :payments)
+        %strong= t('payments.payer_last_name')
         = @payment.shooter.last_name
     .col-xs-6
       %h4
-        %strong= t(:payment_details, scope: :payments)
+        %strong= t('payments.payment_details')
       %p
-        %strong= t(:amount, scope: :payments)
+        %strong= t('payments.amount')
         = change_to_currency(@payment.amount)
       %p
-        %strong= t(:description, scope: :payments)
+        %strong= t('payments.description')
         = @payment.description
       %p
-        %strong= t(:payment_date, scope: :payments)
+        %strong= t('payments.payment_date')
         = @payment.date
+        %p
+        %strong= t('payments.payment_expiry_date')
+        = @payment.expiry_date
+

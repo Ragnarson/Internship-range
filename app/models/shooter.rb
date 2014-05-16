@@ -4,6 +4,7 @@ class Shooter < ActiveRecord::Base
   has_many :competitions, through: :shot_lists
   has_many :addresses, before_add: :validates_amount
 
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
@@ -11,6 +12,8 @@ class Shooter < ActiveRecord::Base
     uniqueness: true, format: { with: /\A\d{11}\z/ }
   validates :joined_date, presence: true
   validate  :date_is_date?
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+    uniqueness: { case_sensitive: false }
 
   validates_each :addresses do |shooter, attr|
     if (shooter.addresses.count >= 2)

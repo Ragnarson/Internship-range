@@ -18,4 +18,8 @@ module ApplicationHelper
     direction = column_name == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to link_title, {sort: column_name, direction: direction}, {class: css_class}
   end
+
+  def current_date
+    Date.current.strftime("%Y-%m-%d")
+  end
 end

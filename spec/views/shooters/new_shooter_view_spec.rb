@@ -46,6 +46,11 @@ describe "Shooter new page" do
          I18n.t('activerecord.attributes.shooter.pesel'))
     end
 
+    it "have field for attribute Email" do
+       expect(page).to have_field(
+         I18n.t('activerecord.attributes.shooter.email'))
+    end
+
     it "have field for attribute Phone" do
       expect(page).to have_field(
         I18n.t('activerecord.attributes.shooter.phone'))

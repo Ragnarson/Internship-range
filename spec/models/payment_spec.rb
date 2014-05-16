@@ -6,37 +6,48 @@ describe Payment do
   it { should respond_to(:description) }
   it { should respond_to(:amount) }
   it { should respond_to(:date) }
+  it { should respond_to(:expiry_date) }
   it { should respond_to(:shooter) }
 
   it { should be_valid }
 
-  describe "when description is not present" do
+  context "when description is not present" do
     before { payment.description = "" }
     it { should_not be_valid }
   end
 
-  describe "when amount is not present" do
+  context "when amount is not present" do
     before { payment.amount = "" }
     it { should_not be_valid }
   end
 
-  describe "when amount is smaller than 0" do
+  context "when amount is smaller than 0" do
     before { payment.amount = "-1" }
     it { should_not be_valid }
   end
 
-  describe "when amount format is invalid" do
+  context "when amount format is invalid" do
     before { payment.amount = "abcd" }
     it { should_not be_valid }
   end
 
-  describe "when date is not present" do
+  context "when date is not present" do
     before { payment.date = "" }
     it { should_not be_valid }
   end
 
-  describe "when date is not date" do
+  context "when date is not date" do
     before { payment.date = "aaaa" }
+    it { should_not be_valid }
+  end
+
+  context "when expiry date is not present" do
+    before { payment.expiry_date = "" }
+    it { should_not be_valid }
+  end
+
+  context "when expiry date is not a date" do
+    before { payment.expiry_date = "bbbb" }
     it { should_not be_valid }
   end
 

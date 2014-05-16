@@ -5,6 +5,7 @@ class Payment < ActiveRecord::Base
   validates :amount, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0 }
   validates :shooter_id, presence: true
+  validates :expiry_date, presence: true
   validate :date_is_date?
 
   def by
@@ -13,8 +14,7 @@ class Payment < ActiveRecord::Base
 
   private
   def date_is_date?
-    unless date.is_a?(Date)
-      errors.add(:date, 'must be a valid date')
-    end
+    errors.add(:date, :not_a_date) unless date.is_a?(Date)
+    errors.add(:expiry_date, :not_a_date) unless expiry_date.is_a?(Date)
   end
 end

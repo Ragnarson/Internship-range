@@ -55,6 +55,7 @@ pl:
         amount: Kwota
         description: Opis
         date: Data
+        expiry_date: Data ważności
       competitor:
         first_name: Imię
         last_name: Nazwisko
@@ -346,6 +347,7 @@ pl:
     payer_first_name: "Imię"
     payer_last_name: "Nazwisko"
     payment_date: "Data płatności"
+    payment_expiry_date: "Ważna do dnia"
     amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
