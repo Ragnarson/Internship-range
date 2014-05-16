@@ -24,7 +24,7 @@ describe ShootersController do
 
     it 'returns JSON' do
       get :names
-      expect(JSON.parse(response.body)).to_not raise_error
+      expect(lambda { JSON.parse(response.body) }).to_not raise_error
     end
 
     it 'renders all shooters in json format' do
