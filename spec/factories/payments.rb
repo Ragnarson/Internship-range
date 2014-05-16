@@ -4,6 +4,7 @@ FactoryGirl.define do
     description 'description'
     association :shooter
     date '2010-01-01'.to_date
+    expiry_date '2014-08-08'.to_date
   end
 
   factory :other_payment, :class => Payment do
@@ -11,11 +12,13 @@ FactoryGirl.define do
     description 'other description'
     association :shooter
     date '2011-11-11'.to_date
+    expiry_date '2015-08-08'.to_date
   end
 
   factory :invalid_payment, :class => Payment do
     amount nil
     description nil
     date nil
+    expiry_date nil
   end
 end

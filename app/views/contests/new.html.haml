@@ -1,4 +1,5 @@
 = content_for :title, "#{t('club_name')} - #{t('actions.new')} #{t('activerecord.models.contest')}"
+= javascript_include_tag "contest_new"
 %h2= t('contest.actions.new')
 
 = render 'form'

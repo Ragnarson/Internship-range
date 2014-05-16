@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140516122527) do
     t.integer  "shooter_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "expiry_date"
   end
 
   create_table "shooters", force: true do |t|
@@ -102,8 +103,6 @@ ActiveRecord::Schema.define(version: 20140516122527) do
     t.boolean  "rifle"
     t.boolean  "shotgun"
     t.boolean  "collectors_permission"
-    t.integer  "address_id"
-    t.integer  "second_address_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

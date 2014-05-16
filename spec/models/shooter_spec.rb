@@ -12,45 +12,46 @@ describe Shooter do
   it { should respond_to(:addresses) }
   it { should respond_to(:contests) }
   it { should respond_to(:competitions) }
+  it { should respond_to(:email) }
 
   it { should be_valid }
 
-  describe "when first name is not present" do
+  context "when first name is not present" do
     before { shooter.first_name = "" }
     it { should_not be_valid }
   end
 
-  describe "when last name is not present" do
+  context "when last name is not present" do
     before { shooter.last_name = "" }
     it { should_not be_valid }
   end
 
-  describe "when date of birth is not present" do
+  context "when date of birth is not present" do
     before { shooter.date_of_birth = "" }
     it { should_not be_valid }
   end
 
-  describe "when pesel is not present" do
+  context "when pesel is not present" do
     before { shooter.pesel = "" }
     it { should_not be_valid }
   end
 
-  describe "when pesel is too short" do
+  context "when pesel is too short" do
     before { shooter.pesel = "1" }
     it { should_not be_valid }
   end
 
-  describe "when pesel is too long" do
+  context "when pesel is too long" do
     before { shooter.pesel = "1"*12 }
     it { should_not be_valid }
   end
 
-  describe "when pesel format is invalid" do
+  context "when pesel format is invalid" do
     before { shooter.pesel = "abcd" }
     it { should_not be_valid }
   end
 
-  describe "when pesel is already taken" do
+  context "when pesel is already taken" do
     before do
       shooter_with_same_pesel = shooter.dup
       shooter_with_same_pesel.save
@@ -59,13 +60,48 @@ describe Shooter do
     it { should_not be_valid }
   end
 
-  describe "when joined date is not present" do
+  context "when joined date is not present" do
     before { shooter.joined_date = "" }
     it { should_not be_valid  }
   end
 
-  describe "when joined date is not date" do
+  context "when joined date is not date" do
     before { shooter.joined_date = "london" }
+    it { should_not be_valid }
+  end
+
+  context "when email format is invalid" do
+    it "should be invalid" do
+      adresses = %w[user@foo,com
+        user_at_foo.org
+        example.user@foo. foo@bar_baz.com
+        foo@bar+baz.com
+        foobar@exam..ple.com]
+      adresses.each do |invalid_adress|
+        shooter.email = invalid_adress
+        expect(shooter).not_to be_valid
+      end
+    end
+  end
+
+  context "when email format is valid" do
+    it "should be valid" do
+      adresses = %w[user@foo.COM A_US-ER@f.b.org
+        first.last@foo.jp a+b@baz.cn]
+      adresses.each do |valid_adress|
+        shooter.email = valid_adress
+        expect(shooter).to be_valid
+      end
+    end
+  end
+
+  context "when email adress is already taken" do
+    before do
+      shooter_with_same_email = shooter.dup
+      shooter_with_same_email.email = shooter.email.upcase
+      shooter_with_same_email.save
+    end
+
     it { should_not be_valid }
   end
 
