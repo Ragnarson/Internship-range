@@ -2,8 +2,8 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-datepicker3
+ *= require rails_bootstrap_forms
  */
- //= require rails_bootstrap_forms
 
 @import "bootstrap";
 
@@ -38,5 +38,5 @@ th .asc {
 }
 
 td {
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
