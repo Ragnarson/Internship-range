@@ -1,5 +1,5 @@
 besv2:
-  ruby_version: 2.1.1
+  ruby_version: 2.1.2
   environment: production
   domains:
     - besv2.shellyapp.com

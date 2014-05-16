@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140514102217) do
     t.string   "classification"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contest_id"
     t.integer  "number_of_shots"
+    t.integer  "contest_id"
   end
 
   create_table "competitors", force: true do |t|
