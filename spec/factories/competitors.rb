@@ -4,6 +4,7 @@ FactoryGirl.define do
     last_name 'Lastname'
     date_of_birth '2010-10-10'.to_date
     club 'Topgun'
+    pk false
   end
 
   factory :other_competitor, :class => Competitor do

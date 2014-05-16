@@ -1,5 +1,5 @@
 class Contest < ActiveRecord::Base
-  has_many :competitions
+  has_many :competitions, dependent: :destroy
   has_many :competitors, dependent: :destroy
   has_many :judgements
   has_many :judges, through: :judgements
@@ -7,6 +7,7 @@ class Contest < ActiveRecord::Base
   accepts_nested_attributes_for :competitors, allow_destroy: true
 
   validates :name, presence: true, uniqueness: true
+  validates_associated :competitors
   validate :date_is_date?
 
   private
