@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140514102217) do
+ActiveRecord::Schema.define(version: 20140516090141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20140514102217) do
   end
 
   add_index "competitors", ["contest_id"], name: "index_competitors_on_contest_id", using: :btree
+
+  create_table "configurations", force: true do |t|
+    t.string   "club_logo"
+    t.string   "club_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "contests", force: true do |t|
     t.string   "name"
@@ -88,8 +95,6 @@ ActiveRecord::Schema.define(version: 20140514102217) do
     t.boolean  "rifle"
     t.boolean  "shotgun"
     t.boolean  "collectors_permission"
-    t.integer  "address_id"
-    t.integer  "second_address_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
