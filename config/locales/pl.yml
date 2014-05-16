@@ -75,6 +75,12 @@ pl:
     success_create: "Pomyślnie utworzono %{model}"
     success_edit: "Pomyślnie zaktualizowano %{model}"
     success_destroy: "Pomyślnie usunięto %{model}"
+    contest: zawody
+    payment: platność
+    competition: konkurencję
+    competitor: zawodnika
+    shooter: strzelca
+    address: adres
   actions:
     new: Dodaj
     edit: Edytuj

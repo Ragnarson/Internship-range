@@ -29,7 +29,7 @@ class ShootersController < ApplicationController
     redirect_to shooters_url,
       notice: I18n.t(
         'flash.success_destroy',
-        model: I18n.t('activerecord.models.shooter'))
+        model: I18n.t('flash.shooter'))
   end
 
   private

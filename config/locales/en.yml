@@ -56,8 +56,15 @@ en:
         zip_code: Zip code
 
   flash:
-    success_create: "%Successfully created %{model}"
-    success_edit: "%Successfully edited %{model}"
+    success_create: "Successfully created %{model}"
+    success_edit: "Successfully edited %{model}"
+    success_destroy: "Successfully deleted %{model}"
+    contest: contest
+    payment: payment
+    competition: competition
+    competitor: competitor
+    shooter: shooter
+    address: address
   actions:
     new: New
     edit: Edit
