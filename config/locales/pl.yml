@@ -46,6 +46,7 @@ pl:
         date_of_birth: Data urodzenia
         club: Klub
         pk: PK
+        competition: Wybrane dyscypliny
       competition:
         name: Nazwa
         number_of_shots: Liczba strzałów

@@ -28,7 +28,7 @@
               class: "form-control"
         - if defined?(edit) && edit
           .form-group
-            .col-xs-offset-2.col-xs-2
+            .col-xs-2
               = f.label :first_name, class: "control-label"
             .col-xs-2
               = f.label :last_name, class: "control-label"
@@ -36,6 +36,8 @@
               = f.label :date_of_birth, class: "control-label"
             .col-xs-2
               = f.label :club, class: "control-label"
+            .col-xs-3
+              = f.label :competition, class: "control-label" 
             .col-xs-1
               = f.label :pk, class: "checkbox"
           = f.fields_for :competitors do |builder|
