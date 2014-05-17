@@ -6,6 +6,7 @@ describe "contests/show" do
   let!(:competition1) { create(:competition, contest: contest) }
   let!(:competition2) { create(:other_competition, contest: contest) }
   before do
+    sign_in
     visit contest_path(contest)
   end
 
@@ -23,7 +24,7 @@ describe "contests/show" do
         text: '2014-08-26'
       )
     end
-  end  
+  end
 
   context "for competitions list" do
     it "displays all competitions" do
@@ -53,7 +54,7 @@ describe "contests/show" do
 
       it "button to edit competition" do
         expect(page).to have_link(
-          I18n.t('actions.edit'), 
+          I18n.t('actions.edit'),
           edit_contest_competition_path(contest, competition1)
         )
       end

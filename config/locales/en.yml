@@ -119,3 +119,7 @@ en:
     payment_date: "Date of payment"
     amount: "Amount"
     description: "Description"
+  email: 'Email'
+  password: 'Password'
+  signin: 'Sign In'
+  welcome: 'Welcome!'
