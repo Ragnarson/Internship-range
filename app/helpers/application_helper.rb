@@ -9,7 +9,7 @@ module ApplicationHelper
     fields = f.fields_for(association, new_object, child_index: "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", f: builder)
     end
-    onclick = "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\");return false;"
+    onclick = "Contests.add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\");return false;"
     link_to name, "#", onclick: onclick
   end
 
