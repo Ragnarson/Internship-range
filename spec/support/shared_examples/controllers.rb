@@ -121,3 +121,13 @@ shared_examples_for "DELETE destroy" do
     expect(response).to redirect_to(action: :index)
   end
 end
+
+shared_examples "accessible by user" do 
+  before do
+  let(:user) { FactoryGirl.create :user} 
+  visit signin_path
+  fill_in I18n.t('email'), with: user.email
+  fill_in I18n.t('password'), with: user.password
+  click_button  I18n.t('signin')
+end
+end

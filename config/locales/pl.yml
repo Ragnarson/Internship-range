@@ -373,3 +373,7 @@ pl:
   competitions:
     new_competition: Dodaj konkurencję
     edit_competition: Dane konkurencji
+  email: 'Email'
+  password: 'Hasło'
+  signin: 'Zaloguj się'
+  welcome: 'Witaj!'

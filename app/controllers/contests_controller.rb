@@ -1,4 +1,5 @@
 class ContestsController < ApplicationController
+  before_action :authorize
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
 
   def index

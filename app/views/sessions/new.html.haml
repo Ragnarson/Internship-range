@@ -1,0 +1,22 @@
+= content_for :title, "#{t('club_name')} - #{t('signin')}"
+.logo-field
+.row-fluid
+  .span4.well
+    .form-horizontal
+      = form_for(:session, url: sessions_path) do |m|
+        %fieldset
+          %legend
+            %h2= t(:signin)
+          .form-group
+            = m.label t(:email), class: "col-xs-4 control-label"
+            .col-xs-3
+              = m.text_field :email, class: "form-control" 
+          .form-group
+            = m.label t(:password) , class: "col-xs-4 control-label"
+            .col-xs-3
+              = m.password_field :password,  class: "form-control"
+          %br  
+          .form-group
+            .col-xs-offset-5
+              .button
+              = m.submit t(:signin), class: "btn btn-primary"

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def authorize
     if current_user.nil?
       flash[:alert] = t('flash.not_authorized')
-      redirect_to root_path
+      redirect_to signin_path
     end
   end
 end
