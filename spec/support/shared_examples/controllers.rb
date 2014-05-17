@@ -1,5 +1,8 @@
 shared_examples_for "GET #index" do
-  before { get :index }
+  before do
+    sign_in
+    get :index
+  end
 
   it "responds successfully with an HTTP 200 status code" do
     expect(response).to be_ok
@@ -15,7 +18,10 @@ shared_examples_for "GET #index" do
 end
 
 shared_examples_for "GET #show" do
-  before { get :show, id: resource }
+  before do
+    sign_in
+    get :show, id: resource
+  end
 
   it "assigns the requested resource to @resource" do
     expect(assigns(subject)).to eq(resource)
@@ -27,6 +33,10 @@ shared_examples_for "GET #show" do
 end
 
 shared_examples_for "GET #new" do
+  before do
+    sign_in
+  end
+
   it "renders the #new view" do
     get :new
     expect(response).to render_template("new")
@@ -34,7 +44,10 @@ shared_examples_for "GET #new" do
 end
 
 shared_examples_for "GET #edit" do
-  before { get :edit, id: resource }
+  before do
+    sign_in
+    get :edit, id: resource
+  end
 
   it "assigns the requested resource to @resource" do
     expect(assigns(subject)).to eq(resource)
@@ -46,6 +59,10 @@ shared_examples_for "GET #edit" do
 end
 
 shared_examples_for "POST create" do
+  before do
+    sign_in
+  end
+
   context "with valid attributes" do
     it "creates a new resource" do
       expect{ post :create, subject => other_resource }.to change(resource.class, :count).by(1)
@@ -70,7 +87,10 @@ shared_examples_for "POST create" do
 end
 
 shared_examples_for "PUT update" do
-  before { @resource = resource }
+  before do
+    sign_in
+    @resource = resource
+  end
 
   context "valid attributes" do
     it "located the requested @resource" do
@@ -110,7 +130,10 @@ shared_examples_for "PUT update" do
 end
 
 shared_examples_for "DELETE destroy" do
-  before { @resource = resource }
+  before do
+    sign_in
+    @resource = resource
+  end
 
   it "deletes the resource" do
     expect{ delete :destroy, id: @resource }.to change(resource.class, :count).by(-1)
@@ -120,14 +143,4 @@ shared_examples_for "DELETE destroy" do
     delete :destroy, id: @resource
     expect(response).to redirect_to(action: :index)
   end
-end
-
-shared_examples "accessible by user" do 
-  before do
-  let(:user) { FactoryGirl.create :user} 
-  visit signin_path
-  fill_in I18n.t('email'), with: user.email
-  fill_in I18n.t('password'), with: user.password
-  click_button  I18n.t('signin')
-end
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ContestsController do
-  it_should_behave_like("accessible by user")
   let!(:resource) { create(:contest) }
   let(:other_resource) { attributes_for(:other_contest) }
   let(:invalid_resource) { attributes_for(:invalid_contest) }
