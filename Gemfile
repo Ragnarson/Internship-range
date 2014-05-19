@@ -21,7 +21,7 @@ gem 'shelly-dependencies',       group: :production
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'carrierwave'
-gem 'rmagick', require: false
+gem 'mini_magick'
 gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
 
 group :development do
