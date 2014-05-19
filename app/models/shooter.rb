@@ -25,6 +25,8 @@ class Shooter < ActiveRecord::Base
   end
 
   mount_uploader :image, ImageUploader
+  attr_accessor :image
+
   accepts_nested_attributes_for :addresses, reject_if:
     lambda { |a| a[:city].blank? && a[:zip_code].blank? && a[:building].blank?}
 

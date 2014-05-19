@@ -162,5 +162,10 @@ describe "Shooter new page" do
     it "have checkbox for 'Secondary address'" do
       expect(page).to have_css('input#second_address_show')
     end
+
+    it "have field for image upload" do
+      expect(page).to have_field(
+        I18n.t('activerecord.attributes.shooter.image'))
+    end
   end
 end

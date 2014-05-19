@@ -92,6 +92,10 @@
 
             = m.radio_button :collectors_permission, false
             = m.label :no_form
+        .form-group
+          = m.label :image, class: "col-xs-4 control-label"
+          .col-xs-4
+            = m.file_field :image, class: "form-control"
         = m.fields_for :addresses do |address_fields|
           = render partial: 'addresses/form', locals: { address_fields: address_fields, is_first: address_fields.object.is_first? }
         .button-centered
