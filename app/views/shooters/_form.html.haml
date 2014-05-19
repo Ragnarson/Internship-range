@@ -35,24 +35,18 @@
             = m.text_field :joined_date, "data-behaviour" => "datepicker", placeholder: current_date, class: "form-control"
           *
         .form-group
-          *
           = m.label :email, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :email,
-              placeholder: t('activerecord.attributes.shooter.email'),
-              class: "form-control"
+              class: "form-control",
+              placeholder: t('activerecord.attributes.shooter.email')
+          *
         .form-group
           = m.label :phone, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :phone,
               class: "form-control",
               placeholder: t('activerecord.attributes.shooter.phone')
-        .form-group
-          = m.label :email, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :email,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.email')
         .form-group
           = m.label :resolution_number, class: "col-xs-4 control-label"
           .col-xs-4
