@@ -32,6 +32,11 @@ class Shooter < ActiveRecord::Base
     [first_name, last_name].join(' ') if first_name && last_name
   end
 
+  def self.search(search)
+    return where(nil) unless search
+    where('first_name ILIKE ? OR last_name ILIKE ?', "%#{search.downcase}%", "%#{search.downcase}%")
+  end
+
   private
   def date_is_date?
     unless joined_date.is_a?(Date)

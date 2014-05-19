@@ -16,7 +16,7 @@ module ApplicationHelper
   def sortable(column_name, link_title)
     css_class = column_name == sort_column ? "current #{sort_direction}" : nil
     direction = column_name == sort_column && sort_direction == "asc" ? "desc" : "asc"
-    link_to link_title, {sort: column_name, direction: direction}, {class: css_class}
+    link_to link_title, params.merge(sort: column_name, direction: direction, page: nil), {class: css_class}
   end
 
   def current_date
