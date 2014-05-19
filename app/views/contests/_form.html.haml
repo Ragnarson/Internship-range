@@ -27,6 +27,8 @@
               placeholder: current_date,
               class: "form-control"
         - if defined?(edit) && edit
+          %br
+          %h3.text-center= t('activerecord.models.competitor.other').capitalize
           .form-group
             .col-xs-2
               = f.label :first_name, class: "control-label"
@@ -37,12 +39,27 @@
             .col-xs-2
               = f.label :club, class: "control-label"
             .col-xs-3
-              = f.label :competition, class: "control-label" 
+              = f.label :competition, class: "control-label"
             .col-xs-1
               = f.label :pk, class: "checkbox"
           = f.fields_for :competitors do |builder|
             = render 'competitor_fields', f: builder
           .row-fluid
             = link_to_add_fields t(:add_competitor, scope: :contest), f, :competitors
+          %br
+          %h3.text-center= t('activerecord.models.judge.other').capitalize
+          .form-group
+            .col-xs-2
+              = f.label :first_name, class: "control-label"
+            .col-xs-2
+              = f.label :last_name, class: "control-label"
+            .col-xs-2
+              = f.label :function, class: "control-label"
+            .col-xs-2
+              = f.label :license_number, class: "control-label"
+          = f.fields_for :judges do |builder|
+            = render 'judge_fields', f: builder
+          .row-fluid
+            = link_to_add_fields t(:add_judge, scope: :contest), f, :judges
         .button-centered
           = f.submit class: "btn btn-primary"

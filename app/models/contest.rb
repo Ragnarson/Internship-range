@@ -1,10 +1,11 @@
 class Contest < ActiveRecord::Base
   has_many :competitions, dependent: :destroy
   has_many :competitors, dependent: :destroy
-  has_many :judgements
-  has_many :judges, through: :judgements
+  has_many :judgements, dependent: :destroy
+  has_many :judges, through: :judgements, dependent: :destroy
 
   accepts_nested_attributes_for :competitors, allow_destroy: true
+  accepts_nested_attributes_for :judges, allow_destroy: true
 
   validates :name, presence: true, uniqueness: true
   validates_associated :competitors
