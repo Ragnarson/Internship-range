@@ -2,6 +2,13 @@
 %h1= t('shooters.list_of_shooters')
 
 = link_to t('shooters.new_shooter'), new_shooter_path, class: "btn btn-primary btn-sm btn pull-right"
+= form_tag shooters_path, method: :get, id: 'shooters_search', class: "navbar-form navbar-left" do
+  .form-group
+    = hidden_field_tag :direction, params[:direction]
+    = hidden_field_tag :sort, params[:sort]
+    = text_field_tag :search, params[:search], placeholder: t('shooters.first_name_or_last_name'),
+      class: "form-control"
+    = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
 
 %table.table-striped.table.fixedlayout
   %thead

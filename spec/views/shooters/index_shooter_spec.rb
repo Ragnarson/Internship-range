@@ -49,5 +49,34 @@ describe "Shooter index" do
       expect(page).to have_link(I18n.t('actions.destroy'))
     end
   end
+
+  describe ".search" do
+    it "has visible search field" do
+      expect(page).to have_css('input.form-control')
+    end
+
+    it "has visible submit search button" do
+      expect(page).to have_css('input.btn.btn-default')
+    end
+
+    describe "shooters/search page" do
+      let!(:other_shooter) { create(:other_shooter) }
+      before do
+        visit "shooters?search=THIRD"
+      end
+
+      it "has case insensitive search" do
+        expect(page).to have_selector('td', text: "Thirdname")
+      end
+
+      it "shows correctly :other_shooter mathing 'THIRD'" do
+        expect(page).to have_selector('td', text: "Secondname")
+      end
+
+      it "doesn't show user that do not match to 'THIRD'" do
+        expect(page).not_to have_selector('td', text: "Lastname")
+      end
+    end
+  end
 end
 

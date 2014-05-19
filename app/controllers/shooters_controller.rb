@@ -4,7 +4,7 @@ class ShootersController < ApplicationController
   helper_method :sort_direction, :sort_column
 
   def index
-    @shooters = Shooter.page(params[:page]).order(sort_column + " " + sort_direction)
+    @shooters = Shooter.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show

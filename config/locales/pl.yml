@@ -90,6 +90,7 @@ pl:
     destroy: Usuń
     confirm: Czy na pewno?
     actions: Akcje
+    search: Szukaj
   date:
     abbr_day_names:
     - nie
@@ -356,6 +357,7 @@ pl:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"
     first_name_last_name: "Imię i nazwisko"
+    first_name_or_last_name: "Imię lub nazwisko..."
     weapons: Bronie
     blank: "-"
     truth: Tak

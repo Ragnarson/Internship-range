@@ -73,6 +73,7 @@ en:
     destroy: Delete
     confirm: Are you sure?
     actions: Actions
+    search: Search
   errors:
     messages:
       not_a_date: must be a valid date
@@ -110,6 +111,7 @@ en:
     blank: '-'
     first_address: "Address #1"
     second_address: "Address #2"
+    first_name_or_last_name: "First name or last name..."
   payments:
     one_payment: "Payment"
     payment_details: "Payment details"
