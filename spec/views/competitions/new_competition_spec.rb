@@ -4,6 +4,7 @@ describe "View of new competition" do
   subject { page }
   let!(:contest) { create(:contest) }
   before(:each) do
+    sign_in
     visit new_contest_competition_path(contest)
   end
 

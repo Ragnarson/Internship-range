@@ -3,6 +3,7 @@ require "spec_helper"
 describe "payments/index" do
   context "for currency" do
     before do
+      sign_in
       create(:payment, amount: 11115343987.32)
       visit 'payments'
     end

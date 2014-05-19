@@ -1,6 +1,9 @@
 require 'spec_helper'
 describe "Shooter new page" do
-  before { visit 'shooters/new' }
+  before do
+    sign_in
+    visit 'shooters/new'
+  end
   let(:title) do
      I18n.t('club_name') << ' - ' << I18n.t(
        'actions.new') << ' ' << I18n.t('activerecord.models.shooter')

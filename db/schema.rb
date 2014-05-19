@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140516140457) do
     t.string   "classification"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "number_of_shots"
     t.integer  "contest_id"
+    t.integer  "number_of_shots"
   end
 
   create_table "competitions_competitors", force: true do |t|
@@ -108,8 +108,6 @@ ActiveRecord::Schema.define(version: 20140516140457) do
     t.boolean  "rifle"
     t.boolean  "shotgun"
     t.boolean  "collectors_permission"
-    t.integer  "address_id"
-    t.integer  "second_address_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -4,6 +4,7 @@ describe "Shooter index" do
   subject { page }
   let!(:shooter) { create(:shooter) }
   before(:each) do
+    sign_in
     visit shooters_path
   end
 

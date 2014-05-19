@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe ShootersController do
-  before { request.env['HTTPS'] = 'on' }
+  before do
+    sign_in
+    request.env['HTTPS'] = 'on'
+  end
 
   describe 'GET index' do
     let(:shooter) { create :shooter }
