@@ -1,11 +1,14 @@
 class Shooter < ActiveRecord::Base
+  attr_accessor :image
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
+
   before_save :update_weapon_list
   has_many :payments
   has_many :contests, through: :shot_lists
   has_many :competitions, through: :shot_lists
   has_many :addresses, ->{ order 'id'; limit 2 }, inverse_of: :shooter
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
@@ -25,6 +28,7 @@ class Shooter < ActiveRecord::Base
   end
 
   mount_uploader :image, ImageUploader
+
   accepts_nested_attributes_for :addresses, reject_if:
     lambda { |a| a[:city].blank? && a[:zip_code].blank? && a[:building].blank?}
 

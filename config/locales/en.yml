@@ -48,6 +48,7 @@ en:
         rifle: Rifle
         shotgun: Shotgun
         collectors_permission: Collectors permission
+        image: Image
       address:
         street: Street
         city: City
