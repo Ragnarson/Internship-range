@@ -52,11 +52,7 @@ describe Shooter do
   end
 
   context "when pesel is already taken" do
-    before do
-      shooter_with_same_pesel = shooter.dup
-      shooter_with_same_pesel.save
-    end
-
+    let!(:shooter_with_same_pesel) { create(:shooter, pesel: shooter.pesel) }
     it { should_not be_valid }
   end
 
@@ -96,13 +92,13 @@ describe Shooter do
   end
 
   context "when email adress is already taken" do
-    before do
-      shooter_with_same_email = shooter.dup
-      shooter_with_same_email.email = shooter.email.upcase
-      shooter_with_same_email.save
-    end
-
+    let!(:shooter_with_same_email) { create(:shooter, email: shooter.email) }
     it { should_not be_valid }
+  end
+
+  describe "when has not any addresses" do
+    before { shooter.addresses.destroy_all }
+      it { should_not be_valid }
   end
 
   describe "full_name method" do
@@ -134,5 +130,19 @@ describe Shooter do
       it { expect(shooter.full_name).to be_nil }
     end
   end
-end
 
+  describe 'update_weapon_list method' do
+    context 'shooter @sport_permission == false' do
+      before do
+        shooter.update_attributes(handgun: true,
+          rifle: true,
+          shotgun: true,
+          sport_permission: false)
+        shooter.reload 
+      end
+      it { expect(shooter.handgun).to be(nil) }
+      it { expect(shooter.rifle).to be(nil) }
+      it { expect(shooter.shotgun).to be(nil) }
+    end
+  end
+end

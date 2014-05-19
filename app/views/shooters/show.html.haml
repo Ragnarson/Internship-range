@@ -10,7 +10,7 @@
       .row
         .col-xs-12.col-sm-12.col-md-12.col-lg-12.btn-group.margin-top
           = link_to t('shooters.payments'), '#', class: "btn btn-info col-xs-4 col-sm-4 col-md-4 col-lg-4"
-          = link_to t('actions.edit'), '#', class: "btn btn-success col-xs-4 col-sm-4 col-md-4 col-lg-4"
+          = link_to t('actions.edit'), edit_shooter_path(@shooter), class: "btn btn-success col-xs-4 col-sm-4 col-md-4 col-lg-4"
           = link_to t('actions.destroy'), '#', class: "btn btn-danger col-xs-4 col-sm-4 col-md-4 col-lg-4"
     .col-xs-12.col-sm-12.col-md-7.col-lg-7.margin-top
       %table.table.table-striped
@@ -19,10 +19,10 @@
           %td= @shooter.pesel
         %tr 
           %td= t('activerecord.attributes.shooter.phone')
-          %td= @shooter.phone || t('shooters.blank')
+          %td= display_for_visible(@shooter.phone)
         %tr 
           %td= t('activerecord.attributes.shooter.email')
-          %td= @shooter.email || t('shooters.blank')
+          %td= display_for_visible(@shooter.email)
         %tr 
           %td= t('activerecord.attributes.shooter.date_of_birth')
           %td= @shooter.date_of_birth
@@ -31,15 +31,15 @@
           %td= @shooter.joined_date
         %tr 
           %td= t('activerecord.attributes.shooter.resolution_number')
-          %td= @shooter.resolution_number || t('shooters.blank')
+          %td= display_for_visible(@shooter.resolution_number)
         %tr 
           %td= t('activerecord.attributes.shooter.license_number')
-          %td= @shooter.license_number || t('shooters.blank')
+          %td= display_for_visible(@shooter.license_number)
         %tr 
           %td= t('activerecord.attributes.shooter.judge_license_number')
-          %td= @shooter.judge_license_number || t('shooters.blank')
+          %td= display_for_visible(@shooter.judge_license_number)
         %tr 
-          %td= t('shooters.weapons')
+          %td= t('activerecord.attributes.shooter.sport_permission')
           %td= display_weapons_for @shooter
         %tr 
           %td= t('activerecord.attributes.shooter.collectors_permission')
