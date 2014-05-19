@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
+  before_action :authorize
   before_action :payment, only: [:edit, :update, :destroy]
 
   def index

@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe 'payments/new' do
   let(:payment) { build :payment, shooter: nil }
-  before { visit new_payment_path }
-
+  before do
+    sign_in
+    visit new_payment_path
+  end
   %w(shooter-id payment_amount payment_description payment_date payment_expiry_date).each do |item|
     it "displays input field for #{item} attribute" do
       @payment = payment

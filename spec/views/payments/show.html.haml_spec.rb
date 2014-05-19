@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "payments/show" do
   before do
+    sign_in
     payment = create(:payment,
       description: 'oplata 2014',
       amount: 40.00,

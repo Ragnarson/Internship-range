@@ -6,6 +6,9 @@ FactoryGirl.define do
     date_of_birth '2010-10-10'.to_date
     pesel '22031304231'
     joined_date '2010-10-10'.to_date
+    after(:build) do |shooter, evaluator|
+      shooter.addresses << build_list(:address, 1, shooter: nil)
+    end
   end
 
   factory :other_shooter, :class => Shooter do
@@ -15,6 +18,9 @@ FactoryGirl.define do
     date_of_birth '2010-11-11'.to_date
     pesel '33031304242'
     joined_date '2010-11-11'.to_date
+    after(:build) do |shooter, evaluator|
+      shooter.addresses << build_list(:address, 1, shooter: nil)
+    end
   end
 
   factory :invalid_shooter, :class => Shooter do
