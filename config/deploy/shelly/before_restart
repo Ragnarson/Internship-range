@@ -1,0 +1,2 @@
+mkdir -p disk/system
+ln -s ../disk/system public/system
