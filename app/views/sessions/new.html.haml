@@ -1,22 +1,14 @@
 = content_for :title, "#{t('club_name')} - #{t('signin')}"
-.logo-field
-.row-fluid
-  .span4.well
-    .form-horizontal
-      = form_for(:session, url: sessions_path) do |m|
-        %fieldset
-          %legend
-            %h2= t(:signin)
-          .form-group
-            = m.label t(:email), class: "col-xs-4 control-label"
-            .col-xs-3
-              = m.text_field :email, class: "form-control" 
-          .form-group
-            = m.label t(:password) , class: "col-xs-4 control-label"
-            .col-xs-3
-              = m.password_field :password,  class: "form-control"
-          %br  
-          .form-group
-            .col-xs-offset-5
-              .button
-              = m.submit t(:signin), class: "btn btn-primary"
+.col-md-4.col-md-offset-4
+  #signin-box
+    .well
+      %h4.text-center= t('actions.signin')
+      %hr
+      = bootstrap_form_tag url: sessions_path,
+        layout: :horizontal, label_col: "col-sm-4", control_col: "col-sm-8" do |f|
+        = f.email_field :email,
+          label: t('activerecord.attributes.user.email').capitalize
+        = f.password_field :password,
+          label: t('activerecord.attributes.user.password').capitalize
+        = f.form_group do
+          = f.submit t('actions.signin')
