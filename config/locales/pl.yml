@@ -11,6 +11,9 @@ pl:
       competitor:
         one: zawodnik
         other: zawodnicy
+      judge:
+        one: sędzia
+        other: sędziowie
       shooter: Strzelec
       address: Adres
       payment: płatność
@@ -48,6 +51,9 @@ pl:
         club: Klub
         pk: PK
         competition: Wybrane dyscypliny
+        function: Funkcja
+        license_number: Nr licencji
+        delete_judge: Usuń sędziego
       competition:
         name: Nazwa
         number_of_shots: Liczba strzałów
@@ -366,6 +372,7 @@ pl:
     second_address: "Adres #2"
   contest:
     add_competitor: Dodaj zawodnika
+    add_judge: Dodaj sędziego
     actions:
       new: Dodaj
       edit: Edytuj

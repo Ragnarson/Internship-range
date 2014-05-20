@@ -27,11 +27,21 @@ en:
       shooter: shooter
       address: address
       payment: payment
+      judge: judge
     attributes:
       contest:
         list_of_competitions: List of competitions
         name: Name
         date: Date
+        first_name: First name
+        last_name: Last name
+        date_of_birth: Date of birth
+        club: Club
+        pk: PK
+        competition: Choosen competitions
+        function: Function
+        license_number: License number
+        delete_judge: Delete judge
       shooter:
         first_name: First name
         last_name: Last name
@@ -96,6 +106,8 @@ en:
         first_address: Address
         second_address: Optional address
   contest:
+    add_competitor: Add competitor
+    add_judge: Add judge
     actions:
       new: New
       edit: Edit
