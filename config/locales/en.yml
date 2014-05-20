@@ -133,7 +133,13 @@ en:
     payer_last_name: "Last name"
     payment_date: "Date of payment"
     amount: "Amount"
+    send: "Send notification"
     description: "Description"
+    notification: "Notification"
+    delivery: "Delivering notification"
+    payment_expiry_date: "Payment expiry date"
+    expire_at: "Your payment will expire at:"
+    remember: "Please remember to make a payment."
   email: 'Email'
   password: 'Password'
   signin: 'Sign In'

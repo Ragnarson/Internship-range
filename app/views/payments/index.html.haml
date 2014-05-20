@@ -21,7 +21,11 @@
           %td= payment.expiry_date
           %td= change_to_currency(payment.amount)
           %td= link_to payment.by, payment.shooter
-          %td= link_to t(:edit), edit_payment_path(payment), class: "btn btn-info btn-sm"
-          %td= link_to t(:destroy), payment, class: "btn btn-danger btn-sm",
+          %td= link_to t('actions.edit'), edit_payment_path(payment), class: "btn btn-info btn-sm"
+          %td= link_to t('actions.destroy'), payment, class: "btn btn-danger btn-sm",
             method: :delete,
             data: { confirm: t('actions.confirm') }
+          - if payment.expired?
+            %td= link_to I18n.t('payments.send'), payment, class: "btn btn-success",
+              method: :post,
+              data: { confirm: t('actions.confirm') }
