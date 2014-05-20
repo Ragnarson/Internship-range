@@ -1,9 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :shooting do
     association :competitor
     association :competition
+    target ['1', '2', '3', '4', '5', '6', '7', 'x', 'x', 'x']
   end
 
   factory :other_shooting, class: Shooting do

@@ -427,8 +427,18 @@ pl:
       confirm: Czy na pewno?
       actions: Akcje
   competitions:
+    competition_name: Nazwa konkurencji
+    competition_type: Typ konkurencji
+    competition_number_of_shots: Ilość strzałów
+    scored_middle: Trafienia w środek tarczy
     edit_competition: Dane konkurencji
     new_competition: Dodaj konkurencję
+    competitor_first_name: Imię uczestnika
+    competitor_last_name: Nazwisko uczestnika
+    earned_points: Uzyskane punkty
+    earned_points_sum: Suma punktów uczestnika
+    competition_classification: Klasyfikacja
+    competitor_points: Wyniki uczestników
   user:
     user: użytkownika
     new: Dodaj użytkownika

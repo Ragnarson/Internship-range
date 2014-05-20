@@ -4,6 +4,8 @@ class CompetitionsController < ApplicationController
 
   def show
     @competition = @contest.competitions.find(params[:id])
+    @competitors = @competition.competitors
+    @shootings = @competitors.map(&:shootings)
   end
 
   def create

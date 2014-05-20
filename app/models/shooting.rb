@@ -26,7 +26,7 @@ class Shooting < ActiveRecord::Base
   def assign_target
     self.target = Array.new(self.competition.number_of_shots)
   end
-  
+
   def implode_target
     self.target = []
     self.methods.grep(/\A(shot_)\d{1,2}\z/).each do |method_name|
