@@ -5,4 +5,5 @@
 //= require bootstrap3-typeahead
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pl.js
+//= require jquery.metisMenu.js
 //= require_tree .
