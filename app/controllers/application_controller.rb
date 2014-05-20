@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :authorize
   force_ssl unless Rails.env.development?
   helper_method :current_user
   protect_from_forgery with: :exception

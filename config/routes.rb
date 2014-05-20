@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   root 'contests#index'
   get 'names.json', to: 'shooters#names'
-
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete' 
+  match '/signin', to: 'sessions#new', via: :get, as: 'signin'
+  match '/signout', to: 'sessions#destroy', via: :delete, as: 'signout'
 end

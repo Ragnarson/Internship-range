@@ -1,6 +1,9 @@
 pl:
   activerecord:
     models:
+      user:
+        one: użytkownik
+        other: użytkownicy
       contest: zawody
       payment:
         one: płatność
@@ -18,6 +21,9 @@ pl:
       address: Adres
       payment: płatność
     attributes:
+      user:
+        email: e-mail
+        password: hasło
       shooter:
         first_name: Imię
         last_name: Nazwisko
@@ -97,6 +103,7 @@ pl:
     confirm: Czy na pewno?
     actions: Akcje
     search: Szukaj
+    signin: Zaloguj się
   date:
     abbr_day_names:
     - nie
@@ -383,7 +390,3 @@ pl:
   competitions:
     new_competition: Dodaj konkurencję
     edit_competition: Dane konkurencji
-  email: 'Email'
-  password: 'Hasło'
-  signin: 'Zaloguj się'
-  welcome: 'Witaj!'
