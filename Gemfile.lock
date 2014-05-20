@@ -69,6 +69,11 @@ GEM
     coffee-script-source (1.7.0)
     daemons (1.1.9)
     database_cleaner (1.2.0)
+    delayed_job (4.0.1)
+      activesupport (>= 3.0, < 4.2)
+    delayed_job_active_record (4.0.1)
+      activerecord (>= 3.0, < 4.2)
+      delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
@@ -260,7 +265,9 @@ DEPENDENCIES
   capybara!
   carrierwave
   coffee-rails (~> 4.0.0)
+  daemons (~> 1.1.9)
   database_cleaner
+  delayed_job_active_record
   dotenv-rails
   factory_girl_rails
   guard-rspec
@@ -268,6 +275,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  mail (~> 2.5.4)
   mini_magick
   pg
   prawn (~> 0.12.0)

@@ -23,6 +23,9 @@ gem 'kaminari'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'simplecov', '~> 0.7.1', :require => false, :group => :test
+gem 'mail', '~> 2.5.4'
+gem 'delayed_job_active_record'
+gem 'daemons', '~> 1.1.9'
 
 group :development do
   gem 'spring-commands-rspec'

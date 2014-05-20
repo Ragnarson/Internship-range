@@ -1,5 +1,5 @@
 class PaymentsController < ApplicationController
-  before_action :payment, only: [:edit, :update, :destroy]
+  before_action :payment, only: [:edit, :update, :destroy, :notify]
 
   def index
     @payments = Payment.all
@@ -45,6 +45,13 @@ class PaymentsController < ApplicationController
       notice: I18n.t(
         'flash.success_destroy',
         model: I18n.t('activerecord.models.payment'))
+  end
+
+  def notify
+    ShooterMailer.delay(queue: 'payments', priority: 20,
+      run_at: 15.seconds.from_now).payment(payment)
+    redirect_to payments_path,
+      notice: I18n.t('payments.delivery')
   end
 
   private

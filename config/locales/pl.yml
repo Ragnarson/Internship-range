@@ -366,6 +366,11 @@ pl:
     amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
+    delivery: "Dostarczanie wiadomości"
+    send: "Wyślij powiadomienie"
+    notification: "Powiadomienie"
+    expire_at: "Twoja płatność jest ważna do:"
+    remember: "Pamiętaj o dokonaniu nowej wpłaty."
   shooters:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"

@@ -12,6 +12,10 @@ class Payment < ActiveRecord::Base
     [shooter.first_name, shooter.last_name].join(' ') if shooter.first_name && shooter.last_name
   end
 
+  def expired?
+    Date.today >= expiry_date - 7
+  end
+
   private
   def date_is_date?
     errors.add(:date, :not_a_date) unless date.is_a?(Date)

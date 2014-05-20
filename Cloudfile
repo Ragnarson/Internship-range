@@ -7,5 +7,6 @@ besv2:
     app1:
       size: small
       thin: 2
+      delayed_job: 1
       databases:
         - postgresql
