@@ -1,5 +1,4 @@
 class ShootersController < ApplicationController
-  before_action :authorize
   before_action :shooter, only: [:show, :edit, :destroy, :update]
   helper_method :sort_direction, :sort_column
 
