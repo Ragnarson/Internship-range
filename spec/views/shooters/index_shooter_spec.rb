@@ -10,7 +10,7 @@ describe "Shooter index" do
 
   it "contains a headline" do
     expect(page).to have_selector(
-      'h1', text: I18n.t('shooters.list_of_shooters'))
+      'h2', text: I18n.t('shooters.list_of_shooters'))
   end
 
   it "contains a link to add new user" do

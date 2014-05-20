@@ -1,39 +1,50 @@
 = content_for :title, "#{t('club_name')} - #{t('shooters.list_of_shooters').capitalize}"
-%h1= t('shooters.list_of_shooters')
+.row
+  .col-md-12
+    %h2= t('shooters.list_of_shooters')
+%hr
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading= t('shooters.list_of_shooters')
+      .panel-body
+        = link_to t('shooters.new_shooter'), new_shooter_path,
+          class: "btn btn-success btn pull-right"
+        .col-md-4
+          = form_tag shooters_path, method: :get, id: 'shooters_search', class: "form-group" do
+            .input-group.form-group
+              = text_field_tag :search, params[:search],
+                placeholder: t('shooters.first_name_or_last_name'), class: "form-control"
+              %span.form-group.input-group-btn
+                = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
+            = hidden_field_tag :direction, params[:direction]
+            = hidden_field_tag :sort, params[:sort]
 
-= link_to t('shooters.new_shooter'), new_shooter_path, class: "btn btn-primary btn-sm btn pull-right"
-= form_tag shooters_path, method: :get, id: 'shooters_search', class: "navbar-form navbar-left" do
-  .form-group
-    = hidden_field_tag :direction, params[:direction]
-    = hidden_field_tag :sort, params[:sort]
-    = text_field_tag :search, params[:search], placeholder: t('shooters.first_name_or_last_name'),
-      class: "form-control"
-    = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
-
-%table.table-striped.table.fixedlayout
-  %thead
-    %tr
-      %th.hashtable= sortable "id", "#"
-      %th= sortable "first_name", t('activerecord.attributes.shooter.first_name')
-      %th= sortable "last_name", t('activerecord.attributes.shooter.last_name')
-      %th= sortable "pesel", t('activerecord.attributes.shooter.pesel')
-      %th= sortable "joined_date", t('activerecord.attributes.shooter.joined_date')
-      %th= t('activerecord.attributes.shooter.phone')
-      %th= t('activerecord.attributes.shooter.email')
-      %th{colspan: 2}= t('actions.actions')
-  %tbody
-    - @shooters.each do |shooter|
-      %tr
-        %td= shooter.id
-        %td= link_to shooter.first_name, shooter
-        %td= link_to shooter.last_name, shooter
-        %td= shooter.pesel
-        %td= shooter.joined_date
-        %td= shooter.phone
-        %td= shooter.email
-        %td= link_to t('actions.edit'), edit_shooter_path(shooter), class: "btn btn-info btn-sm"
-        %td= link_to t(:destroy), shooter, class: "btn btn-danger btn-sm",
-              method: :delete,
-              data: { confirm: t('actions.confirm') }
-= paginate @shooters
-
+        .table-responsive
+          %table.table.table-striped.table-bordered.table-hover.fixedlayout
+            %thead
+              %tr
+                %th.hashtable= sortable "id", "#"
+                %th= sortable "first_name", t('activerecord.attributes.shooter.first_name')
+                %th= sortable "last_name", t('activerecord.attributes.shooter.last_name')
+                %th= sortable "pesel", t('activerecord.attributes.shooter.pesel')
+                %th= sortable "joined_date", t('activerecord.attributes.shooter.joined_date')
+                %th= t('activerecord.attributes.shooter.phone')
+                %th= t('activerecord.attributes.shooter.email')
+                %th{colspan: 2}= t('actions.actions')
+            %tbody
+              - @shooters.each do |shooter|
+                %tr
+                  %td= shooter.id
+                  %td= link_to shooter.first_name, shooter
+                  %td= link_to shooter.last_name, shooter
+                  %td= shooter.pesel
+                  %td= shooter.joined_date
+                  %td= shooter.phone
+                  %td= shooter.email
+                  %td.text-center= link_to t('actions.edit'), edit_shooter_path(shooter),
+                    class: "btn btn-info btn-sm"
+                  %td.text-center= link_to t(:destroy), shooter, class: "btn btn-danger btn-sm",
+                    method: :delete,
+                    data: { confirm: t('actions.confirm') }
+          = paginate @shooters
