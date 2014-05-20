@@ -1,10 +1,3 @@
-/*
- *= require_tree .
- *= require_self
- *= require bootstrap-datepicker3
- *= require rails_bootstrap_forms
- */
-
 @import "bootstrap";
 
 body {
@@ -46,5 +39,11 @@ td {
 }
 
 .alert {
-  margin-top: 15px;  
+  margin-top: 15px;
 }
+
+@import 'binary_admin';
+@import 'bootstrap-datepicker3';
+@import 'rails_bootstrap_forms';
+@import 'form_shooter';
+@import 'sessions';
