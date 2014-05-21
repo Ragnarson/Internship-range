@@ -1,8 +1,9 @@
 class PaymentsController < ApplicationController
   before_action :payment, only: [:edit, :update, :destroy, :notify]
+  helper_method :sort_direction, :sort_column
 
   def index
-    @payments = Payment.all
+    @payments = Payment.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show
@@ -62,5 +63,13 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:payment).permit(:description, :amount, :date,
       :shooter_id, :expiry_date)
+  end
+
+  def sort_column
+    Payment.column_names.include?(params[:sort]) ? params[:sort] : "date"
+  end
+
+  def sort_direction
+    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end

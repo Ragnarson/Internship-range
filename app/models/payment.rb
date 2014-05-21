@@ -21,4 +21,11 @@ class Payment < ActiveRecord::Base
     errors.add(:date, :not_a_date) unless date.is_a?(Date)
     errors.add(:expiry_date, :not_a_date) unless expiry_date.is_a?(Date)
   end
+
+  def self.search(search)
+    return where(nil) unless search
+    joins(:shooter).
+      where('description ILIKE ? OR first_name ILIKE ? OR last_name ILIKE ?',
+      "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%")
+  end
 end

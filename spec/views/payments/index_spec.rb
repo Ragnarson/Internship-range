@@ -45,5 +45,35 @@ describe 'payments/index' do
       expect(send_notification).to change(Delayed::Job, :count).by(1)
     end
   end
+
+  describe '.search' do
+    it "has visible search field" do
+      expect(page).to have_css('input.form-control')
+    end
+
+    it "has visible submit search button" do
+      expect(page).to have_css('input.btn.btn-default')
+    end
+
+    describe "payments/search page" do
+      let!(:payment) { create(:payment) }
+      let!(:other_payment) { create(:other_payment) }
+      before do
+        visit "payments?search=OTHER"
+      end
+
+      it "has case insensitive search" do
+        expect(page).to have_selector('td', text: "other")
+      end
+
+      it "shows correctly :other_payment mathing 'OTHER'" do
+        expect(page).to have_selector('td', text: "2011-11-11")
+      end
+
+      it "doesn't show user that do not match to 'THIRD'" do
+        expect(page).not_to have_selector('td', text: "2010-01-01")
+      end
+    end
+  end
 end
 

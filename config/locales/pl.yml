@@ -367,10 +367,11 @@ pl:
     description: "Opis"
     actions: "Akcje"
     delivery: "Dostarczanie wiadomości"
-    send: "Wyślij powiadomienie"
+    send: "Przypomnij"
     notification: "Powiadomienie"
     expire_at: "Twoja płatność jest ważna do:"
     remember: "Pamiętaj o dokonaniu nowej wpłaty."
+    first_last_description: "Imię, nazwisko lub opis"
   shooters:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"
