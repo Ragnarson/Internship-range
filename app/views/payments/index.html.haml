@@ -1,31 +1,53 @@
 = content_for :title, "#{t('club_name')} - #{t('payments.list_of_payments').capitalize}"
-.container
-  %h1= t('payments.list_of_payments')
+.row
+  .col-md-12
+    %h2= t('payments.list_of_payments')
+%hr
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading= t('payments.list_of_payments')
+      .panel-body
+        .col-md-3.pull-right
+          = link_to t('payments.new_payment'), new_payment_path,
+            class: "btn btn-success pull-right"
+        .col-md-4
+          = form_tag payments_path, method: :get, id: 'payments_search', class: "form-group" do
+            .input-group.form-group
+              = text_field_tag :search, params[:search],
+                placeholder: t('payments.first_last_description'), class: "form-control"
+              %span.form-group.input-group-btn
+                = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
+            = hidden_field_tag :direction, params[:direction]
+            = hidden_field_tag :sort, params[:sort]
 
-  = link_to t('payments.new_payment'), new_payment_path, class: "btn btn-primary btn-sm btn pull-right"
-
-  %table.table
-    %thead
-      %tr
-        %th= t('payments.description')
-        %th= t('payments.payment_date')
-        %th= t('payments.payment_expiry_date')
-        %th= t('payments.amount')
-        %th= t('payments.name_of_shooter')
-        %th{colspan: 3}= t('payments.actions')
-    %tbody
-      - @payments.each do |payment|
-        %tr
-          %td= link_to payment.description, payment
-          %td= payment.date
-          %td= payment.expiry_date
-          %td= change_to_currency(payment.amount)
-          %td= link_to payment.by, payment.shooter
-          %td= link_to t('actions.edit'), edit_payment_path(payment), class: "btn btn-info btn-sm"
-          %td= link_to t('actions.destroy'), payment, class: "btn btn-danger btn-sm",
-            method: :delete,
-            data: { confirm: t('actions.confirm') }
-          - if payment.expired?
-            %td= link_to I18n.t('payments.send'), payment, class: "btn btn-success",
-              method: :post,
-              data: { confirm: t('actions.confirm') }
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-hover.fixedlayout
+            %thead
+              %tr
+                %th= sortable "date", t('payments.payment_date')
+                %th= sortable "description", t('payments.description')
+                %th= sortable "amount", t('payments.amount')
+                %th= t('payments.name_of_shooter')
+                %th{colspan: 3}= t('payments.actions')
+            %tbody
+              - @payments.each do |payment|
+                %tr
+                  %td= payment.date
+                  %td= link_to payment.description, payment
+                  %td= change_to_currency(payment.amount)
+                  %td= link_to payment.by, payment.shooter
+                  %td.text-center= link_to t('actions.edit'), edit_payment_path(payment),
+                    class: "btn btn-info btn-sm"
+                  %td.text-center= link_to t('actions.destroy'), payment,
+                    class: "btn btn-danger btn-sm",
+                    method: :delete,
+                    data: { confirm: t('actions.confirm') }
+                  - if payment.expired?
+                    %td.text-center= link_to I18n.t('payments.send'), payment,
+                      class: "btn btn-warning btn-sm",
+                      method: :post,
+                      data: { confirm: t('actions.confirm') }
+                  - else
+                    %td
+          = paginate @payments
