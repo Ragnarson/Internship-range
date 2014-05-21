@@ -8,19 +8,19 @@
     .panel.panel-default
       .panel-heading= t('shooters.list_of_shooters')
       .panel-body
-        = link_to t('shooters.new_shooter'), new_shooter_path,
-          class: "btn btn-success btn pull-right"
-        .col-md-4
+        .col-md-3.pull-right
+          = link_to t('shooters.new_shooter'), new_shooter_path,
+            class: "btn btn-success btn pull-right"
+        .col-md-3
           = form_tag shooters_path, method: :get, id: 'shooters_search', class: "form-group" do
-            .input-group.form-group
+            .form-group.input-group
               = text_field_tag :search, params[:search],
                 placeholder: t('shooters.first_name_or_last_name'), class: "form-control"
               %span.form-group.input-group-btn
-                = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
+                = submit_tag t("actions.search"), class: "btn btn-default"
             = hidden_field_tag :direction, params[:direction]
             = hidden_field_tag :sort, params[:sort]
-
-        .table-responsive
+        .col-md-12
           %table.table.table-striped.table-bordered.table-hover.fixedlayout
             %thead
               %tr
@@ -41,7 +41,12 @@
                   %td= shooter.pesel
                   %td= shooter.joined_date
                   %td= shooter.phone
-                  %td= shooter.email
+                  - if shooter.email?
+                    %td.text-center= mail_to shooter.email,
+                      t('activerecord.attributes.shooter.email'),
+                      class: "btn btn-primary btn-sm"
+                  - else
+                    %td
                   %td.text-center= link_to t('actions.edit'), edit_shooter_path(shooter),
                     class: "btn btn-info btn-sm"
                   %td.text-center= link_to t(:destroy), shooter, class: "btn btn-danger btn-sm",
