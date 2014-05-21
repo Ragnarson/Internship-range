@@ -1,18 +1,22 @@
 .form-group
   .col-xs-2
     = f.text_field :first_name, class: "form-control", id: "first_name",
-      placeholder: t('activerecord.attributes.contest.first_name')
+      placeholder: t('activerecord.attributes.contest.first_name'),
+      required: true
   .col-xs-2
     = f.text_field :last_name, class: "form-control",
-    placeholder: t('activerecord.attributes.contest.last_name')
+    placeholder: t('activerecord.attributes.contest.last_name'),
+    required: true
   .col-xs-2
     = f.text_field :date_of_birth, class: "form-control",
-    placeholder: t('activerecord.attributes.contest.date_of_birth')
+    placeholder: t('activerecord.attributes.contest.date_of_birth'),
+    required: true
   .col-xs-2
     = f.text_field :club, class: "form-control",
-    placeholder: t('activerecord.attributes.contest.club')
+    placeholder: t('activerecord.attributes.contest.club'),
+    required: true
   .col-xs-3
-    = f.collection_select :competition_ids, @contest.competitions, :id, :name, 
+    = f.collection_select :competition_ids, @contest.competitions, :id, :name,
     { include_blank: false }, { multiple: true, size: 1, class: "form-control" }
   .col-xs-1
     = f.check_box :pk, class: "checkbox"

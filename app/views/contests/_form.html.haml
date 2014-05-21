@@ -17,7 +17,8 @@
           .col-xs-4
             = f.text_field :name,
               placeholder: t('activerecord.attributes.contest.name'),
-              class: "form-control"
+              class: "form-control",
+              required: true
         .form-group
           = f.label :date, class: "col-xs-4 control-label"
           *
@@ -25,7 +26,8 @@
             = f.text_field :date, 'data-behaviour' => 'datepicker',
               type: "contest[date]",
               placeholder: current_date,
-              class: "form-control"
+              class: "form-control",
+              required: true
         - if defined?(edit) && edit
           %br
           %h3.text-center= t('activerecord.models.competitor.other').capitalize

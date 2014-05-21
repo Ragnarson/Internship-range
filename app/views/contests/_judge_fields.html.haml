@@ -2,16 +2,20 @@
   .form-group
     .col-xs-2
       = f.text_field :first_name, class: "form-control", id: "first-name",
-        placeholder: t('activerecord.attributes.contest.first_name')
+        placeholder: t('activerecord.attributes.contest.first_name'),
+        required: true
     .col-xs-2
       = f.text_field :last_name, class: "form-control",
-        placeholder: t('activerecord.attributes.contest.last_name')
+        placeholder: t('activerecord.attributes.contest.last_name'),
+        required: true
     .col-xs-2
       = f.text_field :function, class: "form-control",
-        placeholder: t('activerecord.attributes.contest.function')
+        placeholder: t('activerecord.attributes.contest.function'),
+        required: true
     .col-xs-2
-      = f.text_field :license_number, class: "form-control",
-        placeholder: t('activerecord.attributes.contest.license_number')
+      = f.number_field :license_number, class: "form-control",
+        placeholder: t('activerecord.attributes.contest.license_number'),
+        required: true
     .col-xs-2
       = f.hidden_field :_destroy
       = link_to t('activerecord.attributes.contest.delete_judge'), '#', class: "remove_fields btn btn-danger"
