@@ -3,7 +3,8 @@ class ShootersController < ApplicationController
   helper_method :sort_direction, :sort_column
 
   def index
-    @shooters = Shooter.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
+    @shooters = Shooter.active.search(params[:search]).
+      order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show
@@ -29,7 +30,7 @@ class ShootersController < ApplicationController
   end
 
   def names
-    shooters = Shooter.select('first_name, last_name, id').order(:last_name)
+    shooters = Shooter.active.select('first_name, last_name, id').order(:last_name)
     render json: shooters.map { |x| {id: x.id, full_name: x.full_name} }
   end
 
@@ -43,7 +44,7 @@ class ShootersController < ApplicationController
   end
 
   def destroy
-    @shooter.destroy
+    @shooter.update_attribute(:active, false)
     redirect_to shooters_url,
       notice: I18n.t(
         'flash.success_destroy',

@@ -13,6 +13,7 @@ describe Shooter do
   it { should respond_to(:contests) }
   it { should respond_to(:competitions) }
   it { should respond_to(:email) }
+  it { should respond_to(:active) }
 
   it { should be_valid }
 

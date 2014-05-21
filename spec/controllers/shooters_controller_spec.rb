@@ -9,6 +9,7 @@ describe ShootersController do
   describe 'GET index' do
     let(:shooter) { create :shooter }
     let(:other_shooter) { create :other_shooter }
+    let(:nonactive_shooter) { create :nonactive_shooter }
 
     it 'populates an array of shooters' do
       get :index
@@ -18,6 +19,11 @@ describe ShootersController do
     it 'renders the :index template' do
       get :index
       expect(response).to render_template :index
+    end
+
+    it 'does not show non active shooters' do
+      get :index
+      expect(response).not_to include(:nonactive_shooter)
     end
   end
 
@@ -47,10 +53,10 @@ describe ShootersController do
   describe 'DELETE destroy' do
     let!(:shooter) { create :shooter }
 
-    it 'deletes shooter' do
-      expect{
-        delete :destroy, id: shooter
-      }.to change(Shooter, :count).by(-1)
+    it 'desactivates shooter' do
+      delete :destroy, id: shooter
+      shooter.reload
+      expect(shooter.active).to be false
     end
 
     it 'redirects to shooter#index' do
