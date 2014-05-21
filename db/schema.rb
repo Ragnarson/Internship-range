@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20140526120839) do
     t.datetime "updated_at"
   end
 
+  create_table "app_configs", id: false, force: true do |t|
+    t.string "key",       null: false
+    t.string "club_name"
+    t.string "club_logo"
+  end
+
   create_table "competitions", force: true do |t|
     t.string   "name"
     t.string   "classification"
@@ -34,6 +40,11 @@ ActiveRecord::Schema.define(version: 20140526120839) do
     t.datetime "updated_at"
     t.integer  "contest_id"
     t.integer  "number_of_shots"
+  end
+
+  create_table "competitions_competitors", force: true do |t|
+    t.integer "competition_id"
+    t.integer "competitor_id"
   end
 
   create_table "competitors", force: true do |t|
@@ -48,13 +59,6 @@ ActiveRecord::Schema.define(version: 20140526120839) do
   end
 
   add_index "competitors", ["contest_id"], name: "index_competitors_on_contest_id", using: :btree
-
-  create_table "configurations", force: true do |t|
-    t.string   "club_logo"
-    t.string   "club_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "contests", force: true do |t|
     t.string   "name"
@@ -118,8 +122,6 @@ ActiveRecord::Schema.define(version: 20140526120839) do
     t.boolean  "rifle"
     t.boolean  "shotgun"
     t.boolean  "collectors_permission"
-    t.integer  "address_id"
-    t.integer  "second_address_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -138,6 +140,19 @@ ActiveRecord::Schema.define(version: 20140526120839) do
 
   add_index "shootings", ["competition_id"], name: "index_shootings_on_competition_id", using: :btree
   add_index "shootings", ["competitor_id"], name: "index_shootings_on_competitor_id", using: :btree
+
+  create_table "shot_lists", force: true do |t|
+    t.text     "shots"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contest_id"
+    t.integer  "competitor_id"
+    t.integer  "competition_id"
+  end
+
+  add_index "shot_lists", ["competition_id"], name: "index_shot_lists_on_competition_id", using: :btree
+  add_index "shot_lists", ["competitor_id"], name: "index_shot_lists_on_competitor_id", using: :btree
+  add_index "shot_lists", ["contest_id"], name: "index_shot_lists_on_contest_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

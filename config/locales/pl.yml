@@ -20,6 +20,7 @@ pl:
       shooter: Strzelec
       address: Adres
       payment: płatność
+      app_config: Ustawienia
     attributes:
       user:
         email: Email
@@ -84,6 +85,9 @@ pl:
         last_name: Nazwisko
         date_of_birth: Data urodzenia
         club: Klub
+      app_config:
+        club_name: Nazwa Klubu
+        club_logo: Logo Klubu
     errors:
       models:
         contest:
@@ -99,6 +103,7 @@ pl:
     success_create: "Pomyślnie utworzono %{model}"
     success_edit: "Pomyślnie zaktualizowano %{model}"
     success_destroy: "Pomyślnie usunięto %{model}"
+    error_settings_set: "Wystąpił błąd w zapisie Ustawień"
     contest: zawody
     competition: konkurencję
     competitor: zawodnika
@@ -273,6 +278,8 @@ pl:
         create: Utwórz konkurencję
         update: Aktualizuj konkurencję
       create: Utwórz %{model}
+      app_config:
+        create: Zachowaj %{model}
       submit: Zapisz %{model}
       update: Aktualizuj %{model}
       shooter:
@@ -354,7 +361,6 @@ pl:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: po południu
-  club_name: "KSS Bazuka"
   mainmenu:
     contests: "Zawody"
     competitions: "Konkurencje"

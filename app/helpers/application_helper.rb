@@ -23,6 +23,14 @@ module ApplicationHelper
     Date.current.strftime("%Y-%m-%d")
   end
 
+  def club_logo
+    @club_logo ||= AppConfig.find('app_config').club_logo_url.to_s
+  end
+
+  def club_name
+    @club_name ||= AppConfig.find('app_config').club_name.to_s
+  end
+
   def display_for_visible(attribute, placeholder_on_blank='-')
     attribute.blank? ? placeholder_on_blank : attribute
   end

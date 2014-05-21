@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Shooter index" do
   subject { page }
+  let!(:app_config) { build(:app_config) }
   let!(:contest) { create(:contest) }
   before(:each) do
     sign_in
