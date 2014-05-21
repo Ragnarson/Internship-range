@@ -48,6 +48,10 @@ describe "Shooter index" do
     it "have links to delete user" do
       expect(page).to have_link(I18n.t('actions.destroy'))
     end
+
+    it "has mail_to button" do
+      expect(page).to have_link(I18n.t('activerecord.attributes.shooter.email'))
+    end
   end
 
   describe ".search" do
