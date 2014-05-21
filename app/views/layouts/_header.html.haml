@@ -1,20 +1,14 @@
-%header.navbar.navbar-fixed-top.navbar-default{role: "navigation"}
-  .navbar-inner
-    .container
-      .navbar-header
-        %button.navbar-toggle{type: "button",
-                             "data-toggle" => "collapse",
-                             "data-target" => "#bs-navbar-collapse-main"}
-          %span.sr-only= t(:toggle_navigation, scope: :mainmenu)
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        = link_to t(:club_name), '#', id: "logo", class: "navbar-brand"
-      .collapse.navbar-collapse#bs-navbar-collapse-main
-        %ul.nav.navbar-nav.pull-right
-          %li= link_to t('mainmenu.contests'), contests_path
-          %li= link_to t('mainmenu.shooters'), shooters_path
-          %li= link_to t('mainmenu.payments'), payments_path
-          %li= link_to t('mainmenu.admin_panel'), '#'
-          %li= link_to t('mainmenu.log_out'), signout_path,
-            method: :delete
+%header.navbar.navbar-default.navbar-cls-top{role: "navigation"}
+  .navbar-header
+    %button.navbar-toggle{type: "button",
+                         "data-toggle" => "collapse",
+                         "data-target" => "#bs-navbar-collapse-main"}
+      %span.sr-only= t(:toggle_navigation, scope: :mainmenu)
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to t(:club_name), '#', id: "logo", class: "navbar-brand"
+  .div.pull-right#status-bar
+    = link_to t('mainmenu.log_out'), signout_path,
+          method: :delete, class: 'btn btn-danger square-btn-adjust'
+

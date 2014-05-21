@@ -17,7 +17,7 @@ describe "Shooter new page" do
     end
 
   it "have navbar" do
-    expect(page).to have_css('header.navbar-fixed-top')
+    expect(page).to have_css('header.navbar')
   end
 
   it "have default hidden Second address fields" do

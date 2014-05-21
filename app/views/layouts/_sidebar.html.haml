@@ -1,0 +1,21 @@
+.nav.navbar-default.navbar-side{role: 'navigation'}
+  .sidebar-collapse
+    %ul.nav#main-menu
+      %li.text-center
+        %img.user-image.img-responsive{src: 'http://placehold.it/128'}
+      %li
+        = link_to contests_path do
+          %i.glyphicon.glyphicon-screenshot
+          =t('mainmenu.contests')
+      %li
+        = link_to shooters_path do
+          %i.glyphicon.glyphicon-user
+          =t('mainmenu.shooters')
+      %li
+        = link_to payments_path do
+          %i.glyphicon.glyphicon-barcode
+          =t('mainmenu.payments')
+      %li
+        = link_to '#' do
+          %i.glyphicon.glyphicon-cog
+          =t('mainmenu.admin_panel')
