@@ -18,4 +18,9 @@ class Contest < ActiveRecord::Base
       errors.add(:date, :not_a_date)
     end
   end
+
+  def self.search(search)
+    return where(nil) unless search
+    where('name ILIKE ?', "%#{search.downcase}%")
+  end
 end

@@ -1,8 +1,9 @@
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_direction, :sort_column
 
   def index
-    @contests = Contest.page(params[:page])
+    @contests = Contest.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show
@@ -43,6 +44,14 @@ class ContestsController < ApplicationController
   private
   def set_contest
     @contest = Contest.find(params[:id])
+  end
+
+  def sort_column
+    Contest.column_names.include?(params[:sort]) ? params[:sort] : "date"
+  end
+
+  def sort_direction
+    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
   def contest_params
