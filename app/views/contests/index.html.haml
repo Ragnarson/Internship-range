@@ -1,21 +1,40 @@
 = content_for :title, "#{t('club_name')} - #{t('activerecord.models.contest').capitalize}"
-%h1= t('activerecord.models.contest').capitalize
-
-= link_to "#{t('contest.actions.new')} #{t('activerecord.models.contest')}", new_contest_path, class: 'btn btn-primary btn pull-right'
-
-%table.table
-  %thead
-    %tr
-      %th= t('activerecord.attributes.contest.name')
-      %th= t('activerecord.attributes.contest.date')
-      %th(colspan=2)= t('contest.actions.actions')
-
-  %tbody
-    - @contests.each do |contest|
-      %tr
-        %td= link_to contest.name, contest
-        %td= contest.date
-        %td= link_to t('contest.actions.edit'), edit_contest_path(contest), class: "btn btn-info btn-sm"
-        %td= link_to t('contest.actions.destroy'), contest, method: :delete, data: { confirm: I18n.t('actions.confirm') }, class: "btn btn-danger btn-sm"
-
-= paginate @contests
+.row
+  .col-md-12
+    %h2= t('activerecord.models.contest').capitalize
+%hr
+.row
+  .col-md-12
+    .panel.panel-default
+      .panel-heading= t('activerecord.models.contest').capitalize
+      .panel-body
+        .col-md-3.pull-right
+          = link_to "#{t('contest.actions.new')} #{t('activerecord.models.contest')}",
+            new_contest_path, class: 'btn btn-success btn pull-right'
+        .col-md-3
+          = form_tag contests_path, method: :get, id: 'contests_search', class: "form-group" do
+            .input-group.form-group
+              = text_field_tag :search, params[:search],
+                placeholder: t('activerecord.attributes.contest.name'), class: "form-control"
+              %span.form-group.input-group-btn
+                = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
+            = hidden_field_tag :direction, params[:direction]
+            = hidden_field_tag :sort, params[:sort]
+        .col-md-12
+          %table.table.table-striped.table-bordered.table-hover.fixedlayout
+            %thead
+              %tr
+                %th= sortable "name", t('activerecord.attributes.contest.name')
+                %th= sortable "date", t('activerecord.attributes.contest.date')
+                %th(colspan=2)= t('contest.actions.actions')
+            %tbody
+              - @contests.each do |contest|
+                %tr
+                  %td= link_to contest.name, contest
+                  %td= contest.date
+                  %td.text-center= link_to t('contest.actions.edit'), edit_contest_path(contest),
+                    class: "btn btn-info btn-sm"
+                  %td.text-center= link_to t('contest.actions.destroy'), contest, method: :delete,
+                    data: { confirm: I18n.t('actions.confirm') },
+                    class: "btn btn-danger btn-sm"
+          = paginate @contests
