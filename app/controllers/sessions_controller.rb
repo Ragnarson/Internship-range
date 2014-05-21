@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_filter :authorize, only: [:new, :create]
 
   def new
+    render layout: 'signin'
   end
 
   def create
