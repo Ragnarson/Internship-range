@@ -1,15 +1,17 @@
 require 'spec_helper'
 
-feature 'Adding new contest' do
-  scenario "adding data" do
+feature 'Contest' do
+  scenario "Create new" do
     sign_in
 
     visit new_contest_path
 
-    fill_in 'Nazwa', with: 'strzał'
-    fill_in 'Data', with: '2014-04-06'
+    fill_in I18n.t('activerecord.attributes.contest.name'), 
+    with: 'strzał'
+    fill_in I18n.t('activerecord.attributes.contest.date'), 
+    with: '2014-04-06'
 
-    click_button 'Utwórz zawody'
+    click_button I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.contest'))
 
     expect(current_path).to eq contests_path
     expect(page).to have_content 'Pomyślnie utworzono zawody'
