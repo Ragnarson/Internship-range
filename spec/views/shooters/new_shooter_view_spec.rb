@@ -5,15 +5,15 @@ describe "Shooter new page" do
     visit 'shooters/new'
   end
   let(:title) do
-     I18n.t('club_name') << ' - ' << I18n.t(
-       'actions.new') << ' ' << I18n.t('activerecord.models.shooter')
+     "#{I18n.t('club_name')} -
+      #{I18n.t('actions.new')} #{I18n.t('activerecord.models.shooter')}"
   end
 
   it { expect(page).to have_title(title) }
 
-  it "have page heading 'h2' with create action" do
+  it "have page heading 'h1' with create action" do
     expect(page).to have_selector(
-      'h2', text: I18n.t('helpers.label.shooter.create'))
+      'h1', text: I18n.t('helpers.label.shooter.create'))
     end
 
   it "have navbar" do

@@ -12,21 +12,24 @@ class ShootersController < ApplicationController
 
   def new
     @shooter = Shooter.new
-    build_addresses_for_shooter @shooter
+    build_addresses_for_shooter(@shooter)
   end
 
   def create
     @shooter = Shooter.new(permitted_shooter)
     if @shooter.save
-      redirect_to(@shooter)
+      redirect_to(
+        @shooter,
+        notice: I18n.t('flash.success_create', model: I18n.t('flash.shooter'))
+      )
     else
-      build_addresses_for_shooter @shooter
+      build_addresses_for_shooter(@shooter)
       render(:new, :@shooter => @shooter)
     end
   end
 
   def edit
-    build_addresses_for_shooter @shooter
+    build_addresses_for_shooter(@shooter)
   end
 
   def names
@@ -36,19 +39,22 @@ class ShootersController < ApplicationController
 
   def update
     if @shooter.update_attributes(permitted_shooter)
-      redirect_to(@shooter)
+      redirect_to(
+        @shooter,
+        notice: I18n.t('flash.success_edit', model: I18n.t('flash.shooter')) 
+      )
     else
-      build_addresses_for_shooter @shooter
-      render(:edit, :@shooter => @shooter)
+      build_addresses_for_shooter(@shooter)
+      render(:edit)
     end
   end
 
   def destroy
     @shooter.update_attribute(:active, false)
-    redirect_to shooters_url,
-      notice: I18n.t(
-        'flash.success_destroy',
-        model: I18n.t('flash.shooter'))
+    redirect_to(
+      shooters_url,
+      notice: I18n.t('flash.success_destroy', model: I18n.t('flash.shooter'))
+    )
   end
 
   private

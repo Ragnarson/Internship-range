@@ -2,107 +2,100 @@
 .row-fluid
   .span4.well
     = form_for @shooter, html: {class: "form-horizontal"} do |m|
-      %fieldset
-        %legend
-          %h3= t('helpers.label.shooter.shooter_heading')
-        .form-group
-          = m.label :first_name, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :first_name,
-              placeholder: t('activerecord.attributes.shooter.first_name'),
-              class: "form-control",
-              required: true
-          *
-        .form-group
-          = m.label :last_name, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :last_name,
-              placeholder: t('activerecord.attributes.shooter.last_name'),
-              class: "form-control",
-              required: true
-          *
-        .form-group
-          = m.label :date_of_birth, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :date_of_birth, "data-behaviour_birth" => "datepicker",
-              placeholder: current_date, class: "form-control", required: true
-          *
-        .form-group
-          = m.label :pesel, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.number_field :pesel, placeholder: t('activerecord.attributes.shooter.pesel'),
-              class: "form-control", required: true
-          *
-        .form-group
-          = m.label :joined_date, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :joined_date, "data-behaviour" => "datepicker",
-              placeholder: current_date, class: "form-control", required: true
-          *
-        .form-group
-          = m.label :email, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :email,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.email'),
-              required: true
-          *
-        .form-group
-          = m.label :phone, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :phone,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.phone')
-        .form-group
-          = m.label :resolution_number, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :resolution_number,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.resolution_number')
-        .form-group
-          = m.label :license_number, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :license_number,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.license_number')
-        .form-group
-          = m.label :judge_license_number, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.text_field :judge_license_number,
-              class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.judge_license_number')
+      - if @shooter.errors.any?
+        .alert.alert-danger
+          %h3
+            = t('errors.template.body')
+          %ul
+            - @shooter.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = m.label :first_name, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :first_name, class: "form-control", required: true,
+            placeholder: t('activerecord.attributes.shooter.first_name')
+        *
+      .form-group
+        = m.label :last_name, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :last_name, class: "form-control", required: true,
+            placeholder: t('activerecord.attributes.shooter.last_name')
+        *
+      .form-group
+        = m.label :date_of_birth, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :date_of_birth, class: "form-control", required: true,
+          "data-behaviour_birth" => "datepicker", placeholder: current_date
+      .form-group
+        = m.label :pesel, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :pesel, class: "form-control", required: true,
+          placeholder: t('activerecord.attributes.shooter.pesel')
+        *
+      .form-group
+        = m.label :joined_date, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :joined_date, required: true, class: "form-control",
+          "data-behaviour" => "datepicker", placeholder: current_date
+        *
+      .form-group
+        = m.label :email, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :email, class: "form-control", required: true,
+            placeholder: t('activerecord.attributes.shooter.email')
+        *
+      .form-group
+        = m.label :phone, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :phone, class: "form-control",
+            placeholder: t('activerecord.attributes.shooter.phone')
+      .form-group
+        = m.label :resolution_number, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :resolution_number, class: "form-control",
+            placeholder: t('activerecord.attributes.shooter.resolution_number')
+      .form-group
+        = m.label :license_number, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :license_number, class: "form-control",
+            placeholder: t('activerecord.attributes.shooter.license_number')
+      .form-group
+        = m.label :judge_license_number, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.text_field :judge_license_number, class: "form-control",
+          placeholder:t('activerecord.attributes.shooter.judge_license_number')
+      .form-group.center-block
+        = m.label :sport_permission, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.radio_button :sport_permission, true, id: 'permission_true'
+          = m.label :yes_form
 
-        .form-group.center-block
-          = m.label :sport_permission, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.radio_button :sport_permission, true, id: 'permission_true'
-            = m.label :yes_form
+          = m.radio_button :sport_permission, false, id: 'permission_false'
+          = m.label :no_form
+          .well.well-sm#license_type_list
+            .input-group
+              = m.check_box :handgun
+              = m.label :handgun
+            .input-group
+              = m.check_box :rifle
+              = m.label :rifle
+            .input-group
+              = m.check_box :shotgun
+              = m.label :shotgun
+      .form-group
+        = m.label :collectors_permission, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.radio_button :collectors_permission, true
+          = m.label :yes_form
 
-            = m.radio_button :sport_permission, false, id: 'permission_false'
-            = m.label :no_form
-            .well.well-sm#license_type_list
-              .input-group
-                = m.check_box :handgun
-                = m.label :handgun
-              .input-group
-                = m.check_box :rifle
-                = m.label :rifle
-              .input-group
-                = m.check_box :shotgun
-                = m.label :shotgun
-        .form-group
-          = m.label :collectors_permission, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.radio_button :collectors_permission, true
-            = m.label :yes_form
-
-            = m.radio_button :collectors_permission, false
-            = m.label :no_form
-        .form-group
-          = m.label :image, class: "col-xs-4 control-label"
-          .col-xs-4
-            = m.file_field :image, class: "form-control"
-        = m.fields_for :addresses do |address_fields|
-          = render partial: 'addresses/form', locals: { address_fields: address_fields, is_first: address_fields.object.is_first? }
-        .button-centered
-          = m.submit class: "btn btn-primary"
+          = m.radio_button :collectors_permission, false
+          = m.label :no_form
+      .form-group
+        = m.label :image, class: "col-xs-4 control-label"
+        .col-xs-4
+          = m.file_field :image, class: "form-control"
+      = m.fields_for :addresses do |address_fields|
+        = render partial: 'addresses/form',
+          locals: { address_fields: address_fields, is_first: address_fields.object.is_first?}
+      .button-centered
+        = m.submit class: "btn btn-primary"
