@@ -104,6 +104,7 @@ pl:
     actions: Akcje
     search: Szukaj
     signin: Zaloguj się
+    signout: Wyloguj się
   date:
     abbr_day_names:
     - nie
@@ -347,7 +348,6 @@ pl:
     shooters: "Strzelcy"
     payments: "Płatności"
     admin_panel: "Panel Admina"
-    log_out: "Wyloguj się"
     toggle_navigation: "Przełącz nawigację"
   show: "Pokaż"
   edit: "Edytuj"
