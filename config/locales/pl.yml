@@ -383,6 +383,7 @@ pl:
     lie: Nie
     first_address: "Adres #1"
     second_address: "Adres #2"
+    not_active: Nieaktywny
   contest:
     add_competitor: Dodaj zawodnika
     add_judge: Dodaj sędziego

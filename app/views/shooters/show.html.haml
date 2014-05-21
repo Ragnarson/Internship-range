@@ -1,7 +1,11 @@
 = content_for :title, "#{t('club_name')} - #{t('activerecord.models.shooter')}"
 .container
   .row
-    %h1= @shooter.first_name + " " + @shooter.last_name
+    %h1
+      = @shooter.full_name
+      - unless @shooter.active
+        %small
+          = t('shooters.not_active')
   .row
     .col-xs-12.col-sm-12.col-md-5.col-lg-5.margin-top
       .row
