@@ -10,36 +10,42 @@
           .col-xs-4
             = m.text_field :first_name,
               placeholder: t('activerecord.attributes.shooter.first_name'),
-              class: "form-control"
+              class: "form-control",
+              required: true
           *
         .form-group
           = m.label :last_name, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :last_name,
               placeholder: t('activerecord.attributes.shooter.last_name'),
-              class: "form-control"
+              class: "form-control",
+              required: true
           *
         .form-group
           = m.label :date_of_birth, class: "col-xs-4 control-label"
           .col-xs-4
-            = m.text_field :date_of_birth, "data-behaviour_birth" => "datepicker", placeholder: current_date, class: "form-control" 
+            = m.text_field :date_of_birth, "data-behaviour_birth" => "datepicker",
+              placeholder: current_date, class: "form-control", required: true
           *
         .form-group
           = m.label :pesel, class: "col-xs-4 control-label"
           .col-xs-4
-            = m.text_field :pesel, placeholder: t('activerecord.attributes.shooter.pesel'), class: "form-control"
+            = m.number_field :pesel, placeholder: t('activerecord.attributes.shooter.pesel'),
+              class: "form-control", required: true
           *
         .form-group
           = m.label :joined_date, class: "col-xs-4 control-label"
           .col-xs-4
-            = m.text_field :joined_date, "data-behaviour" => "datepicker", placeholder: current_date, class: "form-control"
+            = m.text_field :joined_date, "data-behaviour" => "datepicker",
+              placeholder: current_date, class: "form-control", required: true
           *
         .form-group
           = m.label :email, class: "col-xs-4 control-label"
           .col-xs-4
             = m.text_field :email,
               class: "form-control",
-              placeholder: t('activerecord.attributes.shooter.email')
+              placeholder: t('activerecord.attributes.shooter.email'),
+              required: true
           *
         .form-group
           = m.label :phone, class: "col-xs-4 control-label"
