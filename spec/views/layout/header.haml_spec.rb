@@ -10,13 +10,13 @@ describe 'header panel' do
   context 'if signed in' do
     before { sign_in }
 
-    it 'contains a name of club' do
-      expect(page).to have_selector(
+    it 'does not contain a name of club' do
+      expect(page).to_not have_selector(
         'a.navbar-brand', I18n.t('club_name'))
     end
 
-    it 'contains a logout button' do
-      expect(page).to have_selector(
+    it 'does not contain a logout button' do
+      expect(page).to_not have_selector(
         'a', I18n.t('actions.signout'))
     end
   end

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize
   force_ssl unless Rails.env.development?
-  helper_method :current_user
+  helper_method :current_user, :signed_in?
   protect_from_forgery with: :exception
 
   private
@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
       flash[:alert] = t('flash.not_authorized')
       redirect_to signin_path
     end
+  end
+  
+  def signed_in?
+    session[:user_id].present?
   end
 end
