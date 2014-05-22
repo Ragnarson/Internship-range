@@ -41,6 +41,11 @@ pl:
         shotgun: Strzelba
         collectors_permission: Pozwolenie kolekcjonerskie
         image: Zdjęcie
+        address: Adres
+      addresses:
+        city: 'Miasto adresu'
+        building: 'Nr domu adresu'
+        zip_code: 'Kod pocztowy adresu'
       address:
         street: 'Ulica'
         city: 'Miasto'
@@ -248,7 +253,7 @@ pl:
       too_long: jest za długie (maksymalnie %{count} znaków)
       too_short: jest za krótkie (przynajmniej %{count} znaków)
       wrong_length: ma nieprawidłową długość (powinna wynosić %{count} znaków)
-
+      presence: musi być przynajmniej jeden
     template:
       body: ! 'Błędy dotyczą następujących pól:'
       header:
