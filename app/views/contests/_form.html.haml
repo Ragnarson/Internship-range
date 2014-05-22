@@ -1,9 +1,9 @@
-.row-fluid
-  .span4.well
+.panel.panel-default
+  .panel-heading= [t('actions.new'), t('activerecord.models.contest')].join(' ')
+  .panel-body
     = form_for @contest, html: {class: "form-horizontal"} do |f|
       %fieldset
         %legend
-          %h2= t('activerecord.models.contest').capitalize
           - if @contest.errors.any?
             .alert.alert-danger
               %h4
