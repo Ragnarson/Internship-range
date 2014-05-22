@@ -63,7 +63,7 @@ class ShootersController < ApplicationController
   end
 
   def sort_column
-    Shooter.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    Shooter.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
   end
 
   def sort_direction

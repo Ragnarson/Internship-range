@@ -24,7 +24,7 @@
           %table.table.table-striped.table-bordered.table-hover.fixedlayout
             %thead
               %tr
-                %th.hashtable= sortable "id", "#"
+                %th.photohead
                 %th= sortable "first_name", t('activerecord.attributes.shooter.first_name')
                 %th= sortable "last_name", t('activerecord.attributes.shooter.last_name')
                 %th= sortable "pesel", t('activerecord.attributes.shooter.pesel')
@@ -35,7 +35,10 @@
             %tbody
               - @shooters.each do |shooter|
                 %tr
-                  %td= shooter.id
+                  - if shooter.image?
+                    %td= shooter.image_url(:thumb)
+                  - else
+                    %td= image_tag("default.jpg")
                   %td= link_to shooter.first_name, shooter
                   %td= link_to shooter.last_name, shooter
                   %td= shooter.pesel
