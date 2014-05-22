@@ -3,7 +3,11 @@ class PaymentsController < ApplicationController
   helper_method :sort_direction, :sort_column
 
   def index
-    @payments = Payment.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
+    @payments = Payment.limit_amount(params[:amount_min], params[:amount_max]).
+      limit_date(params[:date_min], params[:date_max]).
+      search(params[:search]).
+      order(sort_column + " " + sort_direction).
+      page(params[:page])
   end
 
   def show
