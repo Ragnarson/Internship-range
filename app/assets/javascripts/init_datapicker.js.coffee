@@ -8,6 +8,7 @@ init_datapicker = ->
     language: 'pl',
     startView: 'decade',
     startDate: '-100y',
+    endDate: '-5y',
     format: 'yyyy-mm-dd',
     autoclose: true
 
