@@ -12,8 +12,8 @@ class SessionsController < ApplicationController
       flash[:notice] = t('flash.logged_in')
       redirect_to root_url
     else
-      flash.now[:alert] = t('flash.invalid_email_or_password')
-      render 'new'
+      flash[:alert] = t('flash.invalid_email_or_password')
+      redirect_to '/signin'
     end
   end
 

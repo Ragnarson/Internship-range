@@ -1,0 +1,37 @@
+@import "bootstrap";
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #202020;
+}
+
+.login-panel {
+  max-width: 250px;
+  margin: 30% auto 10px;
+}
+
+h2 {
+  line-height: 1;
+  font-size: 2.1em;
+  font-weight: bold;
+  letter-spacing: -1px;
+  text-align: center;
+  font-weight: normal;
+  color: #fff;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 10px;
+  @include box-sizing;
+}
+
+.alert {
+  text-align: center;
+}
