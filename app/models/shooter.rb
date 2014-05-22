@@ -1,6 +1,4 @@
 class Shooter < ActiveRecord::Base
-  attr_accessor :image
-
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   before_save :update_weapon_list
