@@ -37,4 +37,5 @@ group :development, :test do
   gem 'capybara', github: 'jnicklas/capybara', branch: 'master'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end

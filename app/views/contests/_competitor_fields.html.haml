@@ -1,22 +1,23 @@
-.form-group
-  .col-xs-2
-    = f.text_field :first_name, class: "form-control", id: "first_name",
-      placeholder: t('activerecord.attributes.contest.first_name'),
-      required: true
-  .col-xs-2
-    = f.text_field :last_name, class: "form-control",
-      placeholder: t('activerecord.attributes.contest.last_name'),
-      required: true
-  .col-xs-2
-    = f.text_field :date_of_birth, 'data-behaviour_birth' => 'datepicker',
-      type: "competitor[date_of_birth]", placeholder: current_date,
-      class: "form-control", required: true
-  .col-xs-2
-    = f.text_field :club, class: "form-control",
-      placeholder: t('activerecord.attributes.contest.club'),
-      required: true
-  .col-xs-3
-    = f.collection_select :competition_ids, @contest.competitions, :id, :name,
-      { include_blank: false }, { multiple: true, size: 1, class: "form-control" }
-  .col-xs-1
-    = f.check_box :pk, class: "checkbox"
+%fieldset.competitor-form
+  .form-group
+    .col-xs-2
+      = f.text_field :first_name, class: "form-control", id: "first_name",
+        placeholder: t('activerecord.attributes.contest.first_name'),
+        required: true
+    .col-xs-2
+      = f.text_field :last_name, class: "form-control",
+        placeholder: t('activerecord.attributes.contest.last_name'),
+        required: true
+    .col-xs-2
+      = f.text_field :date_of_birth, 'data-behaviour_birth' => 'datepicker',
+        type: "competitor[date_of_birth]", placeholder: current_date,
+        class: "form-control", required: true
+    .col-xs-2
+      = f.text_field :club, class: "form-control",
+        placeholder: t('activerecord.attributes.contest.club'),
+        required: true
+    .col-xs-3
+      = f.collection_select :competition_ids, @contest.competitions, :id, :name,
+        { include_blank: false }, { multiple: true, size: 1, class: "form-control" }
+    .col-xs-1
+      = f.check_box :pk, class: "checkbox"
