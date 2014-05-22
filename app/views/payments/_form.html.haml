@@ -1,40 +1,42 @@
-.col-md-6.col-md-offset-3.well
-  = form_for(@payment, html: {class: 'form-horizontal', role: 'form'}) do |f|
-    - if @payment.errors.any?
-      .alert.alert-danger
-        %h3
-          = t('errors.template.body')
-        %ul
-          - @payment.errors.full_messages.each do |msg|
-            %li= msg
-    .form-group
-      = f.label :shooter_id, class: 'col-sm-2 control-label'
-      .col-sm-10
-        %input#shooter-name.form-control{value: "#{@payment.by unless @payment.new_record?}",
-          required: true}
-        = f.text_field :shooter_id, type: 'hidden', id: 'shooter-id'
-    .form-group
-      = f.label :amount, class: 'col-sm-2 control-label'
-      .col-sm-10= f.number_field :amount, class: 'form-control', step: 'any', required: true
-    .form-group
-      = f.label :description, class: 'col-sm-2 control-label'
-      .col-sm-10= f.text_field :description, class: 'form-control', required: true
-    .form-group
-      = f.label :date, class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :date, 'data-behaviour' => 'datepicker',
-          type: "payment[date]",
-          placeholder: current_date,
-          class: "form-control",
-          required: true
-    .form-group
-      = f.label t('payments.payment_expiry_date'), class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.text_field :expiry_date, 'data-behaviour' => 'datepicker',
-          type: "payment[expiry_date]",
-          placeholder: current_date,
-          class: "form-control",
-          required: true
-    .form-group
-      .col-sm-offset-2.col-sm-10
-        =f.submit class: 'btn btn-default', id: 'payment_submit'
+.panel.panel-default
+  .panel-heading= [t('actions.new'), t('activerecord.models.payment')].join(' ')
+  .panel-body
+    = form_for(@payment, html: {class: 'form-horizontal', role: 'form'}) do |f|
+      - if @payment.errors.any?
+        .alert.alert-danger
+          %h3
+            = t('errors.template.body')
+          %ul
+            - @payment.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label :shooter_id, class: 'col-sm-3 control-label'
+        .col-sm-8
+          %input#shooter-name.form-control{value: "#{@payment.by unless @payment.new_record?}",
+            required: true}
+          = f.text_field :shooter_id, type: 'hidden', id: 'shooter-id'
+      .form-group
+        = f.label :amount, class: 'col-sm-3 control-label'
+        .col-sm-8= f.number_field :amount, class: 'form-control', step: 'any', required: true
+      .form-group
+        = f.label :description, class: 'col-sm-3 control-label'
+        .col-sm-8= f.text_field :description, class: 'form-control', required: true
+      .form-group
+        = f.label :date, class: 'col-sm-3 control-label'
+        .col-sm-8
+          = f.text_field :date, 'data-behaviour' => 'datepicker',
+            type: "payment[date]",
+            placeholder: current_date,
+            class: "form-control",
+            required: true
+      .form-group
+        = f.label t('payments.payment_expiry_date'), class: 'col-sm-3 control-label'
+        .col-sm-8
+          = f.text_field :expiry_date, 'data-behaviour' => 'datepicker',
+            type: "payment[expiry_date]",
+            placeholder: current_date,
+            class: "form-control",
+            required: true
+      .form-group
+        .col-sm-offset-3.col-sm-9
+          =f.submit class: 'btn btn-default', id: 'payment_submit'
