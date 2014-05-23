@@ -88,3 +88,4 @@ Everytime you save a file guard will automatically launch proper specs when file
 1. [Testowanie #1](http://www.youtube.com/watch?v=LnhEasE646s)
 2. [Testowanie #2](https://www.youtube.com/watch?v=im84JwpYVqs)
 3. [Testowanie #3](http://youtu.be/8N4LjsAEFJA)
+4. [Bazy danych](http://youtu.be/8yMlE6j_dWw)
