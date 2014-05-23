@@ -12,8 +12,8 @@ class CompetitionsController < ApplicationController
   def create
     @competition = @contest.competitions.new(competition_params)
     if @competition.save
-      redirect_to [@contest, @competition],
-        notice: t('flash.success.create',
+      redirect_to contest_url(@contest),
+        notice: t('flash.success_create',
           model: t('flash.competition'))
     else
       render action: 'new'
@@ -27,7 +27,7 @@ class CompetitionsController < ApplicationController
   def update
     @competition = Competition.find(params[:id])
     if @competition.update(competition_params)
-      redirect_to @competition,
+      redirect_to contest_url(@contest),
         notice: t('flash.success_edit',
           model: t('flash.competition'))
     else
@@ -37,7 +37,7 @@ class CompetitionsController < ApplicationController
 
   def destroy
     Competition.find(params[:id]).destroy
-    redirect_to competitions_url,
+    redirect_to contest_url(@contest),
       notice: t('flash.success_destroy',
         model: t('flash.competition'))
   end
