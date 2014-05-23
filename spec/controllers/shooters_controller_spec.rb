@@ -11,19 +11,33 @@ describe ShootersController do
     let(:other_shooter) { create :other_shooter }
     let(:nonactive_shooter) { create :nonactive_shooter }
 
-    it 'populates an array of shooters' do
-      get :index
-      expect(assigns(:shooters)).to eq ([shooter, other_shooter])
+    context 'HTML request' do
+      it 'populates an array of shooters' do
+        get :index
+        expect(assigns(:shooters)).to eq ([shooter, other_shooter])
+      end
+
+      it 'renders the :index template' do
+        get :index
+        expect(response).to render_template :index
+      end
+
+      it 'does not show non active shooters' do
+        get :index
+        expect(response).not_to include(:nonactive_shooter)
+      end
     end
 
-    it 'renders the :index template' do
-      get :index
-      expect(response).to render_template :index
-    end
-
-    it 'does not show non active shooters' do
-      get :index
-      expect(response).not_to include(:nonactive_shooter)
+    context 'CSV request' do
+      it 'populates an array of shooters' do
+        get :index
+        expect(assigns(:shooters)).to eq ([shooter, other_shooter])
+      end
+      
+      it 'receive csv file after .csv request' do
+        get :index, format: :csv
+        expect{ CSV.parse(response.body) }.to_not raise_error
+      end
     end
   end
 
@@ -103,7 +117,7 @@ describe ShootersController do
     end
 
     context 'when has single address' do
-      it '@shooter.addresses include shooter address and builded Address' do  
+      it '@shooter.addresses include shooter address and builded Address' do
         expect(
           assigns(:shooter).addresses.length == 2 &&
           assigns(:shooter).addresses[0] == shooter.addresses[0] &&
@@ -115,12 +129,12 @@ describe ShootersController do
 
     context 'when has two addresses' do
       let!(:address){ create(:address, shooter: shooter) }
-      before do 
+      before do
         shooter.addresses.reload
         get :edit, id: shooter
       end
 
-      it '@shooter.addresses include both adresses' do  
+      it '@shooter.addresses include both adresses' do
         expect(
           assigns(:shooter).addresses.length == 2 &&
           assigns(:shooter).addresses[0] == shooter.addresses[0] &&
@@ -131,7 +145,7 @@ describe ShootersController do
 
   end
   describe 'POST create' do
-    
+
     context 'with valid attributes' do
       it 'change number of shooters by 1' do
                 shooter_attribs = attributes_for(:shooter)
@@ -236,7 +250,7 @@ describe ShootersController do
         shooter.addresses.reload
         expect(
           attributes_for(:other_address).all?{|k, v|shooter.addresses[0].send(k) == v.to_s }
-          ).to be(true)        
+          ).to be(true)
       end
     end
 
@@ -260,7 +274,7 @@ describe ShootersController do
         shooter.addresses.reload
         expect(
           attributes_for(:other_address).all? do |k, v|
-            shooter.addresses[0].send(k) == v.to_s 
+            shooter.addresses[0].send(k) == v.to_s
             end
           ).to be(false)
       end
