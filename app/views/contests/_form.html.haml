@@ -28,9 +28,8 @@
               placeholder: current_date,
               class: "form-control",
               required: true
+        %h3.text-center= t('activerecord.models.competitor.other').capitalize
         - if defined?(edit) && edit
-          %br
-          %h3.text-center= t('activerecord.models.competitor.other').capitalize
           .form-group
             .col-xs-2
               = f.label :first_name, class: "control-label"
@@ -44,12 +43,13 @@
               = f.label :competition, class: "control-label"
             .col-xs-1
               = f.label :pk, class: "checkbox"
-          = f.fields_for :competitors do |builder|
-            = render 'competitor_fields', f: builder
-          .row-fluid
-            = link_to_add_fields t(:add_competitor, scope: :contest), f, :competitors
-          %br
-          %h3.text-center= t('activerecord.models.judge.other').capitalize
+        = f.fields_for :competitors do |builder|
+          = render 'competitor_fields', f: builder
+        .row-fluid
+          = link_to_add_fields t(:add_competitor, scope: :contest), f, :competitors
+        %br
+        %h3.text-center= t('activerecord.models.judge.other').capitalize
+        - if defined?(edit) && edit
           .form-group
             .col-xs-2
               = f.label :first_name, class: "control-label"
@@ -59,9 +59,10 @@
               = f.label :function, class: "control-label"
             .col-xs-2
               = f.label :license_number, class: "control-label"
-          = f.fields_for :judges do |builder|
-            = render 'judge_fields', f: builder
-          .row-fluid
-            = link_to_add_fields t(:add_judge, scope: :contest), f, :judges
-        .button-centered
-          = f.submit class: "btn btn-primary"
+        = f.fields_for :judges do |builder|
+          = render 'judge_fields', f: builder
+        .row-fluid
+          = link_to_add_fields t(:add_judge, scope: :contest), f, :judges
+      %br
+      .button-centered
+        = f.submit class: "btn btn-primary"
