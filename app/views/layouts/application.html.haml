@@ -13,20 +13,5 @@
       = render 'layouts/sidebar'
       #page-wrapper
         #page-inner
-          - if notice
-            .alert.alert-success.alert-dismissable
-              %button{type: 'button',
-              class: 'close',
-              'data-dismiss' => 'alert',
-              'aria-hidden' => 'true'}
-                &times
-              = notice
-          - if alert
-            .alert.alert-danger.alert-dismissable
-              %button{type: 'button',
-              class: 'close',
-              'data-dismiss' => 'alert',
-              'aria-hidden' => 'true'}
-                &times
-              = alert
+          = render 'layouts/flash', object: flash
           = yield

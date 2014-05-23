@@ -4,26 +4,8 @@
     %title= yield(:title)
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'signin', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    #wrapper
-      #page-inner
-        - if notice
-          .alert.alert-success.alert-dismissable
-            %button{type: 'button',
-            class: 'close',
-            'data-dismiss' => 'alert',
-            'aria-hidden' => 'true'}
-              &times
-            = notice
-        - if alert
-          .alert.alert-danger.alert-dismissable
-            %button{type: 'button',
-            class: 'close',
-            'data-dismiss' => 'alert',
-            'aria-hidden' => 'true'}
-              &times
-            = alert
-        = yield
+  = yield
