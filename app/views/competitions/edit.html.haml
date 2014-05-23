@@ -1,1 +1,5 @@
-%h2= t(:edit_competition, scope: :competitions)
+= content_for :title,
+  "#{t('club_name')} - #{t('actions.edit')}#{t('activerecord.models.competition.other')}"
+%h2= t('competitions.edit_competition')
+
+= render 'form'
