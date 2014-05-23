@@ -1,7 +1,7 @@
 .container
 .row-fluid
   .span4.well
-    = form_for @shooter, html: {class: "form-horizontal"} do |m|
+    = form_for @shooter, html: {class: "form-horizontal", multipart: true} do |m|
       - if @shooter.errors.any?
         .alert.alert-danger
           %h3
@@ -94,6 +94,8 @@
         = m.label :image, class: "col-xs-4 control-label"
         .col-xs-4
           = m.file_field :image, class: "form-control"
+          = image_tag(@shooter.image_url(:thumb)) if @shooter.image?
+          = m.hidden_field :image_cache
       = m.fields_for :addresses do |address_fields|
         = render partial: 'addresses/form',
           locals: { address_fields: address_fields, is_first: address_fields.object.is_first?}

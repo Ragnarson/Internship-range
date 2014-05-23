@@ -36,7 +36,7 @@
               - @shooters.each do |shooter|
                 %tr
                   - if shooter.image?
-                    %td= shooter.image_url(:thumb)
+                    %td= image_tag(shooter.image_url(:thumb))
                   - else
                     %td= image_tag("default.jpg")
                   %td= link_to shooter.first_name, shooter

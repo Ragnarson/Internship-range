@@ -74,7 +74,7 @@ class ShootersController < ApplicationController
     params.require(:shooter).permit(:first_name, :last_name, :pesel, :phone,
     :email, :resolution_number, :license_number, :judge_license_number,
     :sport_permission, :joined_date, :date_of_birth, :handgun, :rifle,
-    :shotgun, :collectors_permission, addresses_attributes:
+    :shotgun, :collectors_permission, :image, addresses_attributes:
     [:id, :shooter_id, :city, :building, :flat, :zip_code, :street])
   end
 
