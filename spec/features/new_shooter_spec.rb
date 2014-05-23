@@ -33,7 +33,7 @@ feature 'Shooter' do
 
     click_button I18n.t('helpers.submit.shooter.create')
 
-    expect(current_path).to eq '/shooters/1'
+    expect(current_path).to eq(shooter_path(Shooter.last.id))
     expect(page).to have_content I18n.t('flash.success_create', model: I18n.t('flash.shooter'))
 
     expect(page).to have_content 'Mietek'
