@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       redirect_to signin_path
     end
   end
-  
+
   def signed_in?
     session[:user_id].present?
   end

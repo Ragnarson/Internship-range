@@ -3,8 +3,12 @@ class ShootersController < ApplicationController
   helper_method :sort_direction, :sort_column
 
   def index
-    @shooters = Shooter.active.search(params[:search]).
-      order(sort_column + " " + sort_direction).page(params[:page])
+    @shooters = Shooter.active.search(params[:search])
+      .order(sort_column + ' ' + sort_direction).page(params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { render text: @shooters.to_csv }
+    end
   end
 
   def show
@@ -41,7 +45,7 @@ class ShootersController < ApplicationController
     if @shooter.update_attributes(permitted_shooter)
       redirect_to(
         @shooter,
-        notice: I18n.t('flash.success_edit', model: I18n.t('flash.shooter')) 
+        notice: I18n.t('flash.success_edit', model: I18n.t('flash.shooter'))
       )
     else
       build_addresses_for_shooter(@shooter)
@@ -63,11 +67,11 @@ class ShootersController < ApplicationController
   end
 
   def sort_column
-    Shooter.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
+    Shooter.column_names.include?(params[:sort]) ? params[:sort] : 'last_name'
   end
 
   def sort_direction
-    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
   def permitted_shooter

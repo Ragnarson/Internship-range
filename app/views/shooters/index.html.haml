@@ -8,9 +8,6 @@
     .panel.panel-default
       .panel-heading= t('shooters.list_of_shooters')
       .panel-body
-        .col-md-3.pull-right
-          = link_to t('shooters.new_shooter'), new_shooter_path,
-            class: "btn btn-success btn pull-right"
         .col-md-3
           = form_tag shooters_path, method: :get, id: 'shooters_search', class: "form-group" do
             .form-group.input-group
@@ -20,6 +17,14 @@
                 = submit_tag t("actions.search"), class: "btn btn-default"
             = hidden_field_tag :direction, params[:direction]
             = hidden_field_tag :sort, params[:sort]
+        .col-md-6
+          = link_to shooters_path(format: :csv, more_params: params[:search]) do
+            %button.btn.btn-default
+              %i.glyphicon.glyphicon-download
+              CSV
+        .col-md-3
+          = link_to t('shooters.new_shooter'), new_shooter_path,
+            class: "btn btn-success btn pull-right"
         .col-md-12
           %table.table.table-striped.table-bordered.table-hover.fixedlayout
             %thead
