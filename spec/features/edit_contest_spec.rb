@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Editing contest' do
+feature 'Editing contest', js: true do
   given!(:contest) { create(:contest) }
   background do
     sign_in
@@ -20,8 +20,8 @@ feature 'Editing contest' do
     expect(page).to have_content 'Future shots'
   end
 
-  scenario "click add new competitor link", js: true do
-    click_link I18n.t(:add_competitor, scope: :contest)
+  scenario "click add new competitor link" do
+    click_on I18n.t(:add_competitor, scope: :contest)
     expect(page).to have_selector('.form-group .col-xs-2 .control-label',
       text: I18n.t('activerecord.attributes.contest.first_name'))
     within '.competitor-form' do

@@ -5,6 +5,12 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'simplecov'
 
+Capybara.javascript_driver = :webkit
+Capybara.configure do |config|
+  config.javascript_driver = :webkit
+  config.server_port = 3000
+end
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -34,6 +40,10 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
+  end
+
+  config.before(:each, js: true) do
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.after(:each) do
