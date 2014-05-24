@@ -26,6 +26,28 @@ describe "contests/show" do
     end
   end
 
+  context "for contest judges" do
+    it "displays judges heading" do
+      expect(page).to have_content t('activerecord.models.judge.other')
+    end
+
+    it "displays judges first name" do
+      expect(page).to have_content t('activerecord.attributes.shooter.last_name')
+    end
+
+    it "displays judges last name" do
+      expect(page).to have_content t('activerecord.attributes.shooter.last_name')
+    end
+
+    it "displays judges function" do
+      expect(page).to have_content t('activerecord.attributes.contest.function')
+    end
+  
+    it "displays judges license number" do
+      expect(page).to have_content t('activerecord.attributes.contest.license_number')
+    end
+  end
+
   context "for competitions list" do
     it "displays all competitions" do
       expect(page).to have_css(
