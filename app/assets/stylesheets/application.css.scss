@@ -24,6 +24,10 @@
   width: 66px;
 }
 
+table{
+  word-wrap: break-word;
+}
+
 th .desc {
   background-image: image-url("arrow_down.png");
 }

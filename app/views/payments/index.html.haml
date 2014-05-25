@@ -2,64 +2,72 @@
 .row
   .col-md-12
     %h2= t('payments.list_of_payments')
+
 %hr
 .row
   .col-md-12
     .panel.panel-default
       .panel-heading= t('payments.list_of_payments')
       .panel-body
-        .col-md-3.pull-right
-          = link_to t('payments.new_payment'), new_payment_path,
-            class: "btn btn-success pull-right"
-        = form_tag payments_path, method: :get, id: 'payments_search', class: "form-group" do
-          .col-md-3
-            = label_tag :search, t("actions.search")
-            = text_field_tag :search, params[:search],
-              placeholder: t('payments.first_last_description'), class: "form-control"
-          .col-md-3
-            = label_tag :amount, t('payments.amount')
-            = text_field_tag :amount_min, params[:price_min], class: "form-control"
-            %i= ' - '
-            = text_field_tag :amount_max, params[:price_max], class: "form-control"
-          .col-md-3
-            = label_tag :date, t('payments.payment_date')
-            = text_field_tag :date_min, params[:date_min],
-              'data-behaviour' => 'datepicker', class: "form-control"
-            %i= ' - '
-            = text_field_tag :date_max, params[:date_max],
-              'data-behaviour' => 'datepicker', class: "form-control"
-            %br
-          = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
-          = hidden_field_tag :direction, params[:direction]
-          = hidden_field_tag :sort, params[:sort]
-
-        .col-md-12
-          %table.table.table-striped.table-bordered.table-hover.fixedlayout
-            %thead
-              %tr
-                %th= sortable "date", t('payments.payment_date')
-                %th= sortable "description", t('payments.description')
-                %th= sortable "amount", t('payments.amount')
-                %th= t('payments.name_of_shooter')
-                %th{colspan: 3}= t('payments.actions')
-            %tbody
-              - @payments.each do |payment|
+        .row
+          .col-lg-12.col-md-12.col-sm-12.col-xs-12.pull-right
+            = link_to t('payments.new_payment'), new_payment_path,
+              class: "btn btn-success pull-right"
+          .col-md-9.col-sm-12
+            = form_tag payments_path, method: :get,
+              id: 'payments_search', class: "form-group" do
+              .row
+                .col-md-4.col-lg-3.margin-top
+                  = label_tag :search, t("actions.search")
+                  = text_field_tag :search, params[:search],
+                    placeholder: t('payments.first_last_description'), class: "form-control"
+                .col-sm-6.col-md-4.col-lg-3.margin-top
+                  = label_tag :amount, t('payments.amount')
+                  = text_field_tag :amount_min, params[:price_min], class: "form-control"
+                  %i= ' - '
+                  = text_field_tag :amount_max, params[:price_max], class: "form-control"
+                .col-sm-6.col-md-4.col-lg-3.margin-top
+                  = label_tag :date, t('payments.payment_date')
+                  = text_field_tag :date_min, params[:date_min],
+                    'data-behaviour' => 'datepicker', class: "form-control"
+                  %i= ' - '
+                  = text_field_tag :date_max, params[:date_max],
+                    'data-behaviour' => 'datepicker', class: "form-control"
+                  %br
+              .row
+                .col-md-4.col-lg-3
+                  = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
+                  = hidden_field_tag :direction, params[:direction]
+                  = hidden_field_tag :sort, params[:sort]
+        .row
+          .col-md-12
+            %table.table.table-striped.table-bordered.table-hover.fixedlayout
+              %thead
                 %tr
-                  %td= payment.date
-                  %td= link_to payment.description, payment
-                  %td= change_to_currency(payment.amount)
-                  %td= link_to payment.by, payment.shooter
-                  %td.text-center= link_to t('actions.edit'), edit_payment_path(payment),
-                    class: "btn btn-info btn-sm"
-                  %td.text-center= link_to t('actions.destroy'), payment,
-                    class: "btn btn-danger btn-sm",
-                    method: :delete,
-                    data: { confirm: t('actions.confirm') }
-                  - if payment.expired?
-                    %td.text-center= link_to I18n.t('payments.send'), payment,
-                      class: "btn btn-warning btn-sm",
-                      method: :post,
-                      data: { confirm: t('actions.confirm') }
-                  - else
-                    %td
-          = paginate @payments
+                  %th= sortable "date", t('payments.payment_date')
+                  %th= sortable "description", t('payments.description')
+                  %th= sortable "amount", t('payments.amount')
+                  %th= t('payments.name_of_shooter')
+                  %th.hidden-sm.hidden-xs{colspan: 3}= t('payments.actions')
+                  %th.hidden-md.hidden-lg= t('payments.actions')
+              %tbody
+                - @payments.each do |payment|
+                  %tr
+                    %td= payment.date
+                    %td= link_to payment.description, payment
+                    %td= change_to_currency(payment.amount)
+                    %td= link_to payment.by, payment.shooter
+                    %td.text-center
+                      - if payment.expired?
+                        = link_to I18n.t('payments.send'), payment,
+                        class: "btn btn-warning btn-sm",
+                        method: :post,
+                        data: { confirm: t('actions.confirm') }
+                    %td.text-center.hidden-sm.hidden-xs
+                      = link_to t('actions.edit'), edit_payment_path(payment),
+                        class: "btn btn-info btn-sm"
+                    %td.text-center.hidden-sm.hidden-xs
+                      = link_to t('actions.destroy'), payment,
+                        class: "btn btn-danger btn-sm", method: :delete,
+                        data: { confirm: t('actions.confirm') }
+            = paginate @payments
