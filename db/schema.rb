@@ -36,11 +36,6 @@ ActiveRecord::Schema.define(version: 20140521062230) do
     t.integer  "contest_id"
   end
 
-  create_table "competitions_competitors", force: true do |t|
-    t.integer "competition_id"
-    t.integer "competitor_id"
-  end
-
   create_table "competitors", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -134,18 +129,16 @@ ActiveRecord::Schema.define(version: 20140521062230) do
     t.boolean  "active",                default: true
   end
 
-  create_table "shot_lists", force: true do |t|
-    t.text     "shots"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "contest_id"
+  create_table "shootings", force: true do |t|
     t.integer  "competitor_id"
     t.integer  "competition_id"
+    t.text     "target"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "shot_lists", ["competition_id"], name: "index_shot_lists_on_competition_id", using: :btree
-  add_index "shot_lists", ["competitor_id"], name: "index_shot_lists_on_competitor_id", using: :btree
-  add_index "shot_lists", ["contest_id"], name: "index_shot_lists_on_contest_id", using: :btree
+  add_index "shootings", ["competition_id"], name: "index_shootings_on_competition_id", using: :btree
+  add_index "shootings", ["competitor_id"], name: "index_shootings_on_competitor_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

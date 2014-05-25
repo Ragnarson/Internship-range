@@ -1,5 +1,6 @@
 class CompetitionsController < ApplicationController
   before_action :contest
+  after_action :disable_garbage_collector, only: :edit
 
   def show
     @competition = @contest.competitions.find(params[:id])
@@ -44,11 +45,14 @@ class CompetitionsController < ApplicationController
 
   private
   def competition_params
-    params.require(:competition).permit(:name,
-      :classification, :number_of_shots, competitor_ids: [])
+    params.require(:competition).permit!
   end
 
   def contest
     @contest = Contest.find(params[:contest_id])
+  end
+
+  def disable_garbage_collector
+    GC.disable
   end
 end

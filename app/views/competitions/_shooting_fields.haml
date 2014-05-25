@@ -1,0 +1,8 @@
+= f.hidden_field :target
+
+.row-fluid
+  .form-group
+    .col-xs-2.control-label= "#{f.object.competitor.first_name} #{f.object.competitor.last_name}"
+    - build_fields f.object do |field|
+      .col-xs-1= f.text_field "#{field}".to_sym, class: "form-control"
+

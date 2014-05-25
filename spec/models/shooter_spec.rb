@@ -117,7 +117,7 @@ describe Shooter do
       it { expect(shooter.full_name).to eq('Adam Kowalski') }
     end
 
-    context 'when shooter first and last names are not exists' do
+    context 'when shooter first and last names do not exist' do
       before do
         shooter.first_name = nil
         shooter.last_name = nil
