@@ -4,6 +4,24 @@
 %h4= @contest.date
 .panel.panel-default
   .panel-heading
+    %strong= t('activerecord.models.judge.other')
+    %table.table
+      %thead
+        %tr
+          %th= t('activerecord.attributes.shooter.first_name')
+          %th= t('activerecord.attributes.shooter.last_name')
+          %th= t('activerecord.attributes.contest.function')
+          %th= t('activerecord.attributes.contest.license_number')
+      %tbody
+        - @contest.judges.each do |judge|
+          %tr
+            %th= judge.first_name
+            %th= judge.last_name
+            %th= judge.function
+            %th= judge.license_number
+
+.panel.panel-default
+  .panel-heading
     %strong= t('activerecord.attributes.contest.list_of_competitions')
   %table.table
     %thead
@@ -27,4 +45,4 @@
                 method: :delete,
                 data: { confirm: t('actions.confirm') }
 
-= link_to t('competitions.new_competition'), new_contest_competition_path(@contest)
+= link_to t('competitions.new_competition'), new_contest_competition_path(@contest), class: "btn btn-primary btn-sm"
