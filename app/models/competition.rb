@@ -1,6 +1,9 @@
 class Competition < ActiveRecord::Base
   belongs_to :contest
-  has_and_belongs_to_many :competitors
+  has_many :competitors, through: :shootings
+  has_many :shootings
+
+  accepts_nested_attributes_for :shootings, allow_destroy: true
 
   validates :name, presence: true
   validates :classification, presence: true

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize
+  before_action :enable_garbage_collector
   force_ssl unless Rails.env.development?
   helper_method :current_user, :signed_in?
   protect_from_forgery with: :exception
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
     session[:user_id].present?
+  end
+
+  def enable_garbage_collector
+    GC.enable
   end
 end

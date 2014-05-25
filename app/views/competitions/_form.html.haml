@@ -30,6 +30,12 @@
         .form-group
           = f.label :classification, class: "col-xs-4 control-label"
           .col-xs-4
-            = f.select(:classification, options_for_select(['pcz10', 'psp10']))
+            = f.select(:classification, options_for_select(['pcz10', 'psp10']), class: "form-control")
+        - if defined?(edit) && edit
+          .form-group
+            .col-xs-2.text-right= f.label :competitor_name
+            .col-xs-2.text-left= f.label :record
+          = f.fields_for :shootings do |builder|
+            = render 'shooting_fields', f: builder
         .button-centered
           = f.submit class: "btn btn-primary"
