@@ -6,9 +6,12 @@ feature 'Contest' do
 
     visit new_contest_path
 
-    fill_in I18n.t('activerecord.attributes.contest.name'), 
+    expect(page).to have_link I18n.t(:add_competitor, scope: :contest)
+    expect(page).to have_link I18n.t(:add_judge, scope: :contest)
+
+    fill_in I18n.t('activerecord.attributes.contest.name'),
     with: 'strzał'
-    fill_in I18n.t('activerecord.attributes.contest.date'), 
+    fill_in I18n.t('activerecord.attributes.contest.date'),
     with: '2014-04-06'
 
     click_button I18n.t('helpers.submit.create', model: I18n.t('activerecord.models.contest'))

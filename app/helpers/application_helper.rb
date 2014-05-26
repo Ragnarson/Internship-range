@@ -10,7 +10,7 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", f: builder)
     end
     onclick = "Contests.add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\");return false;"
-    link_to name, "#", onclick: onclick
+    link_to name, "#", class: "btn btn-success pull-left", onclick: onclick
   end
 
   def sortable(column_name, link_title)
