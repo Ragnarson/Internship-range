@@ -68,6 +68,7 @@ pl:
       competition:
         name: Nazwa
         number_of_shots: Liczba strzałów
+        number_of_competitors: Liczba zawodników
         classification: Typ
         competitor_name: Imię i nazwisko
         record: Wynik

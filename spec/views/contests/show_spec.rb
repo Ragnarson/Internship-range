@@ -42,7 +42,7 @@ describe "contests/show" do
     it "displays judges function" do
       expect(page).to have_content t('activerecord.attributes.contest.function')
     end
-  
+
     it "displays judges license number" do
       expect(page).to have_content t('activerecord.attributes.contest.license_number')
     end
@@ -68,9 +68,15 @@ describe "contests/show" do
         )
       end
 
+      it "number of competitors" do
+        expect(page).to have_selector(
+          "tbody tr:nth-of-type(1) td:nth-of-type(3)", text:'0'
+        )
+      end
+
       it "number of shots" do
         expect(page).to have_selector(
-          "tbody tr:nth-of-type(1) td:nth-of-type(3)", text:'10'
+          "tbody tr:nth-of-type(1) td:nth-of-type(4)", text:'10'
         )
       end
 
