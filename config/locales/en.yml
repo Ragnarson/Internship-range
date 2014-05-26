@@ -59,6 +59,8 @@ en:
     success_create: "Successfully created %{model}"
     success_edit: "Successfully edited %{model}"
     success_destroy: "Successfully deleted %{model}"
+    success_archivate: "Successfuly archived %{model}"
+    success_activate: "Successfuly restored %{model}"
     contest: contest
     payment: payment
     competition: competition

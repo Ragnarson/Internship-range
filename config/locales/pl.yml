@@ -20,6 +20,7 @@ pl:
       shooter: Strzelec
       address: Adres
       payment: płatność
+      contestarchive: Archiwum Zawodów
     attributes:
       user:
         email: e-mail
@@ -98,6 +99,8 @@ pl:
     success_create: "Pomyślnie utworzono %{model}"
     success_edit: "Pomyślnie zaktualizowano %{model}"
     success_destroy: "Pomyślnie usunięto %{model}"
+    success_archivate: "Pomyślnie zarchiwizowano %{model}"
+    success_activate: "Pomyślnie przywrócono %{model}"
     contest: zawody
     competition: konkurencję
     competitor: zawodnika
@@ -108,6 +111,9 @@ pl:
     edit: Edytuj
     show: Pokaż
     destroy: Usuń
+    back: Powrót
+    archivate: Archiwizuj
+    activate: Aktywuj
     confirm: Czy na pewno?
     actions: Akcje
     search: Szukaj

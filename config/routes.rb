@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :contests do
     resources :competitions, except: [:index]
+    collection { get 'archive' }
+    member do
+      post 'archivate'
+      post 'activate'
+    end
   end
   resources :payments
   resources :shooters

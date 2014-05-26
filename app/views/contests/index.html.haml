@@ -13,7 +13,7 @@
             = link_to "#{t('contest.actions.new')} #{t('activerecord.models.contest')}",
               new_contest_path, class: 'btn btn-success btn pull-right'
           .col-lg-6.col-md-9.col-sm-9.col-xs-12.margin-top
-            = form_tag contests_path, method: :get, id: 'contests_search', class: "form-group" do
+            = form_tag current_url, method: :get, id: 'contests_search', class: "form-group" do
               .input-group.form-group
                 = text_field_tag :search, params[:search],
                   placeholder: t('activerecord.attributes.contest.name'), class: "form-control"
@@ -28,18 +28,35 @@
                 %tr
                   %th= sortable "name", t('activerecord.attributes.contest.name')
                   %th= sortable "date", t('activerecord.attributes.contest.date')
-                  %th.hidden-sm.hidden-xs(colspan=2)= t('contest.actions.actions')
+                  %th.hidden-sm.hidden-xs(colspan=3)= t('contest.actions.actions')
               %tbody
                 - @contests.each do |contest|
                   %tr
-                    %td= link_to contest.name, contest
+                    %td= link_to contest.name, contest_path(contest)
                     %td= contest.date
                     %td.hidden-sm.hidden-xs.text-center
                       = link_to t('contest.actions.edit'),
                         edit_contest_path(contest),
                         class: "btn btn-info btn-sm hidden-sm hidden-xs"
                     %td.hidden-sm.hidden-xs.text-center
-                      = link_to t('contest.actions.destroy'), contest,
+                      = link_to t('contest.actions.destroy'),
+                        contest_path(contest),
                         method: :delete, class: "btn btn-danger btn-sm",
                         data: { confirm: I18n.t('actions.confirm') }
+                    - if !contest.archived?
+                      %td.hidden-sm.hidden-xs.text-center
+                        = link_to t('actions.archivate'),
+                          archivate_contest_path(contest),
+                          class: 'btn btn-default btn-sm hidden-sm hidden-xs',
+                          method: :post
+                    - else
+                      %td.hidden-sm.hidden-xs.text-center
+                        = link_to t('actions.activate'),
+                          activate_contest_path(contest),
+                          class: 'btn btn-default btn-sm hidden-sm hidden-xs',
+                          method: :post
             = paginate @contests
+            %p.pull-right= link_to t('activerecord.models.contestarchive'),
+              archive_contests_url unless current_url == archive_contests_url
+            %p= link_to t('actions.back'),
+              contests_path unless current_url == contests_path

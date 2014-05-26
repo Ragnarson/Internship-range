@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521062230) do
+ActiveRecord::Schema.define(version: 20140526135314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140521062230) do
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "active",     default: true
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -119,8 +120,6 @@ ActiveRecord::Schema.define(version: 20140521062230) do
     t.boolean  "rifle"
     t.boolean  "shotgun"
     t.boolean  "collectors_permission"
-    t.integer  "address_id"
-    t.integer  "second_address_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"

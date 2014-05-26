@@ -1,9 +1,10 @@
 class ContestsController < ApplicationController
-  before_action :set_contest, only: [:show, :edit, :update, :destroy]
+  before_action :set_contest, only: [:show, :edit, :update, :destroy, :archivate]
   helper_method :sort_direction, :sort_column
 
   def index
-    @contests = Contest.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
+    @contests = Contest.search(params[:search])
+      .order(sort_column + ' ' + sort_direction).page(params[:page])
   end
 
   def show
@@ -41,17 +42,35 @@ class ContestsController < ApplicationController
       notice: t('flash.success_destroy', model: t('flash.contest'))
   end
 
+  def archive
+    @contests = ContestsArchive.search(params[:search])
+      .order(sort_column + ' ' + sort_direction).page(params[:page])
+    render :index
+  end
+
+  def archivate
+    @contest.archivate
+    redirect_to contests_url,
+      notice: t('flash.success_archivate', model: t('flash.contest'))
+  end
+
+  def activate
+    ContestsArchive.find(params[:id]).activate
+    redirect_to contests_url,
+      notice: t('flash.success_activate', model: t('flash.contest'))
+  end
+
   private
   def set_contest
     @contest = Contest.find(params[:id])
   end
 
   def sort_column
-    Contest.column_names.include?(params[:sort]) ? params[:sort] : "date"
+    Contest.column_names.include?(params[:sort]) ? params[:sort] : 'date'
   end
 
   def sort_direction
-    ["asc", "desc"].include?(params[:direction]) ? params[:direction] : "asc"
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
   end
 
   def contest_params

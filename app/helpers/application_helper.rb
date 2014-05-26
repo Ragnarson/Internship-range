@@ -26,4 +26,8 @@ module ApplicationHelper
   def display_for_visible(attribute, placeholder_on_blank='-')
     attribute.blank? ? placeholder_on_blank : attribute
   end
+
+  def current_url
+    url_for only_path: false
+  end
 end
