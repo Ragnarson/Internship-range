@@ -28,15 +28,17 @@ describe Shooting do
   end
 
   describe '#wipe_virtual_attributes' do
-    before { shooting.save }
+    before { shooting.send(:wipe_virtual_attributes) }
 
-    it { should_not respond_to(:shot_0) }
-    it { should_not respond_to(:shot_4) }
+    it 'clears the virtual_attributes' do
+      expect(shooting).to_not respond_to(:shot_0)
+      expect(shooting).to_not respond_to(:shot_4)
+    end
   end
 
   describe '#virtual_attributes' do
     it 'matches the number of target values' do
-      expect(shooting.virtual_attributes.count).to eq shooting.target.length
+      expect(shooting.send(:virtual_attributes).count).to eq shooting.target.length
     end
   end
 end

@@ -5,7 +5,6 @@ class Shooting < ActiveRecord::Base
 
   before_create :assign_target
   before_save :implode_target
-  after_save :wipe_virtual_attributes
 
   serialize :target, Array
 
@@ -13,16 +12,14 @@ class Shooting < ActiveRecord::Base
   validates :competition_id, presence: true
 
   def explode_target
+    self.send(:wipe_virtual_attributes)
+
     number_of_fields.times do |index|
       self.class.send(:define_method, "shot_#{index}") { self.target[index] }
       self.class.send(:attr_writer, "shot_#{index}")
     end
 
-    self
-  end
-
-  def virtual_attributes
-    self.class.instance_methods(false).grep(/\A(shot_)\d{1,2}\z/)
+    self.send(:virtual_attributes)
   end
 
   private
@@ -35,6 +32,10 @@ class Shooting < ActiveRecord::Base
     self.methods.grep(/\A(shot_)\d{1,2}\z/).each do |method_name|
       self.target << self.instance_variable_get("@#{method_name}")
     end
+  end
+
+  def virtual_attributes
+    self.class.instance_methods(false).grep(/\A(shot_)\d{1,2}\z/)
   end
 
   def wipe_virtual_attributes
