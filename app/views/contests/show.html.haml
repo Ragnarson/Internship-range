@@ -11,20 +11,20 @@
 .panel.panel-default
   .panel-heading
     %strong= t('activerecord.models.judge.other')
-    %table.table
-      %thead
+  %table.table
+    %thead
+      %tr
+        %th= t('activerecord.attributes.shooter.first_name')
+        %th= t('activerecord.attributes.shooter.last_name')
+        %th= t('activerecord.attributes.contest.function')
+        %th= t('activerecord.attributes.contest.license_number')
+    %tbody
+      - @contest.judges.each do |judge|
         %tr
-          %th= t('activerecord.attributes.shooter.first_name')
-          %th= t('activerecord.attributes.shooter.last_name')
-          %th= t('activerecord.attributes.contest.function')
-          %th= t('activerecord.attributes.contest.license_number')
-      %tbody
-        - @contest.judges.each do |judge|
-          %tr
-            %th= judge.first_name
-            %th= judge.last_name
-            %th= judge.function
-            %th= judge.license_number
+          %th= judge.first_name
+          %th= judge.last_name
+          %th= judge.function
+          %th= judge.license_number
 
 .panel.panel-default
   .panel-heading
