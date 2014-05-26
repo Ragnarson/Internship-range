@@ -34,6 +34,7 @@
       %tr
         %th= t('activerecord.attributes.competition.name')
         %th= t('activerecord.attributes.competition.classification')
+        %th= t('activerecord.attributes.competition.number_of_competitors')
         %th= t('activerecord.attributes.competition.number_of_shots')
         %th{colspan: 2}= t(:actions, scope: :actions)
     %tbody
@@ -41,9 +42,10 @@
         %tr
           %td= link_to competition.name, contest_competition_path(@contest, competition)
           %td= competition.classification
+          %td= competition.competitors.size
           %td= competition.number_of_shots
           %td= link_to t(:edit),
-                edit_contest_competition_path(@contest, competition), 
+                edit_contest_competition_path(@contest, competition),
                 class: "btn btn-info btn-sm"
           %td= link_to t(:destroy),
                 contest_competition_path(@contest, competition),

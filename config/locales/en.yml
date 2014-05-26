@@ -20,6 +20,13 @@ en:
         function: Function
         license_number: License number
         delete_judge: Delete judge
+      competition:
+        name: Name
+        number_of_shots: Number of shots
+        number_of_competitors: Number of competitors
+        classification: Type
+        competitor_name: Name and Surname
+        record: Record
       shooter:
         first_name: First name
         last_name: Last name
