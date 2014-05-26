@@ -7,6 +7,10 @@ en:
       payment: payment
       judge: judge
     attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Confirm password
       contest:
         list_of_competitions: List of competitions
         name: Name
@@ -136,3 +140,7 @@ en:
   password: 'Password'
   signin: 'Sign In'
   welcome: 'Welcome!'
+  user:
+    user: user
+    new: Add a new user
+    list: List of users

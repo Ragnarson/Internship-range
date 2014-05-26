@@ -22,8 +22,9 @@ pl:
       payment: płatność
     attributes:
       user:
-        email: e-mail
-        password: hasło
+        email: Email
+        password: Hasło
+        password_confirmation: Potwierdź hasło
       shooter:
         first_name: Imię
         last_name: Nazwisko
@@ -277,6 +278,9 @@ pl:
       shooter:
         create: Utwórz Strzelca
         update: Aktualizuj Strzelca
+      user:
+        create: Utwórz użytkownika
+        update: Aktualizuj użytkownika
     label:
       shooter:
         shooter_heading: 'Strzelec'
@@ -406,3 +410,7 @@ pl:
   competitions:
     edit_competition: Dane konkurencji
     new_competition: Dodaj konkurencję
+  user:
+    user: użytkownika
+    new: Dodaj użytkownika
+    list: Lista użytkowników

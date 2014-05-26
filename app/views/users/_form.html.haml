@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading= t('activerecord.models.user.one').capitalize
+  .panel-body
+    = form_for(@user, html: { class: 'form-horizontal', role: 'form' }) do |f|
+      - if @user.errors.any?
+        .alert.alert-danger
+          %h3= t('errors.template.body')
+          %ul
+            - @user.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        =f.label :email, class: 'col-sm-3 control-label'
+        .col-sm-8= f.text_field :email, class: 'form-control', required: true
+      .form-group
+        =f.label :password, class: 'col-sm-3 control-label'
+        .col-sm-8= f.password_field :password, class: 'form-control', required: true
+      .form-group
+        =f.label :password_confirmation, class: 'col-sm-3 control-label'
+        .col-sm-8= f.password_field :password_confirmation, class: 'form-control', required: true
+      .form-group
+        .col-sm-offset-3.col-sm-9
+          =f.submit class: 'btn btn-primary'
