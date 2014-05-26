@@ -1,12 +1,16 @@
 = content_for :title, "#{t('club_name')} - #{t('activerecord.models.contest').capitalize}"
 .row
   .col-md-12
-    %h2= t('activerecord.models.contest').capitalize
+    %h2
+      = t('activerecord.models.contest').capitalize if current_url? contests_url
+      = t('activerecord.models.contestarchive').capitalize if current_url? archive_contests_url
 %hr
 .row
   .col-md-12
     .panel.panel-default
-      .panel-heading= t('activerecord.models.contest').capitalize
+      .panel-heading
+        = t('activerecord.models.contest').capitalize if current_url? contests_url
+        = t('activerecord.models.contestarchive').capitalize if current_url? archive_contests_url
       .panel-body
         .row
           .col-md-3.col-sm-3.col-xs-12.pull-right.margin-top
@@ -57,6 +61,6 @@
                           method: :post
             = paginate @contests
             %p.pull-right= link_to t('activerecord.models.contestarchive'),
-              archive_contests_url unless current_url == archive_contests_url
+              archive_contests_url unless current_url? archive_contests_url
             %p= link_to t('actions.back'),
-              contests_path unless current_url == contests_path
+              contests_path unless current_url? contests_path

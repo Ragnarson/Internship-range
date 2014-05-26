@@ -1,4 +1,5 @@
 class Contest < ActiveRecord::Base
+  before_save :default_active_value
   has_many :competitions, dependent: :destroy
   has_many :competitors, dependent: :destroy
   has_many :judgements, dependent: :destroy
@@ -30,6 +31,9 @@ class Contest < ActiveRecord::Base
   end
 
   private
+  def default_active_value
+    self.active ||= true
+  end
 
   def date_is_date?
     unless date.is_a?(Date)
