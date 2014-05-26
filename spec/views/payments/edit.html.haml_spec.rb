@@ -24,7 +24,6 @@ describe 'payments/edit' do
       find(:xpath, '//input[@id=\'shooter-id\']').set other_shooter.id
       fill_in 'payment_amount', with: other_payment.amount
       fill_in 'payment_description', with: other_payment.amount
-      fill_in 'payment_expiry_date', with: other_payment.expiry_date
 
       click_button 'payment_submit'
 

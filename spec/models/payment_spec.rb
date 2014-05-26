@@ -6,7 +6,6 @@ describe Payment do
   it { should respond_to(:description) }
   it { should respond_to(:amount) }
   it { should respond_to(:date) }
-  it { should respond_to(:expiry_date) }
   it { should respond_to(:shooter) }
 
   it { should be_valid }
@@ -41,16 +40,6 @@ describe Payment do
     it { should_not be_valid }
   end
 
-  context 'when expiry date is not present' do
-    before { payment.expiry_date = '' }
-    it { should_not be_valid }
-  end
-
-  context 'when expiry date is not a date' do
-    before { payment.expiry_date = 'bbbb' }
-    it { should_not be_valid }
-  end
-
   describe 'by method' do
     context 'when first and last names are exist' do
       before do
@@ -80,19 +69,4 @@ describe Payment do
       it { expect(payment.by).to be_nil }
     end
   end
-
-  describe 'expired? method' do
-    let(:shooter) { build(:shooter) }
-    let(:expired_payment) { build(:other_payment, shooter: shooter) }
-    let(:valid_payment) { build(:payment, shooter: shooter) }
-
-    context 'when expiry_date is less than 7 days' do
-      it { expect(expired_payment.expired?).to be true }
-    end
-
-    context 'when expiry_date is more than 7 days' do
-      it { expect(valid_payment.expired?).to be false }
-    end
-  end
 end
-

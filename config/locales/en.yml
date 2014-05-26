@@ -128,9 +128,7 @@ en:
     description: "Description"
     notification: "Notification"
     delivery: "Delivering notification"
-    payment_expiry_date: "Payment expiry date"
     expire_at: "Your payment will expire at:"
-    remember: "Please remember to make a payment."
     first_last_description: "First name, last name or description"
   email: 'Email'
   password: 'Password'

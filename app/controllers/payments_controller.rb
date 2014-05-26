@@ -52,13 +52,6 @@ class PaymentsController < ApplicationController
         model: I18n.t('activerecord.models.payment'))
   end
 
-  def notify
-    ShooterMailer.delay(queue: 'payments', priority: 20,
-      run_at: 15.seconds.from_now).payment(payment)
-    redirect_to payments_path,
-      notice: I18n.t('payments.delivery')
-  end
-
   private
   def payment
     @payment = Payment.find(params[:id])
@@ -66,7 +59,7 @@ class PaymentsController < ApplicationController
 
   def payment_params
     params.require(:payment).permit(:description, :amount, :date,
-      :shooter_id, :expiry_date)
+      :shooter_id)
   end
 
   def sort_column

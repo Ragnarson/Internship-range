@@ -1,10 +1,5 @@
 = content_for :title, "#{t('club_name')} - #{t('payments.one_payment')}"
 .btn-group.pull-right
-  - if @payment.expired?
-    = link_to I18n.t('payments.send'), @payment,
-    class: "btn btn-warning btn-sm",
-    method: :post,
-    data: { confirm: t('actions.confirm') }
   = link_to t('actions.edit'), edit_payment_path(@payment),
     class: "btn btn-info btn-sm"
   = link_to t('actions.destroy'), @payment,
@@ -34,7 +29,3 @@
     %p
       %strong= t('payments.payment_date')
       = @payment.date
-      %p
-      %strong= t('payments.payment_expiry_date')
-      = @payment.expiry_date
-

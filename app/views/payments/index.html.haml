@@ -48,7 +48,7 @@
                   %th= sortable "description", t('payments.description')
                   %th= sortable "amount", t('payments.amount')
                   %th= t('payments.name_of_shooter')
-                  %th.hidden-sm.hidden-xs{colspan: 3}= t('payments.actions')
+                  %th.hidden-sm.hidden-xs{colspan: 2}= t('payments.actions')
                   %th.hidden-md.hidden-lg= t('payments.actions')
               %tbody
                 - @payments.each do |payment|
@@ -57,12 +57,6 @@
                     %td= link_to payment.description, payment
                     %td= change_to_currency(payment.amount)
                     %td= link_to payment.by, payment.shooter
-                    %td.text-center
-                      - if payment.expired?
-                        = link_to I18n.t('payments.send'), payment,
-                        class: "btn btn-warning btn-sm",
-                        method: :post,
-                        data: { confirm: t('actions.confirm') }
                     %td.text-center.hidden-sm.hidden-xs
                       = link_to t('actions.edit'), edit_payment_path(payment),
                         class: "btn btn-info btn-sm"
