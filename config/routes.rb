@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :payments
   resources :shooters
   resources :sessions, only: [:new, :create, :destroy]
-  root 'contests#index'
+  root 'shooters#index'
   get 'names.json', to: 'shooters#names'
   post 'payments(/:id)', to: 'payments#notify'
   match '/signin', to: 'sessions#new', via: :get, as: 'signin'
