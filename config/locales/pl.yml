@@ -374,8 +374,6 @@ pl:
     payer_details: "Dane wpłacającego"
     payer_first_name: "Imię"
     payer_last_name: "Nazwisko"
-    payment_date: "Data płatności"
-    payment_expiry_date: "Ważna do dnia"
     amount: "Kwota"
     description: "Opis"
     actions: "Akcje"
@@ -383,7 +381,6 @@ pl:
     send: "Przypomnij"
     notification: "Powiadomienie"
     expire_at: "Twoja płatność jest ważna do:"
-    remember: "Pamiętaj o dokonaniu nowej wpłaty."
     first_last_description: "Imię, nazwisko lub opis"
   shooters:
     list_of_shooters: "Lista strzelców"

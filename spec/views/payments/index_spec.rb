@@ -4,7 +4,6 @@ describe 'payments/index' do
   subject { page }
   let!(:shooter) { create(:shooter) }
   let!(:resource) { create(:other_payment, shooter: shooter) }
-  let(:send_notification) { -> { click_link I18n.t('payments.send') } }
   before(:each) do
     sign_in
     visit payments_path
@@ -34,16 +33,6 @@ describe 'payments/index' do
 
   context 'contains link to destroy payment' do
     it { expect(page).to have_link(I18n.t('actions.destroy')) }
-  end
-
-  context 'if expired? is true' do
-    it 'contains link to send notification' do
-      expect(page).to have_link(I18n.t('payments.send'))
-    end
-
-    it 'admin can send notification to shooter' do
-      expect(send_notification).to change(Delayed::Job, :count).by(1)
-    end
   end
 
   describe '.search' do
@@ -457,4 +446,3 @@ describe 'payments/index' do
     end
   end
 end
-

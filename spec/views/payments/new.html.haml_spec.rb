@@ -6,7 +6,7 @@ describe 'payments/new' do
     sign_in
     visit new_payment_path
   end
-  %w(shooter-id payment_amount payment_description payment_date payment_expiry_date).each do |item|
+  %w(shooter-id payment_amount payment_description payment_date).each do |item|
     it "displays input field for #{item} attribute" do
       @payment = payment
       render
@@ -24,7 +24,6 @@ describe 'payments/new' do
       fill_in 'payment_amount', with: payment.amount
       fill_in 'payment_description', with: payment.amount
       fill_in 'payment_date', with: payment.date
-      fill_in 'payment_expiry_date', with: payment.expiry_date
 
       click_button 'payment_submit'
 
