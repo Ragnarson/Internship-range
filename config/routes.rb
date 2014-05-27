@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :contests do
     resources :competitions, except: [:index]
   end
+  resources :users
   resources :payments
   resources :shooters
   resources :sessions, only: [:new, :create, :destroy]

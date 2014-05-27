@@ -19,3 +19,6 @@
         = link_to '#' do
           %i.glyphicon.glyphicon-cog
           =t('mainmenu.admin_panel')
+        %ul.nav.nav-second-level
+          %li
+            =link_to t('user.list'), users_path
