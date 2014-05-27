@@ -44,12 +44,11 @@
             %table.table.table-striped.table-bordered.table-hover.fixedlayout
               %thead
                 %tr
-                  %th= sortable "date", t('payments.payment_date')
-                  %th= sortable "description", t('payments.description')
-                  %th= sortable "amount", t('payments.amount')
-                  %th= t('payments.name_of_shooter')
-                  %th.hidden-sm.hidden-xs{colspan: 2}= t('payments.actions')
-                  %th.hidden-md.hidden-lg= t('payments.actions')
+                  %th.col-md-3= sortable "date", t('payments.payment_date')
+                  %th.col-md-3= sortable "description", t('payments.description')
+                  %th.col-md-2= sortable "amount", t('payments.amount')
+                  %th.col-md-4= t('payments.name_of_shooter')
+                  %th.col-md-2.hidden-sm.hidden-xs= t('payments.actions')
               %tbody
                 - @payments.each do |payment|
                   %tr
@@ -57,10 +56,9 @@
                     %td= link_to payment.description, payment
                     %td= change_to_currency(payment.amount)
                     %td= link_to payment.by, payment.shooter
-                    %td.text-center.hidden-sm.hidden-xs
+                    %td.text-center.hidden-sm.hidden-xs.col-md-2.btn-group
                       = link_to t('actions.edit'), edit_payment_path(payment),
                         class: "btn btn-info btn-sm"
-                    %td.text-center.hidden-sm.hidden-xs
                       = link_to t('actions.destroy'), payment,
                         class: "btn btn-danger btn-sm", method: :delete,
                         data: { confirm: t('actions.confirm') }
