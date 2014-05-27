@@ -1,7 +1,7 @@
 class Competitor < ActiveRecord::Base
   belongs_to :contest
   has_many :competitions, through: :shootings
-  has_many :shootings
+  has_many :shootings, dependent: :destroy
 
   validates :first_name, presence: true
   validates :last_name, presence: true

@@ -1,22 +1,29 @@
-.form-group
-  .col-xs-2
-    = f.text_field :first_name, class: "form-control", id: "first_name",
-      placeholder: t('activerecord.attributes.contest.first_name'),
-      required: true
-  .col-xs-2
-    = f.text_field :last_name, class: "form-control",
-      placeholder: t('activerecord.attributes.contest.last_name'),
-      required: true
-  .col-xs-2
-    = f.text_field :date_of_birth, 'data-behaviour_birth' => 'datepicker',
-      type: "competitor[date_of_birth]", placeholder: current_date,
-      class: "form-control", required: true
-  .col-xs-2
-    = f.text_field :club, class: "form-control",
-      placeholder: t('activerecord.attributes.contest.club'),
-      required: true
-  .col-xs-3
-    = f.collection_select :competition_ids, @contest.competitions, :id, :name,
-      { include_blank: false }, { multiple: true, size: 1, class: "form-control" }
-  .col-xs-1
-    = f.check_box :pk, class: "checkbox"
+%fieldset
+  .form-group
+    .col-xs-2
+      = f.text_field :first_name, class: "form-control", id: "first_name",
+        placeholder: t('activerecord.attributes.contest.first_name'),
+        required: true
+    .col-xs-2
+      = f.text_field :last_name, class: "form-control",
+        placeholder: t('activerecord.attributes.contest.last_name'),
+        required: true
+    .col-xs-2
+      = f.text_field :date_of_birth, 'data-behaviour_birth' => 'datepicker',
+        type: "competitor[date_of_birth]", placeholder: current_date,
+        class: "form-control", required: true
+    .col-xs-2
+      = f.text_field :club, class: "form-control",
+        placeholder: t('activerecord.attributes.contest.club'),
+        required: true
+    .col-xs-1
+      = f.check_box :pk, class: "checkbox"
+    .col-xs-1
+      = f.hidden_field :_destroy
+      = link_to t('activerecord.attributes.contest.delete_competitor'), '#', 
+        class: "remove_fields btn btn-danger"
+  .form-group
+    .col-xs-12
+      = f.collection_check_boxes(:competition_ids, 
+        @contest.competitions, :id, :name) { |b| b.label(class: "checkbox-inline", 
+        f: "f") { b.text + b.check_box(class: "control-label") } }

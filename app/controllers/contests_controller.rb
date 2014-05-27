@@ -57,7 +57,7 @@ class ContestsController < ApplicationController
   def contest_params
     params.require(:contest).permit(:name, :date,
       competitors_attributes: [:id, :first_name, :last_name,
-      :date_of_birth, :club, :pk, competition_ids: []],
+      :date_of_birth, :club, :_destroy, :pk, competition_ids: []],
       judges_attributes: [:id, :first_name, :last_name,
       :function, :license_number, :_destroy]
     )
