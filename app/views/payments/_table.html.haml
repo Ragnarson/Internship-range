@@ -1,0 +1,25 @@
+%table.table.table-striped.table-bordered.table-hover.fixedlayout#payments_table
+  %thead
+    %tr
+      %th.col-md-3= sortable "date", t('payments.payment_date'), sort_column, sort_direction
+      %th.col-md-3= sortable "description", t('payments.description'), sort_column, sort_direction
+      %th.col-md-2= sortable "amount", t('payments.amount'), sort_column, sort_direction
+      - if shooter_in_table
+        %th.col-md-4= sortable "shooter_id", t('payments.name_of_shooter'), sort_column, sort_direction
+      %th.col-md-2.hidden-sm.hidden-xs= t('payments.actions')
+  %tbody
+    - @payments.each do |payment|
+      %tr
+        %td= payment.date
+        %td= link_to payment.description, payment
+        %td= change_to_currency(payment.amount)
+        - if shooter_in_table
+          %td= link_to payment.by, payment.shooter
+        %td.text-center.hidden-sm.hidden-xs
+          .btn-group
+            = link_to t('actions.edit'), edit_payment_path(payment),
+              class: "btn btn-info btn-sm"
+            = link_to t('actions.destroy'), payment,
+              class: "btn btn-danger btn-sm", method: :delete,
+              data: { confirm: t('actions.confirm') }
+= paginate @payments

@@ -1,6 +1,6 @@
 class ShootersController < ApplicationController
   before_action :shooter, only: [:show, :edit, :destroy, :update]
-  helper_method :sort_direction, :sort_column
+  helper_method :sort_direction, :sort_column, :payments_sort_direction, :payments_sort_column
 
   def index
     @shooters = Shooter.active.search(params[:search])
@@ -12,6 +12,9 @@ class ShootersController < ApplicationController
   end
 
   def show
+    @payment = Payment.new
+    @payments = @shooter.payments.order(payments_sort_column + ' ' + payments_sort_direction).page(params[:page])
+    store_controller
   end
 
   def new
@@ -66,14 +69,6 @@ class ShootersController < ApplicationController
     @shooter = Shooter.find(params[:id])
   end
 
-  def sort_column
-    Shooter.column_names.include?(params[:sort]) ? params[:sort] : 'last_name'
-  end
-
-  def sort_direction
-    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
-  end
-
   def permitted_shooter
     params.require(:shooter).permit(:first_name, :last_name, :pesel, :phone,
     :email, :resolution_number, :license_number, :judge_license_number,
@@ -84,5 +79,21 @@ class ShootersController < ApplicationController
 
   def build_addresses_for_shooter(shooter)
     (2 - shooter.addresses.length).times { shooter.addresses.build }
+  end
+
+  def sort_column
+    Shooter.column_names.include?(params[:sort]) ? params[:sort] : 'last_name'
+  end
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+  def payments_sort_column
+    Payment.column_names.include?(params[:sort]) ? params[:sort] : 'date'
+  end
+
+  def payments_sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction] : 'desc'
   end
 end

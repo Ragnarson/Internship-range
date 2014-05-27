@@ -3,14 +3,25 @@ FactoryGirl.define do
     first_name 'Firstname'
     last_name 'Lastname'
     email 'foobar@example.com'
-    date_of_birth '2010-10-10'.to_date
+    date_of_birth 20.years.ago
     pesel '22031304231'
     initialize_with { Shooter.find_or_initialize_by(pesel: pesel) }
-    joined_date '2010-10-10'.to_date
+    joined_date 3.years.ago
+    active true
     after(:build) do |shooter, evaluator|
       shooter.addresses << build_list(:address, 1, shooter: nil)
     end
-    active true
+
+    factory :extended do
+      phone '123456789'
+      resolution_number '12345'
+      license_number '12345'
+      sport_permission true
+      handgun true
+      rifle true
+      collectors_permission false
+      judge_license_number '12345'
+    end
   end
 
   factory :other_shooter, class: Shooter do
@@ -21,7 +32,7 @@ FactoryGirl.define do
     pesel '33031304242'
     initialize_with { Shooter.find_or_initialize_by(pesel: pesel) }
     joined_date '2010-11-11'.to_date
-    after(:build) do |shooter, evaluator|
+    after(:build) do |shooter|
       shooter.addresses << build_list(:address, 1, shooter: nil)
     end
   end
