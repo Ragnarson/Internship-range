@@ -1,7 +1,7 @@
-= content_for :title, "#{club_name} - #{t('activerecord.models.contest').capitalize}"
+= content_for :title, "#{t('club_name')} - #{t('contest.archive').capitalize}"
 .row
   .col-md-12
-    %h2= t('activerecord.models.contest').capitalize
+    %h2= t('contest.archive').capitalize
 %hr
 .row
   .col-md-12
@@ -11,12 +11,12 @@
         .row
           .col-md-7.col-sm-12.col-xs-12.pull-right
             .btn-group.pull-right.margin-top
-              = link_to t('contest.archive'),
-                contests_archive_url, class: 'btn btn-warning'
+              = link_to t('contest.future'),
+                contests_path, class: 'btn btn-warning'
               = link_to "#{t('contest.actions.new')} #{t('activerecord.models.contest')}",
                 new_contest_path, class: 'btn btn-success'
           .col-md-5.col-sm-12.col-xs-12.margin-top
-            = form_tag contests_path, method: :get, id: 'contests_search', class: "form-group" do
+            = form_tag contests_archive_url, method: :get, id: 'contests_search', class: "form-group" do
               .input-group.form-group
                 = text_field_tag :search, params[:search],
                   placeholder: t('activerecord.attributes.contest.name'), class: "form-control"

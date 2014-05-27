@@ -19,4 +19,25 @@ describe ContestsController do
   it_behaves_like "POST create"
   it_behaves_like "PUT update"
   it_behaves_like "DELETE destroy"
+
+  describe "GET #index archive" do
+    let!(:other_contest) { create(:other_contest) }
+
+    before do
+      sign_in
+      get :index_archive
+    end
+
+    it "responds successfully with an HTTP 200 status code" do
+      expect(response).to be_ok
+    end
+
+    it "renders the index template" do
+      expect(response).to render_template("index_archive")
+    end
+
+    it "loads all of the resources into @resources" do
+      expect(assigns(:contests)).to eq([other_contest])
+    end
+  end
 end

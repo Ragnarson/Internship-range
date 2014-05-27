@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe "Shooter index" do
-  subject { page }
-  let!(:app_config) { build(:app_config) }
   let!(:contest) { create(:contest) }
   before(:each) do
     sign_in
@@ -15,17 +13,17 @@ describe "Shooter index" do
   end
 
   describe "tables" do
-    it "contains name head" do
+    it "contains name header" do
       expect(page).to have_selector(
         'th', text: I18n.t('activerecord.attributes.contest.name'))
     end
 
-    it "contains date head" do
+    it "contains date header" do
       expect(page).to have_selector(
         'th', text: I18n.t('activerecord.attributes.contest.date'))
     end
 
-    it "contains actions head" do
+    it "contains actions header" do
       expect(page).to have_selector(
         'th', text: I18n.t('actions.actions'))
     end
@@ -40,6 +38,10 @@ describe "Shooter index" do
 
     it "has links to delete contests" do
       expect(page).to have_link(I18n.t('actions.destroy'))
+    end
+
+    it "has link to contests archive" do
+      expect(page).to have_link(I18n.t('contest.archive'))
     end
   end
 
@@ -66,10 +68,9 @@ describe "Shooter index" do
         expect(page).to have_selector('td', text: "2014-08-26")
       end
 
-      it "doesn't show contest that do not match to 'BIG'" do
+      it "doesn't show contests that do not match to 'BIG'" do
         expect(page).not_to have_selector('td', text: "2014-04-04")
       end
     end
   end
 end
-

@@ -3,7 +3,13 @@ class ContestsController < ApplicationController
   helper_method :sort_direction, :sort_column
 
   def index
-    @contests = Contest.search(params[:search]).order(sort_column + " " + sort_direction).page(params[:page])
+    @contests = Contest.where("date >= ?", Date.today).search(params[:search]).
+      order(sort_column + " " + sort_direction).page(params[:page])
+  end
+
+  def index_archive
+    @contests = Contest.where("date < ?", Date.today).search(params[:search]).
+      order(sort_column + " " + sort_direction).page(params[:page])
   end
 
   def show
