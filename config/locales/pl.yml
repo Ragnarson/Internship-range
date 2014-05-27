@@ -65,6 +65,7 @@ pl:
         function: Funkcja
         license_number: Nr licencji
         delete_judge: Usuń sędziego
+        delete_competitor: Usuń zawodnika
       competition:
         name: Nazwa
         number_of_shots: Liczba strzałów
@@ -82,6 +83,7 @@ pl:
         first_name: Imię
         last_name: Nazwisko
         date_of_birth: Data urodzenia
+        competition: Lista konkurencji
         club: Klub
     errors:
       models:

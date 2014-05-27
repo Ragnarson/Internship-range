@@ -1,7 +1,7 @@
 class Competition < ActiveRecord::Base
   belongs_to :contest
   has_many :competitors, through: :shootings
-  has_many :shootings
+  has_many :shootings, dependent: :destroy
 
   accepts_nested_attributes_for :shootings, allow_destroy: true
 

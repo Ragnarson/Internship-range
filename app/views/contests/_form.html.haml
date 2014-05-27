@@ -28,6 +28,7 @@
               placeholder: current_date,
               class: "form-control",
               required: true
+      .panel-body
         %h3.text-center= t('activerecord.models.competitor.other').capitalize
         - if defined?(edit) && edit
           .form-group
@@ -39,15 +40,14 @@
               = f.label :date_of_birth, class: "control-label"
             .col-xs-2
               = f.label :club, class: "control-label"
-            .col-xs-3
-              = f.label :competition, class: "control-label"
             .col-xs-1
-              = f.label :pk, class: "checkbox"
+              = f.label :pk, class: "control-label"
         = f.fields_for :competitors do |builder|
           = render 'competitor_fields', f: builder
         .row-fluid
           = link_to_add_fields t(:add_competitor, scope: :contest), f, :competitors
         %br
+      .panel-body 
         %h3.text-center= t('activerecord.models.judge.other').capitalize
         - if defined?(edit) && edit
           .form-group
