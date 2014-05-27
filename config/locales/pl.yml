@@ -405,6 +405,8 @@ pl:
   contest:
     add_competitor: Dodaj zawodnika
     add_judge: Dodaj sędziego
+    archive: Archiwum zawodów
+    future: Przyszłe zawody
     actions:
       new: Dodaj
       edit: Edytuj

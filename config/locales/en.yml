@@ -109,6 +109,8 @@ en:
   contest:
     add_competitor: Add competitor
     add_judge: Add judge
+    archive: Contests archive
+    future: Upcoming contests
     actions:
       new: New
       edit: Edit
