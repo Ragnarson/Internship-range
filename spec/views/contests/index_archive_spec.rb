@@ -43,6 +43,14 @@ describe "Contest index archive" do
     it "has link to future contests" do
       expect(page).to have_link(I18n.t('contest.future').capitalize)
     end
+
+    it "has centered buttons" do
+      expect(page).to have_css('td.text-center')
+    end
+
+    it "has grouped buttons" do
+      expect(page).to have_css('div.btn-group')
+    end
   end
 
   describe ".search" do
