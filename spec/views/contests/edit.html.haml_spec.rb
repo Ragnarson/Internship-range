@@ -3,6 +3,7 @@ require "spec_helper"
 describe 'contests/edit.html.haml' do
   before do
     assign(:contest, create(:contest))
+    visit edit_contest_path(:contest)
     render
   end
 

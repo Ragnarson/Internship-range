@@ -1,7 +1,10 @@
-= content_for :title, "#{t('club_name')} - #{t('actions.signin')}"
+= content_for :title, "#{club_name} - #{t('actions.signin')}"
 .col-md-4.col-md-offset-4
   .login-panel
-    %h2= I18n.t('club_name')
+    = image_tag(club_logo, size: '160',
+      class: "col-md-offset-2") unless club_logo.blank?
+    %h2
+      %strong= club_name
     = bootstrap_form_tag url: sessions_path do |f|
       = render 'layouts/flash', object: flash
       = f.email_field :email, hide_label: true,

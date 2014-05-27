@@ -5,6 +5,7 @@ en:
       shooter: shooter
       address: address
       payment: payment
+      appconfig: settings
       judge: judge
     attributes:
       user:
@@ -59,10 +60,14 @@ en:
         building: Building No.
         flat: Flat No.
         zip_code: Zip code
+      settings:
+        club_name: Club name
+        club_logo: Club logo
   flash:
     success_create: "Successfully created %{model}"
     success_edit: "Successfully edited %{model}"
     success_destroy: "Successfully deleted %{model}"
+    error_settings_set: "An Error occured while saving Settings"
     contest: contest
     payment: payment
     competition: competition
@@ -86,6 +91,8 @@ en:
     select:
       prompt: Please choose
     submit:
+      appconfig:
+        create: Save %{model}
       create: Create %{model}
       submit: Save %{model}
       update: Upate %{model}

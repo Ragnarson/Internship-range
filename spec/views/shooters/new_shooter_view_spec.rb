@@ -5,8 +5,8 @@ describe "Shooter new page" do
     visit 'shooters/new'
   end
   let(:title) do
-     "#{I18n.t('club_name')} -
-      #{I18n.t('actions.new')} #{I18n.t('activerecord.models.shooter')}"
+     club_name << ' - ' << I18n.t(
+       'actions.new') << ' ' << I18n.t('activerecord.models.shooter')
   end
 
   it { expect(page).to have_title(title) }

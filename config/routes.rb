@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :payments
   resources :shooters
+  resources :app_configs, path: '/settings', only: [:index, :update]
   resources :sessions, only: [:new, :create, :destroy]
   root 'shooters#index'
   get 'names.json', to: 'shooters#names'

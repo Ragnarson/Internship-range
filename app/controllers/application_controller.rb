@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   force_ssl unless Rails.env.development?
   helper_method :current_user, :signed_in?
   protect_from_forgery with: :exception
+  before_action :app_configs_set
 
   private
   def current_user
@@ -23,5 +24,9 @@ class ApplicationController < ActionController::Base
 
   def enable_garbage_collector
     GC.enable
+  end
+
+  def app_configs_set
+    @app_config ||= AppConfig.where(key: 'app_config').first_or_create
   end
 end

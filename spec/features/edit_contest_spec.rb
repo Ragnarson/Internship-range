@@ -3,7 +3,6 @@ require 'spec_helper'
 feature 'Editing contest' do
   scenario "changing data" do
     sign_in
-
     contest = create(:contest)
 
     visit edit_contest_path(contest)

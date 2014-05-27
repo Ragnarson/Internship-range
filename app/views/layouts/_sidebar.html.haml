@@ -2,7 +2,8 @@
   .sidebar-collapse
     %ul.nav#main-menu
       %li.text-center
-        %img.user-image.img-responsive{src: 'http://placehold.it/128'}
+        = image_tag(club_logo, size: '125',
+          class: "user-image img-responsive") unless club_logo.blank?
       %li
         = link_to contests_path do
           %i.glyphicon.glyphicon-screenshot
@@ -16,9 +17,12 @@
           %i.glyphicon.glyphicon-barcode
           =t('mainmenu.payments')
       %li
-        = link_to '#' do
+        = link_to do
           %i.glyphicon.glyphicon-cog
           =t('mainmenu.admin_panel')
         %ul.nav.nav-second-level
           %li
             =link_to t('user.list'), users_path
+        %ul.nav.nav-second-level
+          %li
+            =link_to t('activerecord.models.app_config'), app_configs_path
