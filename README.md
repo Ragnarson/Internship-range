@@ -90,3 +90,4 @@ Everytime you save a file guard will automatically launch proper specs when file
 3. [Testowanie #3](http://youtu.be/8N4LjsAEFJA)
 4. [Bazy danych](http://youtu.be/8yMlE6j_dWw)
 5. [Sprint #3](http://youtu.be/3WlpoaMnpEc)
+6. [Standup meeting](http://youtu.be/1D1iOZajEuc)
