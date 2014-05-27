@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "Shooter index" do
+  subject { page }
   let!(:contest) { create(:contest) }
   before(:each) do
     sign_in
@@ -23,7 +24,15 @@ describe "Shooter index" do
         'th', text: I18n.t('activerecord.attributes.contest.date'))
     end
 
-    it "contains actions header" do
+    it "contains shooters head" do
+      expect(page).to have_selector('th', text: I18n.t('mainmenu.shooters'))
+    end
+
+    it "contains competitions head" do
+      expect(page).to have_selector('th', text: I18n.t('mainmenu.competitions'))
+    end
+
+    it "contains actions head" do
       expect(page).to have_selector(
         'th', text: I18n.t('actions.actions'))
     end
