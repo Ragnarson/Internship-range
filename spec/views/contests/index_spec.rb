@@ -52,6 +52,10 @@ describe "Shooter index" do
     it "has link to contests archive" do
       expect(page).to have_link(I18n.t('contest.archive'))
     end
+
+    it "has centered buttons" do
+      expect(page).to have_css('td.text-center')
+    end
   end
 
   describe ".search" do
