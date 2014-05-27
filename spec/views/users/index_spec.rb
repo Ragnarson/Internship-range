@@ -10,7 +10,7 @@ describe 'Users index' do
 
   it 'contains a headline' do
     expect(page).to have_selector(
-      'h2', text: I18n.t('user.list'))
+      'h2', text: I18n.t('mainmenu.admin_panel'))
   end
 
   it 'contains a link to add new user' do

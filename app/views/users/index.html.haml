@@ -1,7 +1,7 @@
-= content_for :title, "#{t('club_name')} - #{t('user.list').capitalize}"
+= content_for :title, "#{club_name} - #{t('user.list').capitalize}"
 .row
   .col-md-12
-    %h2= t('user.list')
+    %h2= t('mainmenu.admin_panel')
 %hr
 .row
   .col-md-12
@@ -17,17 +17,16 @@
             %table.table.table-striped.table-bordered.table-hover.fixedlayout
               %thead
                 %tr
-                  %th= t('activerecord.attributes.user.email')
-                  %th.hidden-sm.hidden-xs{colspan: 2}= t('actions.actions')
+                  %th.col-md-12= t('activerecord.attributes.user.email')
+                  %th.col-md-2.hidden-sm.hidden-xs= t('actions.actions')
               %tbody
                 - @users.each do |user|
                   %tr
                     %td= user.email
-                    %td.text-center.hidden-sm.hidden-xs
+                    %td.btn-group.text-center.col-md-2.hidden-sm.hidden-xs
                       = link_to t('actions.edit'),
                         edit_user_path(user),
                         class: "btn btn-info btn-sm"
-                    %td.text-center.hidden-sm.hidden-xs
                       - unless user == current_user
                         = link_to t('actions.destroy'), user, method: :delete,
                           class: "btn btn-danger btn-sm",

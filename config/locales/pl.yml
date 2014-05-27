@@ -375,6 +375,7 @@ pl:
   destroy: "Usuń"
   payments:
     one_payment: "Płatność"
+    payment_date: "Data płatności"
     payment_details: "Szczegóły płatności"
     list_of_payments: "Lista płatności"
     new_payment: "Nowa płatność"
