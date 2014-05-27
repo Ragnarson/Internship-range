@@ -21,6 +21,7 @@ en:
         date_of_birth: Date of birth
         club: Club
         pk: PK
+        p_k: Out of competition
         competition: Choosen competitions
         function: Function
         license_number: License number
