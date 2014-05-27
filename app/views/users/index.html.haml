@@ -23,11 +23,12 @@
                 - @users.each do |user|
                   %tr
                     %td= user.email
-                    %td.btn-group.text-center.col-md-2.hidden-sm.hidden-xs
-                      = link_to t('actions.edit'),
-                        edit_user_path(user),
-                        class: "btn btn-info btn-sm"
-                      - unless user == current_user
-                        = link_to t('actions.destroy'), user, method: :delete,
-                          class: "btn btn-danger btn-sm",
-                          data: { confirm: t('actions.confirm') }
+                    %td.text-center
+                      .btn-group
+                        = link_to t('actions.edit'),
+                          edit_user_path(user),
+                          class: "btn btn-info btn-sm"
+                        - unless user == current_user
+                          = link_to t('actions.destroy'), user, method: :delete,
+                            class: "btn btn-danger btn-sm",
+                            data: { confirm: t('actions.confirm') }
