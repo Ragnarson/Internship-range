@@ -55,11 +55,12 @@
                         = mail_to shooter.email,
                         t('activerecord.attributes.shooter.email'),
                         class: "btn btn-primary btn-sm"
-                    %td.text-center.hidden-sm.hidden-xs.btn-group.col-md-2
-                      = link_to t('actions.edit'),
-                        edit_shooter_path(shooter),
-                        class: "btn btn-info btn-sm"
-                      = link_to t(:destroy), shooter, method: :delete,
-                        class: "btn btn-danger btn-sm",
-                        data: { confirm: t('actions.confirm') }
+                    %td.text-center
+                      .btn-group
+                        = link_to t('actions.edit'),
+                          edit_shooter_path(shooter),
+                          class: "btn btn-info btn-sm"
+                        = link_to t(:destroy), shooter, method: :delete,
+                          class: "btn btn-danger btn-sm",
+                          data: { confirm: t('actions.confirm') }
             = paginate @shooters
