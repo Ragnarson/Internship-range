@@ -10,7 +10,10 @@
     .col-xs-12.col-sm-12.col-md-5.col-lg-5.margin-top
       .row
         .col-xs-12.col-sm-12.col-md-12.col-lg-12
-          = image_tag "http://poutperfection.files.wordpress.com/2012/05/facebook-blank-photo.jpg", style: "width: 100%", alt: "dummy image"
+          - if @shooter.image?
+            = image_tag @shooter.image_url
+          - else
+            = image_tag "default.jpg"
       .row
         .col-xs-12.col-sm-12.col-md-12.col-lg-12.btn-group.margin-top
           = link_to t('shooters.payments'), '#', class: "btn btn-info col-xs-4 col-sm-4 col-md-4 col-lg-4"
