@@ -5,13 +5,13 @@
         = image_tag(club_logo, size: '125',
           class: "user-image img-responsive") unless club_logo.blank?
       %li
-        = link_to contests_path do
-          %i.glyphicon.glyphicon-screenshot
-          =t('mainmenu.contests')
-      %li
         = link_to shooters_path do
           %i.glyphicon.glyphicon-user
           =t('mainmenu.shooters')
+      %li
+        = link_to contests_path do
+          %i.glyphicon.glyphicon-screenshot
+          =t('mainmenu.contests')
       %li
         = link_to payments_path do
           %i.glyphicon.glyphicon-barcode
