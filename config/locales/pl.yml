@@ -63,6 +63,7 @@ pl:
         date_of_birth: Data urodzenia
         club: Klub
         pk: PK
+        p_k: Poza konkurencją
         competition: Wybrane dyscypliny
         function: Funkcja
         license_number: Nr licencji
