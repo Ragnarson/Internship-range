@@ -52,9 +52,37 @@ class Shooter < ActiveRecord::Base
 
   def self.to_csv
     CSV.generate do |csv|
-      csv << column_names
+      csv << ['ID', I18n.t('activerecord.attributes.shooter.first_name'),
+        I18n.t('activerecord.attributes.shooter.last_name'),
+        I18n.t('activerecord.attributes.shooter.date_of_birth'),
+        I18n.t('activerecord.attributes.shooter.pesel'),
+        I18n.t('activerecord.attributes.shooter.joined_date'),
+        I18n.t('activerecord.attributes.shooter.email'),
+        I18n.t('activerecord.attributes.shooter.phone'),
+        I18n.t('activerecord.attributes.shooter.resolution_number'),
+        I18n.t('activerecord.attributes.shooter.license_number'),
+        I18n.t('activerecord.attributes.shooter.judge_license_number'),
+        I18n.t('activerecord.attributes.shooter.sport_permission'),
+        I18n.t('activerecord.attributes.shooter.handgun'),
+        I18n.t('activerecord.attributes.shooter.rifle'),
+        I18n.t('activerecord.attributes.shooter.shotgun'),
+        I18n.t('activerecord.attributes.shooter.collectors_permission'),
+        I18n.t('shooters.first_address'),
+        I18n.t('shooters.second_address')]
       all.each do |shooter|
-        csv << shooter.attributes.values_at(*column_names)
+        if shooter.addresses.all[0]
+          address1 = ApplicationController.helpers.
+            display_address(shooter.addresses.all[0])
+        end
+        if shooter.addresses.all[1]
+          address2 = ApplicationController.helpers.
+            display_address(shooter.addresses.all[1])
+        end
+        csv << [*shooter.attributes.values_at(*["id", "first_name", "last_name",
+          "date_of_birth", "pesel", "joined_date", "email", "phone",
+          "resolution_number", "license_number", "judge_license_number",
+          "sport_permission", "handgun", "rifle",
+          "shotgun", "collectors_permission"]), address1, address2]
       end
     end
   end
