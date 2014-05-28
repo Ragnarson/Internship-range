@@ -60,7 +60,7 @@
                   %th.col-md-3= sortable "date", t('payments.payment_date')
                   %th.col-md-3= sortable "description", t('payments.description')
                   %th.col-md-2= sortable "amount", t('payments.amount')
-                  %th.col-md-4= t('payments.name_of_shooter')
+                  %th.col-md-4= sortable "shooter_id", t('payments.name_of_shooter')
                   %th.col-md-2.hidden-sm.hidden-xs= t('payments.actions')
               %tbody
                 - @payments.each do |payment|
