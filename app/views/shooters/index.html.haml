@@ -44,7 +44,7 @@
                     - if shooter.image?
                       %td= image_tag(shooter.image_url(:thumb))
                     - else
-                      %td= image_tag("default.jpg")
+                      %td= image_tag("default_thumb.jpg")
                     %td= link_to shooter.first_name, shooter
                     %td= link_to shooter.last_name, shooter
                     %td= shooter.pesel
