@@ -1,4 +1,4 @@
-= address_fields.hidden_field :id
+%div{id: (is_first ? 'first_address_id' : 'second_address_id')}= address_fields.hidden_field :id
 %fieldset{id: (is_first ? 'first_address' : 'second_address')}
   %legend
     %h5
@@ -42,8 +42,9 @@
         class: 'form-control', required: (is_first ? true : false)
   .form-group
     %label.col-md-4.control-label{for: "street"}
-  - if(is_first && !address_fields.object.id)
+  - if is_first
     .form-group
       %label.col-md-4.control-label
         =t('helpers.label.address.second_address')
-      %input.col-md-1.checkbox#second_address_show{type: 'checkbox'}
+      %input.col-md-1.checkbox#second_address_show{type: 'checkbox',
+        checked: @shooter.addresses.second.id ? true : false}
