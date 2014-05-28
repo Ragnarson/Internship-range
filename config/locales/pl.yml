@@ -390,7 +390,10 @@ pl:
     send: "Przypomnij"
     notification: "Powiadomienie"
     expire_at: "Twoja płatność jest ważna do:"
-    first_last_description: "Imię, nazwisko lub opis"
+    searchbox_placeholder: "Imię, nazwisko"
+    from: od
+    to: do
+    payment_date: Data zapłaty
   shooters:
     list_of_shooters: "Lista strzelców"
     new_shooter: "Dodaj nowego strzelca"

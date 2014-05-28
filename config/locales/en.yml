@@ -142,7 +142,7 @@ en:
     notification: "Notification"
     delivery: "Delivering notification"
     expire_at: "Your payment will expire at:"
-    first_last_description: "First name, last name or description"
+    searchbox_placeholder: "First name, last name"
   email: 'Email'
   password: 'Password'
   signin: 'Sign In'
