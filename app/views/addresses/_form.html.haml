@@ -7,39 +7,43 @@
           :                                       |
           'helpers.label.address.second_address'  |
         )                                         |
+      %span.text-danger= '*'
   .form-group
-    %label.col-xs-4.control-label{for: "street"}
+    %label.col-md-4.control-label{for: "street"}
       =t('activerecord.attributes.address.street')
-    .col-xs-4
+    .col-md-4
       = address_fields.text_field :street, class: 'form-control', id: 'street',
         placeholder: t('activerecord.attributes.address.street')
+    %span.text-danger= '*'
   .form-group
-    %label.col-xs-4.control-label{for: "street"}
+    %label.col-md-4.control-label{for: "street"}
       =t('activerecord.attributes.address.building') + ', '
       =t('activerecord.attributes.address.flat')
-    .col-xs-2
+    .col-md-2
       = address_fields.text_field :building, class: 'form-control',
         placeholder: t('activerecord.attributes.address.building'),
         id: 'building', required: (is_first ? true : false)
-    .col-xs-2
+    %span.text-danger= '*'
+    .col-md-2
       = address_fields.text_field :flat, class: 'form-control', id: 'flat',
         placeholder: t('activerecord.attributes.address.flat')
   .form-group
-    %label.col-xs-4.control-label{for: "street"}
+    %label.col-md-4.control-label{for: "street"}
       =t('activerecord.attributes.address.city') + ', '
       =t('activerecord.attributes.address.zip_code')
-    .col-xs-2
+    .col-md-2
       = address_fields.text_field :city, class: 'form-control', id: 'city',
         placeholder: t('activerecord.attributes.address.city'),
         required: (is_first ? true : false)
-    .col-xs-2
+    %span.text-danger= '*'
+    .col-md-2
       = address_fields.text_field :zip_code, id: 'zip_code',
         placeholder: t('activerecord.attributes.address.zip_code'),
         class: 'form-control', required: (is_first ? true : false)
   .form-group
-    %label.col-xs-4.control-label{for: "street"}
+    %label.col-md-4.control-label{for: "street"}
   - if(is_first && !address_fields.object.id)
     .form-group
-      %label.col-xs-4.control-label
+      %label.col-md-4.control-label
         =t('helpers.label.address.second_address')
-      %input.col-xs-1.checkbox#second_address_show{type: 'checkbox'}
+      %input.col-md-1.checkbox#second_address_show{type: 'checkbox'}

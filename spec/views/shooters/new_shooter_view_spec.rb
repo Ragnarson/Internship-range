@@ -11,11 +11,6 @@ describe "Shooter new page" do
 
   it { expect(page).to have_title(title) }
 
-  it "have page heading 'h1' with create action" do
-    expect(page).to have_selector(
-      'h1', text: I18n.t('helpers.label.shooter.create'))
-    end
-
   it "have navbar" do
     expect(page).to have_css('header.navbar')
   end
