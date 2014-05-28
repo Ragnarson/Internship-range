@@ -10,35 +10,48 @@
       .panel-heading= t('payments.list_of_payments')
       .panel-body
         .row
-          .col-lg-12.col-md-12.col-sm-12.col-xs-12.pull-right
-            = link_to t('payments.new_payment'), new_payment_path,
-              class: "btn btn-success pull-right"
-          .col-md-9.col-sm-12
-            = form_tag payments_path, method: :get,
-              id: 'payments_search', class: "form-group" do
+          = bootstrap_form_tag url: payments_path, method: :get do |f|
+            .col-md-2
+              = f.text_field :search,
+                label: t("actions.search"),
+                placeholder: t('payments.searchbox_placeholder')
+            .col-md-3
+              = f.form_group do
+                .row
+                  .col-md-12= label_tag :amount, t('payments.amount')
+                .row
+                  .col-md-5
+                    = f.text_field :amount_min,
+                      hide_label: true,
+                      placeholder: t('payments.from')
+                  .col-md-1.text-center.pay-form-hyphen &#8212;
+                  .col-md-5
+                    = f.text_field :amount_max,
+                      hide_label: true,
+                      placeholder: t('payments.to')
+            .col-md-3
               .row
-                .col-md-4.col-lg-3.margin-top
-                  = label_tag :search, t("actions.search")
-                  = text_field_tag :search, params[:search],
-                    placeholder: t('payments.first_last_description'), class: "form-control"
-                .col-sm-6.col-md-4.col-lg-3.margin-top
-                  = label_tag :amount, t('payments.amount')
-                  = text_field_tag :amount_min, params[:price_min], class: "form-control"
-                  %i= ' - '
-                  = text_field_tag :amount_max, params[:price_max], class: "form-control"
-                .col-sm-6.col-md-4.col-lg-3.margin-top
-                  = label_tag :date, t('payments.payment_date')
-                  = text_field_tag :date_min, params[:date_min],
-                    'data-behaviour' => 'datepicker', class: "form-control"
-                  %i= ' - '
-                  = text_field_tag :date_max, params[:date_max],
-                    'data-behaviour' => 'datepicker', class: "form-control"
-                  %br
+                .col-md-12= label_tag :date, t('payments.payment_date')
               .row
-                .col-md-4.col-lg-3
-                  = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
-                  = hidden_field_tag :direction, params[:direction]
-                  = hidden_field_tag :sort, params[:sort]
+                .col-md-5
+                  = f.text_field :date_min,
+                    hide_label: true,
+                    placeholder: t('payments.from'),
+                    'data-behaviour' => 'datepicker'
+                .col-md-1.text-center.pay-form-hyphen &#8212;
+                .col-md-5
+                  = f.text_field :date_max,
+                    hide_label: true,
+                    placeholder: t('payments.to'),
+                    'data-behaviour' => 'datepicker'
+            .col-md-1
+              = hidden_field_tag :direction, params[:direction]
+              = hidden_field_tag :sort, params[:sort]
+              = f.submit t("actions.search"),
+                class: 'btn btn-default btn-payment-form'
+            .col-md-3
+              = link_to t('payments.new_payment'), new_payment_path,
+                class: 'btn btn-success btn-payment-form pull-right'
         .row
           .col-md-12
             %table.table.table-striped.table-bordered.table-hover.fixedlayout
@@ -56,7 +69,7 @@
                     %td= link_to payment.description, payment
                     %td= change_to_currency(payment.amount)
                     %td= link_to payment.by, payment.shooter
-                    %td.text-center
+                    %td.text-center.hidden-sm.hidden-xs
                       .btn-group
                         = link_to t('actions.edit'), edit_payment_path(payment),
                           class: "btn btn-info btn-sm"
