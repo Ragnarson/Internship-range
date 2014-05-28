@@ -1,4 +1,4 @@
-jQuery ->
+init_contest_new_form = ->
   $('form').on 'click', '.remove_fields', (event) ->
     if confirm ("Czy aby tak?")
         $(this).prev('input[type=hidden]').val('1')
@@ -10,14 +10,7 @@ jQuery ->
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
+  return
 
-class Contests
-  $('[data-behaviour_birth~=datepicker]').datepicker
-    language: 'pl',
-    startView: 'decade',
-    startDate: '-100y',
-    endDate: '-5y',
-    format: 'yyyy-mm-dd',
-    autoclose: true
-
-(exports ? this).Contests = Contests
+$(document).ready(init_contest_new_form)
+$(document).on('page:load', init_contest_new_form)
