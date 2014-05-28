@@ -6,10 +6,6 @@ class CompetitionsController < ApplicationController
     @competition = @contest.competitions.find(params[:id])
   end
 
-  def new
-    @competition = @contest.competitions.build
-  end
-
   def create
     @competition = @contest.competitions.new(competition_params)
     if @competition.save

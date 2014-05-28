@@ -13,6 +13,7 @@ class ContestsController < ApplicationController
   end
 
   def show
+    @competition = Competition.new
   end
 
   def new
