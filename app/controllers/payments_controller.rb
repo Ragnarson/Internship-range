@@ -49,11 +49,14 @@ class PaymentsController < ApplicationController
   end
 
   def destroy
+    shooter_id = @payment.shooter.id
     @payment.destroy
-    redirect_to payments_url,
-      notice: I18n.t(
-        'flash.success_destroy',
-        model: I18n.t('activerecord.models.payment'))
+    controller = get_previous_controller
+    redirect_to ( controller == 'shooters' ?
+      shooter_path(id: shooter_id, page: 1) : payments_path),
+        notice: I18n.t(
+          'flash.success_destroy',
+          model: I18n.t('activerecord.models.payment'))
   end
 
   private
