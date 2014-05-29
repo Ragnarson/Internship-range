@@ -12,7 +12,7 @@ describe 'contests/edit.html.haml' do
   end
 
   it 'displays contest name' do
-    expect(page).to have_field('Nazwa', with: 'Big contest')
+    expect(page).to have_field('Nazwa', with: contest.name)
   end
 
   it "displays label 'Data:'" do

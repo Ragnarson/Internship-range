@@ -40,4 +40,24 @@ describe ContestsController do
       expect(assigns(:contests)).to eq([other_contest])
     end
   end
+
+  describe "GET #select" do
+    let(:other_contest) { create(:other_contest) }
+    before do
+      sign_in
+      get :select, id: other_contest
+    end
+
+    it "responds successfully with an HTTP 200 status code" do
+      expect(response).to be_ok
+    end
+
+    it "renders the select template" do
+      expect(response).to render_template("select")
+    end
+
+    it "loads the resource into @contest" do
+      expect(assigns(:contest)).to eq(other_contest)
+    end
+  end
 end

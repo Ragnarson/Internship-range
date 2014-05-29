@@ -1,14 +1,14 @@
 FactoryGirl.define do
   factory :competition do
     association :contest
-    name 'Shooting stars'
+    sequence(:name) { |n| "PSP #{n}" }
     classification 'PSP 10'
     number_of_shots 10
   end
 
   factory :other_competition, :class => Competition do
     association :contest
-    name 'Slingshot masters'
+    sequence(:name) { |n| "PSP #{n}" }
     classification 'PSP 8'
     number_of_shots 8
   end

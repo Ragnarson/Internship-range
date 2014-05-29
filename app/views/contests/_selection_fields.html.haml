@@ -1,0 +1,7 @@
+%fieldset
+  .form-group
+    .col-xs-3.control-line #{f.object.first_name} #{f.object.last_name}
+    .col-xs-2.control-line #{f.object.club}
+    = f.collection_check_boxes(:competition_ids, 
+        @contest.competitions, :id, :name) do |b| b.label(class: "col-xs-1",
+        f: "f") { b.check_box(class: "checkbox") } end

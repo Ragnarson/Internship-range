@@ -14,7 +14,7 @@ describe "contests/show" do
     it "displays contest name" do
       expect(page).to have_selector(
         "h1:nth-of-type(1) strong",
-        text: 'Big contest'
+        text: contest.name
       )
     end
 
@@ -58,13 +58,13 @@ describe "contests/show" do
     context "competition table displays" do
       it "name" do
         expect(page).to have_selector(
-          "tbody tr:nth-of-type(1) td:nth-of-type(1)", text:'Shooting stars'
+          "tbody tr:nth-of-type(1) td:nth-of-type(1)", text: competition1.name
         )
       end
 
       it "classification" do
         expect(page).to have_selector(
-          "tbody tr:nth-of-type(1) td:nth-of-type(2)", text:'PSP 10'
+          "tbody tr:nth-of-type(1) td:nth-of-type(2)", text: competition1.classification
         )
       end
 

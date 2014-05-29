@@ -22,8 +22,3 @@
       = f.hidden_field :_destroy
       = link_to '', '#',
         class: "remove_fields glyphicon glyphicon-trash btn btn-danger"
-  .form-group
-    .col-xs-12
-      = f.collection_check_boxes(:competition_ids,
-        @contest.competitions, :id, :name) { |b| b.label(class: "checkbox-inline",
-        f: "f") { b.text + b.check_box(class: "control-label") } }
