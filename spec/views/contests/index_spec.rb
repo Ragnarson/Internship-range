@@ -68,21 +68,23 @@ describe "Shooter index" do
     end
 
     describe "contests/search page" do
-      let!(:other_contest) { create(:other_contest) }
+      let!(:contest) { create(:contest) }
+      let!(:other_contest) { create(:other_contest)}
+
       before do
-        visit "contests?search=BIG"
+        visit "contests?search=#{contest.name.downcase}"
       end
 
       it "has case insensitive search" do
-        expect(page).to have_selector('td', text: "Big contest")
+        expect(page).to have_selector('td', text: "#{contest.name}")
       end
 
-      it "shows correctly :contest matching 'BIG'" do
-        expect(page).to have_selector('td', text: "2014-08-26")
+      it "shows correctly :contest matching 'ZAWODY'" do
+        expect(page).to have_selector('td', text: "#{contest.date}")
       end
 
-      it "doesn't show contests that do not match to 'BIG'" do
-        expect(page).not_to have_selector('td', text: "2014-04-04")
+      it "doesn't show contests that do not match to 'ZAWODY'" do
+        expect(page).not_to have_selector('td', text: "2014-01-03")
       end
     end
   end

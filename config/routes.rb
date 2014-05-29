@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :contests do
+    member do
+      get :select
+    end
     resources :competitions, except: [:index]
   end
   resources :users

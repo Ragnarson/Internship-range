@@ -1,0 +1,31 @@
+= content_for :title,
+  "#{club_name} - #{t('contest.select')} #{t('activerecord.models.contest')}"
+%h2= "#{t('activerecord.models.contest').capitalize} #{@contest.name}"
+
+.panel.panel-default
+  .panel-heading= t('contest.select')
+  .panel-body
+    = form_for @contest, html: {class: "form-horizontal"} do |f|
+      %fieldset
+        %legend
+          - if @contest.errors.any?
+            .alert.alert-danger
+              %h4
+                = t('errors.template.body')
+                %ul
+                  - @contest.errors.full_messages.each do |msg|
+                    %li= msg
+      .panel-body
+        .form-group
+          .col-xs-3.control-line
+            = f.label :full_name
+          .col-xs-2.control-line
+            = f.label :club
+          - f.object.competitions.each do |competition|
+            .col-xs-1.control-line
+              = f.label competition.name
+        = f.fields_for :competitors do |builder|
+          = render 'selection_fields', f: builder
+        %br
+        .button-centered
+          = f.submit class: "btn btn-primary"

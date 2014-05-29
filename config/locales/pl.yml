@@ -60,6 +60,7 @@ pl:
         date: Data
         first_name: Imię
         last_name: Nazwisko
+        full_name: Imię i nazwisko
         date_of_birth: Data urodzenia
         club: Klub
         pk: PK
@@ -412,11 +413,13 @@ pl:
     add_competitor: Dodaj zawodnika
     add_judge: Dodaj sędziego
     archive: Archiwum zawodów
+    select: Dodaj zawodników do konkurencji
     future: Przyszłe zawody
     actions:
       new: Dodaj
       edit: Edytuj
       show: Pokaż
+      select: Zgłoś do konkurencji
       destroy: Usuń
       confirm: Czy na pewno?
       actions: Akcje

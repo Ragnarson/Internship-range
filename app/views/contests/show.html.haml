@@ -1,12 +1,15 @@
 = content_for :title, "#{club_name} - #{t('activerecord.models.contest').capitalize}"
+  
 .btn-group.pull-right
   = link_to t('contest.actions.edit'), edit_contest_path(@contest),
-                      class: "btn btn-info btn-sm"
+      class: "btn btn-info btn-sm"
   = link_to t('contest.actions.destroy'), @contest, method: :delete,
-                      data: { confirm: I18n.t('actions.confirm') },
-                      class: "btn btn-danger btn-sm"
+      data: { confirm: I18n.t('actions.confirm') }, class: "btn btn-danger btn-sm"
 %h1
   %strong= @contest.name
+.btn-group.pull-right
+  = link_to t('contest.actions.select'), select_contest_path(@contest), 
+      class: "btn btn-warning btn-sm"
 %h4= @contest.date
 .panel.panel-default
   .panel-heading
@@ -25,7 +28,6 @@
           %th= judge.last_name
           %th= judge.function
           %th= judge.license_number
-
 .panel.panel-default
   .panel-heading
     %strong= t('activerecord.attributes.contest.list_of_competitions')

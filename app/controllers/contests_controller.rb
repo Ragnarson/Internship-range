@@ -1,5 +1,5 @@
 class ContestsController < ApplicationController
-  before_action :set_contest, only: [:show, :edit, :update, :destroy]
+  before_action :set_contest, only: [:show, :edit, :update, :destroy, :select]
   helper_method :sort_direction, :sort_column
 
   def index
@@ -45,6 +45,9 @@ class ContestsController < ApplicationController
     @contest.destroy
     redirect_to contests_url,
       notice: t('flash.success_destroy', model: t('flash.contest'))
+  end
+
+  def select
   end
 
   private

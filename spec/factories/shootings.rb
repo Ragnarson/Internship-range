@@ -7,8 +7,8 @@ FactoryGirl.define do
   end
 
   factory :other_shooting, class: Shooting do
-    association :competitor
     association :competition
+    association :competitor
   end
 
   factory :invalid_shooting do
