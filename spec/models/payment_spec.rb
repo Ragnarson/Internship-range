@@ -69,4 +69,15 @@ describe Payment do
       it { expect(payment.by).to be_nil }
     end
   end
+
+  describe 'Payment.to_csv' do
+    let!(:payment) { create(:payment) }
+
+    it 'generates correct csv' do
+      expect(Payment.to_csv).to eq("#{I18n.t('payments.payment_date')},"\
+        "#{I18n.t('payments.description')},"\
+        "#{I18n.t('payments.amount')},"\
+        "#{I18n.t('payments.name_of_shooter')}\n2010-01-01,description,1.0,Firstname Lastname\n")
+    end
+  end
 end
