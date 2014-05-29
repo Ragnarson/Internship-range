@@ -41,4 +41,8 @@ describe 'Users index' do
       expect(page).to have_link(I18n.t('actions.destroy'))
     end
   end
+
+  it "displays nav-second-level users" do
+    expect(page).to have_selector('li', text: t('user.list'))
+  end
 end
