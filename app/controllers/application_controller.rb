@@ -29,4 +29,16 @@ class ApplicationController < ActionController::Base
   def app_configs_set
     @app_config ||= AppConfig.where(key: 'app_config').first_or_create
   end
+
+  protected
+  def store_controller
+    session[:return_to] = Rails.application.
+      routes.recognize_path(request.env['PATH_INFO'])[:controller]
+  end
+
+  def get_previous_controller
+    controller = session[:return_to]
+    session[:return_to] = nil
+    controller
+  end
 end

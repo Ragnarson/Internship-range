@@ -29,8 +29,12 @@
             %table.table.table-striped.table-bordered.table-hover.fixedlayout
               %thead
                 %tr
-                  %th.col-md-3= sortable "name", t('activerecord.attributes.contest.name')
-                  %th.col-md-1= sortable "date", t('activerecord.attributes.contest.date')
+                  %th.col-md-3= sortable "name",
+                    t('activerecord.attributes.contest.name'),
+                    sort_column, sort_direction
+                  %th.col-md-1= sortable "date",
+                    t('activerecord.attributes.contest.date'),
+                    sort_column, sort_direction
                   %th.col-md-1= t('mainmenu.shooters')
                   %th.col-md-1= t('mainmenu.competitions')
                   %th.col-md-1= t('contest.actions.actions')

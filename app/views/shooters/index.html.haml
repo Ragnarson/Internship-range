@@ -31,10 +31,18 @@
               %thead
                 %tr
                   %th.col-md-1.photohead
-                  %th.col-md-2= sortable "first_name", t('activerecord.attributes.shooter.first_name')
-                  %th.col-md-2= sortable "last_name", t('activerecord.attributes.shooter.last_name')
-                  %th.col-md-2= sortable "pesel", t('activerecord.attributes.shooter.pesel')
-                  %th.col-md-2= sortable "joined_date", t('activerecord.attributes.shooter.joined_date')
+                  %th.col-md-2= sortable "first_name",
+                    t('activerecord.attributes.shooter.first_name'),
+                    sort_column, sort_direction
+                  %th.col-md-2= sortable "last_name",
+                    t('activerecord.attributes.shooter.last_name'),
+                    sort_column, sort_direction
+                  %th.col-md-2= sortable "pesel",
+                    t('activerecord.attributes.shooter.pesel'),
+                    sort_column, sort_direction
+                  %th.col-md-2= sortable "joined_date",
+                    t('activerecord.attributes.shooter.joined_date'),
+                    sort_column, sort_direction
                   %th.col-md-2= t('activerecord.attributes.shooter.phone')
                   %th.col-md-1= t('activerecord.attributes.shooter.email')
                   %th.col-md-2= t('actions.actions')

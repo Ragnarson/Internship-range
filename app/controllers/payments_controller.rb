@@ -8,6 +8,7 @@ class PaymentsController < ApplicationController
       search(params[:search]).
       order(sort_column + " " + sort_direction).
       page(params[:page])
+    store_controller
   end
 
   def show
@@ -24,7 +25,10 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     if @payment.save
-      redirect_to payments_path,
+      controller = get_previous_controller
+      redirect_to (
+        controller == 'shooters' ?
+        shooter_path(id: params[:payment][:shooter_id], page: 1) : payments_path),
         notice: I18n.t(
           'flash.success_create',
            model: I18n.t('activerecord.models.payment'))

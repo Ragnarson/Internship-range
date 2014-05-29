@@ -54,26 +54,4 @@
                 class: 'btn btn-success btn-payment-form pull-right'
         .row
           .col-md-12
-            %table.table.table-striped.table-bordered.table-hover.fixedlayout
-              %thead
-                %tr
-                  %th.col-md-3= sortable "date", t('payments.payment_date')
-                  %th.col-md-3= sortable "description", t('payments.description')
-                  %th.col-md-2= sortable "amount", t('payments.amount')
-                  %th.col-md-4= sortable "shooter_id", t('payments.name_of_shooter')
-                  %th.col-md-2.hidden-sm.hidden-xs= t('payments.actions')
-              %tbody
-                - @payments.each do |payment|
-                  %tr
-                    %td= payment.date
-                    %td= link_to payment.description, payment
-                    %td= change_to_currency(payment.amount)
-                    %td= link_to payment.by, payment.shooter
-                    %td.text-center.hidden-sm.hidden-xs
-                      .btn-group
-                        = link_to t('actions.edit'), edit_payment_path(payment),
-                          class: "btn btn-info btn-sm"
-                        = link_to t('actions.destroy'), payment,
-                          class: "btn btn-danger btn-sm", method: :delete,
-                          data: { confirm: t('actions.confirm') }
-            = paginate @payments
+            = render partial: 'table', locals: {shooter_in_table: true}

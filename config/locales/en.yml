@@ -129,6 +129,8 @@ en:
     second_address: "Address #2"
     first_name_or_last_name: "First name or last name..."
     not_avctive: Not active
+    payments: Shooter's payments
+    data: Shooter's details
   payments:
     one_payment: "Payment"
     payment_details: "Payment details"

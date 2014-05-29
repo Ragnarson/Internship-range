@@ -14,11 +14,11 @@ module ApplicationHelper
       data: {id: id, fields: fields.gsub("\n", "")}
   end
 
-  def sortable(column_name, link_title)
+  def sortable(column_name, link_title, sort_column, sort_direction)
     css_class = column_name == sort_column ? "current #{sort_direction}" : nil
     direction = column_name == sort_column && sort_direction == "asc" ? "desc" : "asc"
     link_to link_title, params.merge(sort: column_name, 
-      direction: direction, page: nil), {class: css_class}
+      direction: direction, page: 1), {class: css_class}
   end
 
   def current_date

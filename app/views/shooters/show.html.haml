@@ -1,59 +1,109 @@
 = content_for :title, "#{club_name} - #{t('activerecord.models.shooter')}"
-.container
-  .row
+.row
+  .col-xs-12
     %h1
       = @shooter.full_name
       - unless @shooter.active
-        %small
-          = t('shooters.not_active')
-  .row
-    .col-xs-12.col-sm-12.col-md-5.col-lg-5.margin-top
-      .row
-        .col-xs-12.col-sm-12.col-md-12.col-lg-12
-          - if @shooter.image?
-            = image_tag @shooter.image_url
-          - else
-            = image_tag "default.jpg"
-      .row
-        .col-xs-12.col-sm-12.col-md-12.col-lg-12.btn-group.margin-top
-          = link_to t('shooters.payments'), '#', class: "btn btn-info col-xs-4 col-sm-4 col-md-4 col-lg-4"
-          = link_to t('actions.edit'), edit_shooter_path(@shooter), class: "btn btn-success col-xs-4 col-sm-4 col-md-4 col-lg-4"
-          = link_to t('actions.destroy'), '#', class: "btn btn-danger col-xs-4 col-sm-4 col-md-4 col-lg-4"
-    .col-xs-12.col-sm-12.col-md-7.col-lg-7.margin-top
-      %table.table.table-striped
-        %tr 
-          %td= t('activerecord.attributes.shooter.pesel')
-          %td= @shooter.pesel
-        %tr 
-          %td= t('activerecord.attributes.shooter.phone')
-          %td= display_for_visible(@shooter.phone)
-        %tr 
-          %td= t('activerecord.attributes.shooter.email')
-          %td= display_for_visible(@shooter.email)
-        %tr 
-          %td= t('activerecord.attributes.shooter.date_of_birth')
-          %td= @shooter.date_of_birth
-        %tr 
-          %td= t('activerecord.attributes.shooter.joined_date')
-          %td= @shooter.joined_date
-        %tr 
-          %td= t('activerecord.attributes.shooter.resolution_number')
-          %td= display_for_visible(@shooter.resolution_number)
-        %tr 
-          %td= t('activerecord.attributes.shooter.license_number')
-          %td= display_for_visible(@shooter.license_number)
-        %tr 
-          %td= t('activerecord.attributes.shooter.judge_license_number')
-          %td= display_for_visible(@shooter.judge_license_number)
-        %tr 
-          %td= t('activerecord.attributes.shooter.sport_permission')
-          %td= display_weapons_for @shooter
-        %tr 
-          %td= t('activerecord.attributes.shooter.collectors_permission')
-          %td= @shooter.collectors_permission ? t('shooters.truth') : t('shooters.lie')
-        %tr 
-          %td= t('shooters.first_address')
-          %td= @shooter.addresses.all[0] ? display_address(@shooter.addresses.all[0]) : t('shooters.blank')
-        %tr 
-          %td= t('shooters.second_address')
-          %td= @shooter.addresses.all[1] ? display_address(@shooter.addresses.all[1]) : t('shooters.blank')
+        %small= t('shooters.not_active')
+      .btn-group#menu
+        - if @shooter.email?
+          = mail_to @shooter.email,
+          t('activerecord.attributes.shooter.email'),
+          class: "btn btn-primary btn-sm"
+        = link_to t('actions.edit'),
+          edit_shooter_path(@shooter),
+          class: "btn btn-info btn-sm"
+        = link_to t(:destroy), @shooter, method: :delete,
+          class: "btn btn-danger btn-sm",
+          data: { confirm: t('actions.confirm') }
+%hr
+.row
+  .col-md-6
+    .well{style: 'display: inline-block'}
+      = image_tag (@shooter.image? ? @shooter.image_url : "default.jpg"),
+        style: 'width: 100%; max-width:200px'
+  .col-md-6
+    .panel.panel-default
+      .panel-heading= [t('actions.new'), t('activerecord.models.payment')].join(' ')
+      .panel-body
+        = form_for(@payment, html: {class: 'form-horizontal', role: 'form', id: 'payment_form'}) do |f|
+          = f.hidden_field :shooter_id, value: @shooter.id, id: 'shooter-id'
+          - if @payment.errors.any?
+            .alert.alert-danger
+              %h3
+                = t('errors.template.body')
+              %ul
+                - @payment.errors.full_messages.each do |msg|
+                  %li= msg
+          .form-group
+            = f.label :amount, class: 'col-sm-3 control-label'
+            .col-sm-8= f.number_field :amount, class: 'form-control', step: 'any', required: true
+          .form-group
+            = f.label :description, class: 'col-sm-3 control-label'
+            .col-sm-8= f.text_field :description, class: 'form-control', required: true
+          .form-group
+            = f.label :date, class: 'col-sm-3 control-label'
+            .col-sm-8
+              = f.text_field :date, 'data-behaviour' => 'datepicker',
+                type: "payment[date]",
+                placeholder: current_date,
+                class: "form-control",
+                required: true
+          .form-group
+            .col-sm-offset-3.col-sm-9
+              =f.submit class: 'btn btn-default', id: 'payment_submit'
+.panel.panel-default
+  .panel-heading
+  .panel-body
+    %ul.nav.nav-tabs
+      %li{class: "#{'active' unless params[:page]}"}
+        %a{href: '#data', data: { toggle: 'tab' } }= t('shooters.data')
+      %li{class: "#{'active' if params[:page]}"}
+        %a{href: '#payments', data: { toggle: 'tab' } }= t('shooters.payments')
+    .tab-content
+      .tab-pane.fade#data{class: "#{'active in' unless params[:page]}"}
+        %h4= t('shooters.data')
+        .table-responsive
+          %table.table.table-striped#shooter_data
+            %tr#pesel
+              %td= t('activerecord.attributes.shooter.pesel')
+              %td= @shooter.pesel
+            %tr#phone
+              %td= t('activerecord.attributes.shooter.phone')
+              %td= display_for_visible(@shooter.phone)
+            %tr#email
+              %td= t('activerecord.attributes.shooter.email')
+              %td= display_for_visible(@shooter.email)
+            %tr#date_of_birth
+              %td= t('activerecord.attributes.shooter.date_of_birth')
+              %td= @shooter.date_of_birth
+            %tr#joined_date
+              %td= t('activerecord.attributes.shooter.joined_date')
+              %td= @shooter.joined_date
+            %tr#resolution_number
+              %td= t('activerecord.attributes.shooter.resolution_number')
+              %td= display_for_visible(@shooter.resolution_number)
+            %tr#license_number
+              %td= t('activerecord.attributes.shooter.license_number')
+              %td= display_for_visible(@shooter.license_number)
+            %tr#judge_license_number
+              %td= t('activerecord.attributes.shooter.judge_license_number')
+              %td= display_for_visible(@shooter.judge_license_number)
+            %tr#sport_permission
+              %td= t('activerecord.attributes.shooter.sport_permission')
+              %td= display_weapons_for @shooter
+            %tr
+              %td= t('activerecord.attributes.shooter.collectors_permission')
+              %td= @shooter.collectors_permission ? t('shooters.truth') : t('shooters.lie')
+            %tr
+              %td= t('shooters.first_address')
+              %td= display_address(@shooter.addresses.all[0])
+            %tr
+              %td= t('shooters.second_address')
+              %td= @shooter.addresses. |
+                second ? display_address(@shooter.addresses.all[1]) : t('shooters.blank') |
+      .tab-pane.fade#payments{class: "#{'active in' if params[:page]}"}
+        .table-responsive
+          %h4= t('shooters.payments')
+          = render partial: 'payments/table',locals: {shooter_in_table: false,
+            sort_column: payments_sort_column, sort_direction: payments_sort_direction}
