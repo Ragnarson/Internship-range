@@ -3,8 +3,8 @@ class ShootersController < ApplicationController
   helper_method :sort_direction, :sort_column, :payments_sort_direction, :payments_sort_column
 
   def index
-    @shooters = Shooter.active.search(params[:search])
-      .order(sort_column + ' ' + sort_direction).page(params[:page])
+    @shooters = Shooter.active.search(params[:search]).
+      order(sort_column + ' ' + sort_direction).page(params[:page])
     respond_to do |format|
       format.html
       format.csv { render text: @shooters.to_csv }
@@ -13,7 +13,8 @@ class ShootersController < ApplicationController
 
   def show
     @payment = Payment.new
-    @payments = @shooter.payments.order(payments_sort_column + ' ' + payments_sort_direction).page(params[:page])
+    @payments = @shooter.payments.order(payments_sort_column + ' ' + payments_sort_direction).
+      page(params[:page])
     store_controller
   end
 

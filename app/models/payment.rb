@@ -8,8 +8,8 @@ class Payment < ActiveRecord::Base
   validate :date_is_date?
 
   def by
-    [shooter.first_name, shooter.last_name]
-      .join(' ') if shooter.first_name && shooter.last_name
+    [shooter.first_name, shooter.last_name].
+      join(' ') if shooter.first_name && shooter.last_name
   end
 
   private
@@ -19,8 +19,8 @@ class Payment < ActiveRecord::Base
 
   def self.search(search)
     return where(nil) unless search
-    joins(:shooter)
-      .where('description ILIKE ? OR first_name ILIKE ? OR last_name ILIKE ?',
+    joins(:shooter).
+      where('description ILIKE ? OR first_name ILIKE ? OR last_name ILIKE ?',
       "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%")
   end
 
@@ -28,7 +28,8 @@ class Payment < ActiveRecord::Base
     return where(
       'amount >= ? AND amount <= ?',
       "#{amount_min.to_f}",
-      "#{amount_max.to_f}") if amount_min.present? && amount_max.present?
+      "#{amount_max.to_f}"
+    ) if amount_min.present? && amount_max.present?
     return where('amount >= ?', "#{amount_min.to_f}") if amount_min.present?
     return where('amount <= ?', "#{amount_max.to_f}") if amount_max.present?
     where(nil)
