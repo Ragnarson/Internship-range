@@ -40,11 +40,15 @@
       = address_fields.text_field :zip_code, id: 'zip_code',
         placeholder: t('activerecord.attributes.address.zip_code'),
         class: 'form-control', required: (is_first ? true : false)
-  .form-group
-    %label.col-md-4.control-label{for: "street"}
   - if is_first
     .form-group
       %label.col-md-4.control-label
         =t('helpers.label.address.second_address')
       %input.col-md-1.checkbox#second_address_show{type: 'checkbox',
-        checked: @shooter.addresses.second.id ? true : false}
+        checked: @shooter.addresses.second.id ? true : false,
+        disabled: @shooter.addresses.second.id ? true : false}
+  - elsif @shooter.addresses.second.id
+    .form-group
+      %label.col-md-4.control-label
+        =t('actions.destroy') + ' ' + t('activerecord.models.address').downcase
+      = address_fields.check_box :_destroy, class: 'col-md-1'
