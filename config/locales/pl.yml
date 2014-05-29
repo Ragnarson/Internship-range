@@ -95,6 +95,7 @@ pl:
     errors:
       models:
         contest:
+          present_in_archive: Modyfikacja zawodów znajdujących się w Archiwum jest niedozwolona
           attributes:
             name:
               blank: nie może być pusta

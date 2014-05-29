@@ -1,15 +1,16 @@
 = content_for :title, "#{club_name} - #{t('activerecord.models.contest').capitalize}"
-  
-.btn-group.pull-right
-  = link_to t('contest.actions.edit'), edit_contest_path(@contest),
-      class: "btn btn-info btn-sm"
-  = link_to t('contest.actions.destroy'), @contest, method: :delete,
-      data: { confirm: I18n.t('actions.confirm') }, class: "btn btn-danger btn-sm"
+- unless contest_is_archived?
+  .btn-group.pull-right
+    = link_to t('contest.actions.edit'), edit_contest_path(@contest),
+        class: "btn btn-info btn-sm"
+    = link_to t('contest.actions.destroy'), @contest, method: :delete,
+        data: { confirm: I18n.t('actions.confirm') }, class: "btn btn-danger btn-sm"
 %h1
   %strong= @contest.name
-.btn-group.pull-right
-  = link_to t('contest.actions.select'), select_contest_path(@contest), 
-      class: "btn btn-warning btn-sm"
+- unless contest_is_archived?
+  .btn-group.pull-right
+    = link_to t('contest.actions.select'), select_contest_path(@contest), 
+        class: "btn btn-warning btn-sm"
 %h4= @contest.date
 .panel.panel-default
   .panel-heading
@@ -38,7 +39,8 @@
         %th= t('activerecord.attributes.competition.classification')
         %th= t('activerecord.attributes.competition.number_of_competitors')
         %th= t('activerecord.attributes.competition.number_of_shots')
-        %th{colspan: 2}= t(:actions, scope: :actions)
+        - unless contest_is_archived?
+          %th{colspan: 2}= t(:actions, scope: :actions)
     %tbody
       - @contest.competitions.each do |competition|
         %tr
@@ -46,21 +48,21 @@
           %td= competition.classification
           %td= competition.competitors.size
           %td= competition.number_of_shots
-          %td.btn-group.col-mid-3
-            = link_to t('actions.rate'),
-                rate_competition_path(@contest, competition),
-                class: "btn btn-success btn-sm"
-            = link_to t(:edit),
-                edit_contest_competition_path(@contest, competition),
-                class: "btn btn-info btn-sm"
-            = link_to t(:destroy),
-                contest_competition_path(@contest, competition),
-                class: "btn btn-danger btn-sm",
-                method: :delete,
-                data: { confirm: t('actions.confirm') }
-
-.panel.panel-default
-  .panel-heading
-    %strong= t('competitions.new_competition')
-  
-  = render 'competitions/form'
+          - unless contest_is_archived?
+            %td.btn-group.col-mid-3
+              = link_to t('actions.rate'),
+                  rate_competition_path(@contest, competition),
+                  class: "btn btn-success btn-sm"
+              = link_to t(:edit),
+                  edit_contest_competition_path(@contest, competition),
+                  class: "btn btn-info btn-sm"
+              = link_to t(:destroy),
+                  contest_competition_path(@contest, competition),
+                  class: "btn btn-danger btn-sm",
+                  method: :delete,
+                  data: { confirm: t('actions.confirm') }
+- unless contest_is_archived?
+  .panel.panel-default
+    .panel-heading
+      %strong= t('competitions.new_competition')
+    = render 'competitions/form'

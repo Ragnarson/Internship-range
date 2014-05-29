@@ -1,5 +1,6 @@
 class ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :edit, :update, :destroy, :select]
+  before_action :contest_is_archived?, only: [:edit, :update, :destroy, :select]
   helper_method :sort_direction, :sort_column
 
   def index

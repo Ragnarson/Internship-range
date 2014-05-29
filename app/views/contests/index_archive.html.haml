@@ -24,33 +24,4 @@
                   = submit_tag t("actions.search"), name: nil, class: "btn btn-default"
               = hidden_field_tag :direction, params[:direction]
               = hidden_field_tag :sort, params[:sort]
-        .row
-          .col-md-12
-            %table.table.table-striped.table-bordered.table-hover.fixedlayout
-              %thead
-                %tr
-                  %th.col-md-3= sortable "name",
-                    t('activerecord.attributes.contest.name'),
-                    sort_column, sort_direction
-                  %th.col-md-1= sortable "date",
-                    t('activerecord.attributes.contest.date'),
-                    sort_column, sort_direction
-                  %th.col-md-1= t('mainmenu.shooters')
-                  %th.col-md-1= t('mainmenu.competitions')
-                  %th.col-md-1= t('contest.actions.actions')
-              %tbody
-                - @contests.each do |contest|
-                  %tr
-                    %td= link_to contest.name, contest
-                    %td= contest.date
-                    %td= contest.competitors.size
-                    %td= contest.competitions.size
-                    %td.text-center
-                      .btn-group
-                        = link_to t('contest.actions.edit'),
-                          edit_contest_path(contest),
-                          class: "btn btn-info btn-sm"
-                        = link_to t('contest.actions.destroy'), contest,
-                          method: :delete, class: "btn btn-danger btn-sm",
-                          data: { confirm: I18n.t('actions.confirm') }
-            = paginate @contests
+= render 'index_table'

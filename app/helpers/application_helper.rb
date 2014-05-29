@@ -36,4 +36,8 @@ module ApplicationHelper
   def display_for_visible(attribute, placeholder_on_blank='-')
     attribute.blank? ? placeholder_on_blank : attribute
   end
+
+  def contest_is_archived?
+    @contest.date < Date.today
+  end
 end

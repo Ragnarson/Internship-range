@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "competitions/show" do
-  let!(:contest) { create(:contest, id: 1, name: 'contest', date: '2014-04-20') }
+  let!(:contest) { create(:contest, id: 1, name: 'contest', date: '2020-04-20') }
   let!(:competition) { create(:competition, id: 1, contest_id: 1,
     classification: 'psp10', number_of_shots: 3, name: 'competition')
   }
