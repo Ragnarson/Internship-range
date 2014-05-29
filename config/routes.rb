@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     member do
       get :select
     end
-    resources :competitions, except: [:index]
+    resources :competitions, except: [:index, :new]
   end
   resources :users
   resources :payments

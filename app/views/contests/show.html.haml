@@ -59,4 +59,9 @@
                 method: :delete,
                 data: { confirm: t('actions.confirm') }
 
-= link_to t('competitions.new_competition'), new_contest_competition_path(@contest), class: "btn btn-primary btn-sm"
+.panel.panel-default
+  .panel-heading
+    %strong= t('competitions.new_competition')
+  = content_for :title, "#{t('club_name')} - #{t('competitions.new_competition')}"
+  
+  = render 'competitions/form'
