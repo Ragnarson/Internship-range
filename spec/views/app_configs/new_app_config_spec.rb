@@ -25,4 +25,8 @@ describe "View of the Settings panel" do
   it "containes update settings button" do
     expect(page).to have_css('input.btn.btn-primary')
   end
+
+  it "displays nav-second-level users" do
+    expect(page).to have_selector('li', text: t('user.list'))
+  end
 end

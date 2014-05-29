@@ -34,4 +34,8 @@ describe 'payments/new' do
       expect(page).to have_content I18n.t(
         'flash.success_create', model: I18n.t('user.user'))
   end
+
+  it "displays nav-second-level users" do
+    expect(page).to have_selector('li', text: t('user.list'))
+  end
 end
