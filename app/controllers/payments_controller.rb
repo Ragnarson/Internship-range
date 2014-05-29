@@ -9,6 +9,10 @@ class PaymentsController < ApplicationController
       order(sort_column + " " + sort_direction).
       page(params[:page])
     store_controller
+    respond_to do |format|
+      format.html
+      format.csv { render text: @payments.to_csv }
+    end
   end
 
   def show

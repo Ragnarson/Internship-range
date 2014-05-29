@@ -19,20 +19,24 @@ describe 'payments/index' do
     end
   end
 
-  context 'contains link to shooter profile' do
-    it { expect(page).to have_link(resource.by) }
+  it 'contains link to shooter profile' do
+    expect(page).to have_link(resource.by)
   end
 
-  context 'contains link to payment' do
-    it { expect(page).to have_link(resource.description) }
+  it 'contains link to payment' do
+    expect(page).to have_link(resource.description)
   end
 
-  context 'contains link to edit payment' do
-    it { expect(page).to have_link(I18n.t('actions.edit')) }
+  it 'contains link to edit payment' do
+    expect(page).to have_link(I18n.t('actions.edit'))
   end
 
-  context 'contains link to destroy payment' do
-    it { expect(page).to have_link(I18n.t('actions.destroy')) }
+  it 'contains link to destroy payment' do
+    expect(page).to have_link(I18n.t('actions.destroy'))
+  end
+
+  it 'contains link to CSV export' do
+    expect(page).to have_link('CSV', href: '/payments.csv')
   end
 
   describe '.search' do

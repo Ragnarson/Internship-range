@@ -40,4 +40,17 @@ class Payment < ActiveRecord::Base
     date_max = Date.parse('2200-01-01') unless date_max.present?
     where('date >= ? AND date <= ?', "#{date_min}", "#{date_max}")
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << [I18n.t('payments.payment_date'),
+        I18n.t('payments.description'),
+        I18n.t('payments.amount'),
+        I18n.t('payments.name_of_shooter')]
+      all.each do |payment|
+        csv << [*payment.attributes.values_at(*["date",
+          "description", "amount"]), payment.by]
+      end
+    end
+  end
 end

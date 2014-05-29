@@ -53,5 +53,12 @@
               = link_to t('payments.new_payment'), new_payment_path,
                 class: 'btn btn-success btn-payment-form pull-right'
         .row
+          .col-md-1.col-md-offset-11
+            = link_to payments_path(format: :csv, more_params: params[:search]) do
+              %button.btn.btn-default.pull-right
+                %i.glyphicon.glyphicon-download
+                  CSV
+        %br
+        .row
           .col-md-12
             = render partial: 'table', locals: {shooter_in_table: true}
