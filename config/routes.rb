@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   post 'payments(/:id)', to: 'payments#notify'
   match '/signin', to: 'sessions#new', via: :get, as: 'signin'
   match '/signout', to: 'sessions#destroy', via: :delete, as: 'signout'
+  match 'contests/:contest_id/competitions/:id/rate', to: 'competitions#rate',
+    via: :get, as: 'rate_competition'
 end

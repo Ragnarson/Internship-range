@@ -39,6 +39,10 @@ class CompetitionsController < ApplicationController
         model: t('flash.competition'))
   end
 
+  def rate
+    @competition = @contest.competitions.find(params[:id])
+  end
+
   private
   def competition_params
     params.require(:competition).permit!
