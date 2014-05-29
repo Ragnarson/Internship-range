@@ -48,7 +48,7 @@
           %td= competition.number_of_shots
           %td.btn-group.col-mid-3
             = link_to t('actions.rate'),
-                edit_contest_competition_path(@contest, competition),
+                rate_competition_path(@contest, competition),
                 class: "btn btn-success btn-sm"
             = link_to t(:edit),
                 edit_contest_competition_path(@contest, competition),
