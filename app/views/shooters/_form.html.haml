@@ -29,11 +29,13 @@
             .col-md-4
               = m.text_field :date_of_birth, class: "form-control", required: true,
               "data-behaviour_birth" => "datepicker", placeholder: current_date
+            %span.text-danger= '*'
           .form-group
             = m.label :pesel, class: "col-md-4 control-label"
             .col-md-4
               = m.text_field :pesel, class: "form-control", required: true,
                 placeholder: t('activerecord.attributes.shooter.pesel')
+            %span.text-danger= '*'
           .form-group
             = m.label :joined_date, class: "col-md-4 control-label"
             .col-md-4
