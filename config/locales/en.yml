@@ -84,6 +84,9 @@ en:
     confirm: Are you sure?
     actions: Actions
     search: Search
+    signin: Sign in
+    signout: Sign out
+    rate: Rate
   errors:
     messages:
       not_a_date: must be a valid date

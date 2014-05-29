@@ -124,6 +124,7 @@ pl:
     search: Szukaj
     signin: Zaloguj się
     signout: Wyloguj się
+    rate: Oceń
   date:
     abbr_day_names:
     - nie

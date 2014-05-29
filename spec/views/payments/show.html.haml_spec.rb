@@ -13,12 +13,8 @@ describe "payments/show" do
     visit payment_path payment
   end
 
-  it "displays the payer's name correctly" do
-    expect(page).to have_selector('p', text: 'Janek')
-  end
-
-  it "displays the payer's last name correctly" do
-    expect(page).to have_selector('p', 'Kowalski')
+  it "displays the payer's full name correctly" do
+    expect(page).to have_selector('p', text: 'Janek Kowalski')
   end
 
   it "displays the payment's description correctly" do

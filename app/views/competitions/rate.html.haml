@@ -1,0 +1,13 @@
+= content_for :title,
+  "#{club_name} - #{t('actions.rate')} #{t('activerecord.models.competition.other')}"
+%h1= @contest.name
+%h4= @contest.date
+.panel.panel-default
+  .panel-heading
+    %strong= @competition.name
+  .panel-body
+    = form_for [@contest, @competition] do |f|
+      = f.fields_for :shootings do |builder|
+        = render 'shooting_fields', f: builder
+      .col-xs-12.pull-right
+        = f.submit class: "btn btn-primary"

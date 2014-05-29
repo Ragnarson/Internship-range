@@ -58,3 +58,8 @@ td {
 .radio input[type="radio"], .checkbox input[type="checkbox"] {
   float: none;
 }
+
+.input-group-addon {
+  min-width: 45px;
+  text-align: center;
+}

@@ -1,8 +1,11 @@
 = f.hidden_field :target
-
 .row-fluid
-  .form-group
-    .col-xs-2.control-label= "#{f.object.competitor.first_name} #{f.object.competitor.last_name}"
-    - build_fields f.object do |field|
-      .col-xs-1= f.text_field "#{field}".to_sym, class: "form-control"
-
+  .col-xs-4
+    .form-group
+      %h4.control-label= "#{f.object.competitor.first_name} #{f.object.competitor.last_name}"
+      %br
+      - build_fields f.object do |index, field|
+        .col-xs-10.input-group
+          %span.input-group-addon= "#{index}"
+          = f.text_field "#{field}".to_sym, class: "form-control input-mini",
+            placeholder: t('activerecord.attributes.competition.record')
