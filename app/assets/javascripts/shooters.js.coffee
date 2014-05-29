@@ -6,10 +6,7 @@ init_shooter_form = ->
     if this.checked
       $('fieldset#second_address').show()
     else
-      if $('#second_address_id input').val() == ""
-        $('fieldset#second_address').hide().find('input').val('')
-      else
-        $('fieldset#second_address').hide()
+      $('fieldset#second_address').hide().find('input').val('')
 
   $('input#permission_true').on 'change', ->
     if this.checked

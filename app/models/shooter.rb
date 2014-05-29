@@ -6,7 +6,7 @@ class Shooter < ActiveRecord::Base
   has_many :contests, through: :shot_lists
   has_many :competitions, through: :shot_lists
   has_many :addresses, -> { order('id').limit(2) }, inverse_of: :shooter
-  accepts_nested_attributes_for :addresses, reject_if: :all_blank
+  accepts_nested_attributes_for :addresses, reject_if: :all_blank, allow_destroy: :true
 
   validates :first_name, presence: true
   validates :last_name, presence: true
