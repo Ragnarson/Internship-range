@@ -1,0 +1,41 @@
+= content_for :title, "#{club_name} - #{t('activerecord.models.competition.one').capitalize}"
+
+%h2= t('competitions.competition_classification').capitalize
+.panel.panel-default
+  .panel-heading
+    %table.table
+      %thead
+        %tr
+          %th= t('competitions.competition_name')
+          %th= t('competitions.competition_type')
+          %th= t('competitions.competition_number_of_shots')
+      %tbody
+        %tr
+          %td= @competition.name
+          %td= @competition.classification
+          %td= @competition.number_of_shots
+.panel.panel-default
+  .panel-heading
+    %strong= t('competitions.competitor_points')
+  %table.table
+    %thead
+      %tr
+        %th= t('competitions.competitor_first_name')
+        %th= t('competitions.competitor_last_name')
+        %th= t('competitions.earned_points')
+        %th= t('competitions.earned_points_sum')
+        - if @competition.classification_pcz10?
+          %th= t('competitions.scored_middle')
+    %tbody
+      - @competitors.sort_by{|x| [x[:pk] ? 0 : 1,x.display_sum(@competition),
+       x.count_max(@competition)]}.reverse.each do |competitor|
+        %tr
+          %td= competitor.first_name
+          %td= competitor.last_name
+          %td= competitor.display_shots(@competition)
+          - if competitor.pk?
+            %td=("PK ").concat(competitor.display_sum(@competition).to_s)
+          - else
+            %td= competitor.display_sum(@competition)
+          - if @competition.classification_pcz10?
+            %td= competitor.count_max(@competition)
