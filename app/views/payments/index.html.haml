@@ -49,15 +49,20 @@
               = hidden_field_tag :sort, params[:sort]
               = f.submit t("actions.search"),
                 class: 'btn btn-default btn-payment-form'
+
+            %br
             .col-md-3
               = link_to t('payments.new_payment'), new_payment_path,
                 class: 'btn btn-success btn-payment-form pull-right'
         .row
-          .col-md-1.col-md-offset-11
-            = link_to payments_path(format: :csv, more_params: params[:search]) do
-              %button.btn.btn-default.pull-right
-                %i.glyphicon.glyphicon-download
-                  CSV
+          .col-md-7.col-sm-12.col-xs-12.pull-right
+            .btn-group.pull-right.margin-top
+              = link_to payments_path(format: :csv, more_params: params[:search]) do
+                %button.btn.btn-default.pull-right
+                  %i.glyphicon.glyphicon-download
+                    CSV
+              =link_to "PDF", payments_path(@payment, format: "pdf"),
+              class: 'btn btn-default btn-payment-form'
         %br
         .row
           .col-md-12
