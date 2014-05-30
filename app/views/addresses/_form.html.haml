@@ -2,44 +2,61 @@
 %fieldset{id: (is_first ? 'first_address' : 'second_address')}
   %legend
     %h5
-      = t(is_first ?                              |
-          'helpers.label.address.first_address'   |
-          :                                       |
-          'helpers.label.address.second_address'  |
-        )                                         |
-      %span.text-danger= '*'
+      - if is_first
+        =t('helpers.label.address.first_address')
+        %span.text-danger= '*'
+      - else
+        =t('helpers.label.address.second_address')
+        - if @shooter.addresses.second.id
+          .pull-right
+            %label.text-danger
+              = address_fields.check_box :_destroy, {id: 'destroy_address'}
+              =t('actions.destroy') + ' ' + t('activerecord.models.address').downcase        
   .form-group
-    %label.col-md-4.control-label{for: "street"}
+    %label.col-md-4.control-label
       =t('activerecord.attributes.address.street')
     .col-md-4
-      = address_fields.text_field :street, class: 'form-control', id: 'street',
-        placeholder: t('activerecord.attributes.address.street')
-    %span.text-danger= '*'
+      .row
+        .col-xs-11
+          = address_fields.text_field :street, class: 'form-control', id: 'street',
+            placeholder: t('activerecord.attributes.address.street')
   .form-group
-    %label.col-md-4.control-label{for: "street"}
+    %label.col-md-4.control-label
       =t('activerecord.attributes.address.building') + ', '
       =t('activerecord.attributes.address.flat')
     .col-md-2
-      = address_fields.text_field :building, class: 'form-control',
-        placeholder: t('activerecord.attributes.address.building'),
-        id: 'building', required: (is_first ? true : false)
-    %span.text-danger= '*'
+      .row
+        .col-xs-10
+          = address_fields.text_field :building, class: 'form-control',
+            placeholder: t('activerecord.attributes.address.building'),
+            id: 'building', required: (is_first ? true : false)
+        .col-xs-1{style: "padding: 0;"}
+          %span.text-danger= '*'
     .col-md-2
-      = address_fields.text_field :flat, class: 'form-control', id: 'flat',
-        placeholder: t('activerecord.attributes.address.flat')
+      .row
+        .col-xs-10
+          = address_fields.text_field :flat, class: 'form-control', id: 'flat',
+            placeholder: t('activerecord.attributes.address.flat')
   .form-group
-    %label.col-md-4.control-label{for: "street"}
+    %label.col-md-4.control-label
       =t('activerecord.attributes.address.city') + ', '
       =t('activerecord.attributes.address.zip_code')
     .col-md-2
-      = address_fields.text_field :city, class: 'form-control', id: 'city',
-        placeholder: t('activerecord.attributes.address.city'),
-        required: (is_first ? true : false)
-    %span.text-danger= '*'
+      .row
+        .col-xs-10
+          = address_fields.text_field :city, class: 'form-control', id: 'city',
+            placeholder: t('activerecord.attributes.address.city'),
+            required: (is_first ? true : false)
+        .col-xs-1{style: "padding: 0;"}
+          %span.text-danger= '*'
     .col-md-2
-      = address_fields.text_field :zip_code, id: 'zip_code',
-        placeholder: t('activerecord.attributes.address.zip_code'),
-        class: 'form-control', required: (is_first ? true : false)
+      .row
+        .col-xs-10
+          = address_fields.text_field :zip_code, id: 'zip_code',
+            placeholder: t('activerecord.attributes.address.zip_code'),
+            class: 'form-control', required: (is_first ? true : false)
+        .col-xs-1{style: "padding: 0;"}
+          %span.text-danger= '*'
   - if is_first
     .form-group
       %label.col-md-4.control-label
@@ -47,8 +64,3 @@
       %input.col-md-1.checkbox#second_address_show{type: 'checkbox',
         checked: @shooter.addresses.second.id ? true : false,
         disabled: @shooter.addresses.second.id ? true : false}
-  - elsif @shooter.addresses.second.id
-    .form-group
-      %label.col-md-4.control-label
-        =t('actions.destroy') + ' ' + t('activerecord.models.address').downcase
-      = address_fields.check_box :_destroy, class: 'col-md-1'
