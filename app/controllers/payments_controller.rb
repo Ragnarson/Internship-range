@@ -11,7 +11,12 @@ class PaymentsController < ApplicationController
     store_controller
     respond_to do |format|
       format.html
-      format.csv { render text: @payments.to_csv }
+      format.csv { render text: @payments.to_csv }  
+      format.pdf do
+        pdf = PaymentPdf.new(@payments, view_context)
+        send_data pdf.render, filename: "Payment.pdf",
+                              type: "application/pdf"
+     end
     end
   end
 
