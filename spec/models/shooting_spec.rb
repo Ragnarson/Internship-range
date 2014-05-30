@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Shooting do
   subject(:shooting) { create(:shooting) }
 
-  before(:each) { shooting.explode_target }
+  before(:each) { shooting.send(:explode_target) }
 
   context 'when all attributes are present' do
     it { should respond_to(:target) }
@@ -22,23 +22,37 @@ describe Shooting do
     it { should_not be_valid }
   end
 
-  describe '#explode_target' do
-    it { should respond_to(:shot_0) }
-    it { should respond_to(:shot_4) }
-  end
+  describe '#number_of_fields' do
+    context 'when the value is nil' do
+      let(:shooting) { create(:shooting) }
+      before { shooting.stub(:number_of_fields) }
 
-  describe '#wipe_virtual_attributes' do
-    before { shooting.send(:wipe_virtual_attributes) }
+      it 'returns nil' do
+        expect(shooting.number_of_fields).to be(nil)
+      end
 
-    it 'clears the virtual_attributes' do
-      expect(shooting).to_not respond_to(:shot_0)
-      expect(shooting).to_not respond_to(:shot_4)
+      it 'should not raise errors' do
+        expect { shooting }.not_to raise_error
+      end
     end
   end
 
-  describe '#virtual_attributes' do
+  describe '#explode_target' do
+    it 'responds_to virtual_attributes' do
+      expect(shooting).to respond_to(:shot_0, :shot_4)
+    end
+  end
+
+  describe '#remove_virtual_attributes' do
+    before { shooting.send(:remove_virtual_attributes) }
+    it 'clears the virtual_attributes' do
+      expect(shooting).to_not respond_to(:shot_0, :shot_4)
+    end
+  end
+
+  describe '#virtual_attributes' do 
     it 'matches the number of target values' do
-      expect(shooting.send(:virtual_attributes).count).to eq shooting.target.length
+      expect(shooting.virtual_attributes.count).to eq shooting.target.length
     end
   end
 end

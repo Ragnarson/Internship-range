@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'Contest' do
-  let!(:competitor) { create(:competitor) }
-  let!(:competition) { create(:competition) }
-  let!(:contest) { create(:contest, competitions: [competition], 
+  let(:competitor) { create(:competitor) }
+  let(:competition) { create(:competition) }
+  let(:contest) { create(:contest, competitions: [competition], 
     competitors: [competitor]) }
 
   scenario "Select competitions" do
