@@ -1,5 +1,6 @@
 class CompetitionsController < ApplicationController
   before_action :contest
+  before_action :contest_is_archived?
   after_action :disable_garbage_collector, only: :edit
 
   def show
@@ -47,7 +48,7 @@ class CompetitionsController < ApplicationController
 
   private
   def competition_params
-    params.require(:competition).permit!
+    params.require(:competition).permit(:id)
   end
 
   def contest

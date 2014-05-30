@@ -62,9 +62,17 @@ en:
         building: Building No.
         flat: Flat No.
         zip_code: Zip code
-      settings:
+      app_config:
         club_name: Club name
         club_logo: Club logo
+    errors:
+      models:
+        contest:
+          present_in_archive: Modificitation of archived Contests is not allowed
+          attributes:
+            name:
+              blank: can not be blank
+              taken: has been already taken
   flash:
     success_create: "Successfully created %{model}"
     success_edit: "Successfully edited %{model}"

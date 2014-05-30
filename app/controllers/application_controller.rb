@@ -41,4 +41,11 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
     controller
   end
+
+  def contest_is_archived?
+    if @contest.date < Date.today
+      redirect_to contests_archive_path
+      flash[:notice] = t('activerecord.errors.models.contest.present_in_archive')
+    end
+  end
 end

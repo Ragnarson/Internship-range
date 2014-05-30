@@ -23,35 +23,14 @@ describe "Contest index archive" do
         'th', text: I18n.t('activerecord.attributes.contest.date'))
     end
 
-    it "contains actions header" do
-      expect(page).to have_selector(
-        'th', text: I18n.t('actions.actions'))
-    end
-
     it "has link to contest profile through name" do
       expect(page).to have_link(other_contest.name)
-    end
-
-    it "has links to edit contests" do
-      expect(page).to have_link(I18n.t('actions.edit'))
-    end
-
-    it "has links to delete contests" do
-      expect(page).to have_link(I18n.t('actions.destroy'))
     end
 
     it "has link to future contests" do
       expect(page).to have_link(I18n.t('contest.future').capitalize)
     end
-
-    it "has centered buttons" do
-      expect(page).to have_css('td.text-center')
-    end
-
-    it "has grouped buttons" do
-      expect(page).to have_css('div.btn-group')
-    end
-  end
+ end
 
   describe ".search" do
     let!(:new_contest) { create(:contest, date: "2014-03-03") }
