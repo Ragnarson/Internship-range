@@ -3,7 +3,7 @@ init_contest_new_form = ->
     if confirm ("Czy aby tak?")
       event.preventDefault()
       $(this).prev('input[type=hidden]').val('1')
-      $(this).closest('fieldset').hide()
+      $(this).closest('fieldset').hide().find('input').prop 'required', false
     else event.preventDefault()
   $('form').on 'click', '.add_fields', (event) ->
     event.preventDefault()
