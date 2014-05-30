@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
 
   def contest_is_archived?
     if @contest.date < Date.today
-      redirect_to contests_archive_path
+      redirect_to :back
       flash[:notice] = t('activerecord.errors.models.contest.present_in_archive')
     end
   end

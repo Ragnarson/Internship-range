@@ -1,6 +1,6 @@
 class CompetitionsController < ApplicationController
   before_action :contest
-  before_action :contest_is_archived?
+  before_action :contest_is_archived?, expect: :show
   after_action :disable_garbage_collector, only: :edit
 
   def show
